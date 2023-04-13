@@ -1,0 +1,36 @@
+2604  <machine MACH="arc4">
+2605     <DESC>LEEDS ARC4</DESC>
+2606     <NODENAME_REGEX>.*.arc4</NODENAME_REGEX>
+2607     <OS>LINUX</OS>
+2608     <COMPILERS>intel,intel14,intel15</COMPILERS>
+2609     <MPILIBS>openmpi</MPILIBS>
+2610     <PROJECT>codita</PROJECT>
+2611     <CIME_OUTPUT_ROOT>/nobackup/$USER/cesm2/cases</CIME_OUTPUT_ROOT>
+2612     <DIN_LOC_ROOT>/nobackup/earfw/cesm2_inputdata/</DIN_LOC_ROOT>
+2613     <DIN_LOC_ROOT_CLMFORC>/nobackup/earfw/cesm2_inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+2614     <DOUT_S_ROOT>/nobackup/$USER/cesm2/archive/$CASE</DOUT_S_ROOT>
+2615     <BASELINE_ROOT>/nobackup/$USER/CESM1.0/OUTPUT/ccsm_baselines</BASELINE_ROOT>
+2616     <CCSM_CPRNC>/home/home01/earfw/cesm2_0_1_arc2/cime/tools/cprnc</CCSM_CPRNC>
+2617     <GMAKE_J>8</GMAKE_J>
+2618     <BATCH_SYSTEM>none</BATCH_SYSTEM>
+2619     <SUPPORTED_BY>earfw-at-leeds-dot-ac-dot-uk</SUPPORTED_BY>
+2620     <MAX_TASKS_PER_NODE>40</MAX_TASKS_PER_NODE>
+2621     <MAX_MPITASKS_PER_NODE>40</MAX_MPITASKS_PER_NODE>
+2622     <mpirun mpilib="default">
+2623       <executable>mpirun --mca plm_rsh_no_tree_spawn 1 </executable>
+2624     </mpirun>
+2625     <module_system type="module">
+2626       <init_path lang="perl">/apps/Modules/default/init/perl.pm</init_path>
+2627       <init_path lang="sh">/apps/Modules/default/init/sh</init_path>
+2628       <init_path lang="csh">/apps/Modules/default/init/csh</init_path>
+2629       <cmd_path lang="perl">/apps/Modules/default//bin/modulecmd perl</cmd_path>
+2630       <cmd_path lang="sh">module</cmd_path>
+2631       <cmd_path lang="csh">module</cmd_path>
+2632     </module_system>
+2633     <environment_variables>
+2634       <env name="MKL">-mkl</env>
+2635       <env name="OMP_STACKSIZE">256M</env>
+2636     <env name="ESMFMKFILE">/home/home01/earfw/WAVECHASM/esmf820/install/lib/libO/Linux.intel.64.openmpi.default/esmf.mk</env>
+2637     </environment_variables>
+2638   </machine>
+

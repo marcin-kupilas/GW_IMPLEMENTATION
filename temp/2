@@ -1,0 +1,64 @@
+[phymku@login2.arc4 cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002]$ cat /nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/pio.bldlog.230328-100324
+pio_version_major = None pio_version = 1
+gmake /nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1/Makefile -C /nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1  CASEROOT=/nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002 MODEL=pio1 USER_CMAKE_OPTS="-D GENF90_PATH=$CIMEROOT/src/externals/genf90 " PIO_LIBDIR=/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1 CASETOOLS=/nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/Tools USER_CPPDEFS=-DTIMING CIME_MODEL=cesm  compile_threaded=FALSE CASEROOT="/nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002" CASETOOLS="/nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/Tools" CIMEROOT="/home/home01/earfw/RR/cam_development/cime" COMP_INTERFACE="mct" COMPILER="intel" DEBUG="FALSE" EXEROOT="/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld" INCROOT="/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/lib/include" LIBROOT="/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/lib" MACH="arc4" MPILIB="openmpi" NINST_VALUE="c1a1l1i1o1r1g1w1i1e1" OS="LINUX" PIO_VERSION="1" SHAREDLIBROOT="/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld" SMP_PRESENT="FALSE" USE_ESMF_LIB="FALSE" USE_MOAB="FALSE" CAM_CONFIG_OPTS="-phys cam6 -age_of_air_trcs -chem waccm_ma_mam4" COMPARE_TO_NUOPC="FALSE" CISM_USE_TRILINOS="FALSE" USE_ALBANY="FALSE" USE_PETSC="FALSE"  -f /nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/Tools/Makefile
+gmake: Entering directory `/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1'
+/nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/Tools/mkSrcfiles
+cp -f Filepath Deppath
+/nobackup/phymku/cesm_sims/cam_development/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/Tools/mkDepends  Deppath Srcfiles > Depends
+gmake: Leaving directory `/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1'
+gmake: Entering directory `/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1'
+cd /nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1; \
+ CC=mpicc   CXX=mpicxx  FC=mpif90  LDFLAGS="" cmake  -D CMAKE_Fortran_FLAGS:STRING="-qno-opt-dynamic-align  -convert big_endian -assume byterecl -ftz -traceback -assume realloc_lhs -fp-model source    -O2 -debug minimal  -DTIMING -DLINUX  -DCESMCOUPLED   -DFORTRANUNDERSCORE -DCPRINTEL -DNDEBUG -DMCT_INTERFACE -DHAVE_MPI -DPIO1 -DHAVE_SLASHPROC -D_PNETCDF -DATM_PRESENT -DICE_PRESENT -DLND_PRESENT -DOCN_PRESENT -DROF_PRESENT -DGLC_PRESENT -DWAV_PRESENT -DESP_PRESENT -D_NO_MPI_RSEND -I. -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/include -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/mct/noesmf/c1a1l1i1o1r1g1w1i1e1/include -I/apps/developers/libraries/netcdf/4.6.3/1/intel-19.0.4-openmpi-3.1.4/include -I/home/home01/earfw/WAVECHASM/pnetcdf/install/include -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/include" -D CMAKE_C_FLAGS:STRING="-qno-opt-dynamic-align -fp-model precise -std=gnu99   -O2 -debug minimal  -DTIMING -DLINUX  -DCESMCOUPLED   -DFORTRANUNDERSCORE -DCPRINTEL -DNDEBUG -DMCT_INTERFACE -DHAVE_MPI -DPIO1 -DHAVE_SLASHPROC -D_PNETCDF -DATM_PRESENT -DICE_PRESENT -DLND_PRESENT -DOCN_PRESENT -DROF_PRESENT -DGLC_PRESENT -DWAV_PRESENT -DESP_PRESENT -D_NO_MPI_RSEND -I. -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/include -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/mct/noesmf/c1a1l1i1o1r1g1w1i1e1/include -I/apps/developers/libraries/netcdf/4.6.3/1/intel-19.0.4-openmpi-3.1.4/include -I/home/home01/earfw/WAVECHASM/pnetcdf/install/include -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/include" -D CMAKE_CXX_FLAGS:STRING="-DTIMING -DLINUX  -DCESMCOUPLED   -DFORTRANUNDERSCORE -DCPRINTEL -DNDEBUG -DMCT_INTERFACE -DHAVE_MPI -DPIO1 -DHAVE_SLASHPROC -D_PNETCDF -DATM_PRESENT -DICE_PRESENT -DLND_PRESENT -DOCN_PRESENT -DROF_PRESENT -DGLC_PRESENT -DWAV_PRESENT -DESP_PRESENT -D_NO_MPI_RSEND -I. -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/include -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/mct/noesmf/c1a1l1i1o1r1g1w1i1e1/include -I/apps/developers/libraries/netcdf/4.6.3/1/intel-19.0.4-openmpi-3.1.4/include -I/home/home01/earfw/WAVECHASM/pnetcdf/install/include -I/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/include" -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON -D GPTL_PATH:STRING=/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct -D PIO_ENABLE_TESTS:BOOL=OFF -D PIO_USE_MALLOC:BOOL=ON -D USER_CMAKE_MODULE_PATH:LIST="/home/home01/earfw/RR/cam_development/cime/src/CMake;/home/home01/earfw/RR/cam_development/cime/src/externals/pio2/cmake"  -D NetCDF_PATH:PATH=/apps/developers/libraries/netcdf/4.6.3/1/intel-19.0.4-openmpi-3.1.4 -D PnetCDF_PATH:STRING="/home/home01/earfw/WAVECHASM/pnetcdf/install" -D GENF90_PATH=/home/home01/earfw/RR/cam_development/cime/scripts/Tools/../../src/externals/genf90  /home/home01/earfw/RR/cam_development/cime/src/externals/pio1
+-- The C compiler identification is Intel 19.0.4.20190416
+-- The Fortran compiler identification is Intel 19.0.4.20190416
+-- Check for working C compiler: /apps/developers/libraries/openmpi/3.1.4/1/intel-19.0.4/bin/mpicc
+-- Check for working C compiler: /apps/developers/libraries/openmpi/3.1.4/1/intel-19.0.4/bin/mpicc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working Fortran compiler: /apps/developers/libraries/openmpi/3.1.4/1/intel-19.0.4/bin/mpif90
+-- Check for working Fortran compiler: /apps/developers/libraries/openmpi/3.1.4/1/intel-19.0.4/bin/mpif90  -- works
+-- Detecting Fortran compiler ABI info
+-- Detecting Fortran compiler ABI info - done
+-- Checking whether /apps/developers/libraries/openmpi/3.1.4/1/intel-19.0.4/bin/mpif90 supports Fortran 90
+-- Checking whether /apps/developers/libraries/openmpi/3.1.4/1/intel-19.0.4/bin/mpif90 supports Fortran 90 -- yes
+-- Found NetCDF_C: /apps/developers/libraries/netcdf/4.6.3/1/intel-19.0.4-openmpi-3.1.4/lib/libnetcdf.so  
+-- Checking NetCDF version
+-- Checking NetCDF version - 4.6.3./*!<
+-- Checking whether NetCDF has parallel support
+-- Checking whether NetCDF has parallel support - yes
+-- Looking for nc_set_log_level
+-- Looking for nc_set_log_level - found
+-- Found NetCDF_Fortran: /apps/developers/libraries/netcdf/4.6.3/1/intel-19.0.4-openmpi-3.1.4/lib/libnetcdff.so  
+-- Configuring incomplete, errors occurred!
+See also "/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1/CMakeFiles/CMakeOutput.log".
+gmake: Leaving directory `/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1'
+cat: Filepath: No such file or directory
+cat: Srcfiles: No such file or directory
+Building PIO with netcdf support 
+CMake Error at /apps/infrastructure/cmake/3.7.2/1/default/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake:138 (message):
+  Could NOT find PnetCDF_Fortran (missing: PnetCDF_Fortran_LIBRARY
+  PnetCDF_Fortran_INCLUDE_DIR)
+Call Stack (most recent call first):
+  /apps/infrastructure/cmake/3.7.2/1/default/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake:378 (_FPHSA_FAILURE_MESSAGE)
+  /home/home01/earfw/RR/cam_development/cime/src/externals/pio2/cmake/LibFind.cmake:306 (find_package_handle_standard_args)
+  /home/home01/earfw/RR/cam_development/cime/src/externals/pio2/cmake/FindPnetCDF.cmake:52 (find_package_component)
+  pio/CMakeLists.txt:46 (FIND_PACKAGE)
+
+
+gmake: *** [/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1/Makefile] Error 1
+ERROR: cat: Filepath: No such file or directory
+cat: Srcfiles: No such file or directory
+Building PIO with netcdf support 
+CMake Error at /apps/infrastructure/cmake/3.7.2/1/default/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake:138 (message):
+  Could NOT find PnetCDF_Fortran (missing: PnetCDF_Fortran_LIBRARY
+  PnetCDF_Fortran_INCLUDE_DIR)
+Call Stack (most recent call first):
+  /apps/infrastructure/cmake/3.7.2/1/default/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake:378 (_FPHSA_FAILURE_MESSAGE)
+  /home/home01/earfw/RR/cam_development/cime/src/externals/pio2/cmake/LibFind.cmake:306 (find_package_handle_standard_args)
+  /home/home01/earfw/RR/cam_development/cime/src/externals/pio2/cmake/FindPnetCDF.cmake:52 (find_package_component)
+  pio/CMakeLists.txt:46 (FIND_PACKAGE)
+
+
+gmake: *** [/nobackup/phymku/cesm2/cases/cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002/bld/intel/openmpi/nodebug/nothreads/mct/pio/pio1/Makefile] Error 1[phymku@login2.arc4 cam6_2_011_FWmaHIST_ne30pg3_ne30pg3_mg17_mmk.002]$ 

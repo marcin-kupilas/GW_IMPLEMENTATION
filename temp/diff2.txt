@@ -1,0 +1,3030 @@
+-bash-4.2$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-bash-4.2$ cat CaseStatus 
+2021-05-24 05:51:44: case.setup starting 
+ ---------------------------------------------------
+2021-05-24 05:51:45: case.setup success 
+ ---------------------------------------------------
+2021-05-24 05:51:52: case.setup starting 
+ ---------------------------------------------------
+2021-05-24 05:51:53: case.setup success 
+ ---------------------------------------------------
+2021-05-24 10:39:39: case.build starting 
+ ---------------------------------------------------
+2021-05-24 10:44:15: case.build error 
+
+ ---------------------------------------------------
+2021-05-24 10:45:01: case.build starting 
+ ---------------------------------------------------
+2021-05-24 10:48:40: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210524-104501
+ ---------------------------------------------------
+2021-05-24 10:51:09: case.build starting 
+ ---------------------------------------------------
+2021-05-24 10:51:28: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210524-105109
+ ---------------------------------------------------
+2021-05-24 10:58:41: case.build starting 
+ ---------------------------------------------------
+2021-05-24 10:58:46: case.build error 
+
+ ---------------------------------------------------
+2021-05-24 10:59:10: case.build starting 
+ ---------------------------------------------------
+2021-05-24 10:59:37: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210524-105910
+ ---------------------------------------------------
+2021-05-24 11:07:02: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_FMS.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, cime, cice, fms, fms, cism, source_cism, rtm, cam, silhs, clubb, pumas, atmos_phys, cosp2, chem_proc, mpas, atmos_cubed_sphere, carma, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_04
+    ./cime
+        clean sandbox, on cime5.8.34
+    ./components/cice
+        clean sandbox, on cice5_20200430
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev107
+    ./components/clm/src/fates
+        clean sandbox, on sci.1.30.0_api.8.0.0
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_20200121
+    ./components/mosart
+        clean sandbox, on mosart1_0_36
+    ./components/rtm
+        clean sandbox, on rtm1_0_71
+    ./libraries/FMS
+        clean sandbox, on fi_20200609
+    ./libraries/FMS/src
+        clean sandbox, on xanadu_esm4_20190304
+    ./src/atmos_phys
+        clean sandbox, on version0_00_007
+    ./src/dynamics/fv3/atmos_cubed_sphere
+        clean sandbox, on fv3_cesm.04
+    ./src/dynamics/mpas/dycore
+        clean sandbox, on d059bdf547163043011e765277216e2fe93b2f4b
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_release_b76a124_20200220_c20200320
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/pumas
+        clean sandbox, on pumas_cam-release_v1.8
+    ./src/physics/silhs
+        clean sandbox, on silhs_clubb_release_b76a124_20200220_c20200320
+2021-05-24 11:08:47: case.build success 
+ ---------------------------------------------------
+2021-05-24 11:56:36: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_FMS.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, cime, cice, fms, fms, cism, source_cism, rtm, cam, silhs, clubb, pumas, atmos_phys, cosp2, chem_proc, mpas, atmos_cubed_sphere, carma, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_04
+    ./cime
+        clean sandbox, on cime5.8.34
+    ./components/cice
+        clean sandbox, on cice5_20200430
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev107
+    ./components/clm/src/fates
+        clean sandbox, on sci.1.30.0_api.8.0.0
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_20200121
+    ./components/mosart
+        clean sandbox, on mosart1_0_36
+    ./components/rtm
+        clean sandbox, on rtm1_0_71
+    ./libraries/FMS
+        clean sandbox, on fi_20200609
+    ./libraries/FMS/src
+        clean sandbox, on xanadu_esm4_20190304
+    ./src/atmos_phys
+        clean sandbox, on version0_00_007
+    ./src/dynamics/fv3/atmos_cubed_sphere
+        clean sandbox, on fv3_cesm.04
+    ./src/dynamics/mpas/dycore
+        clean sandbox, on d059bdf547163043011e765277216e2fe93b2f4b
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_release_b76a124_20200220_c20200320
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/pumas
+        clean sandbox, on pumas_cam-release_v1.8
+    ./src/physics/silhs
+        clean sandbox, on silhs_clubb_release_b76a124_20200220_c20200320
+2021-05-24 11:57:46: case.build success 
+ ---------------------------------------------------
+2021-05-24 12:39:30: case.build starting 
+ ---------------------------------------------------
+2021-05-24 12:39:31: case.build error 
+ERROR: Command /glade/scratch/nadavis/CESM_updates/CAM/cime/../bld/build-namelist -ntasks 1800 -csmdata /glade/p/cesmdata/cseg/inputdata -infile /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist -start_ymd 20100101 -ignore_ic_year -use_case waccm_ma_hist_cam6 -inputdata /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/cam.input_data_list -namelist " &atmexp /"  failed rc=255
+out=
+err=Smartmatch is experimental at /glade/scratch/nadavis/CESM_updates/CAM/bld/perl5lib/Build/ChemNamelist.pm line 274.
+CAM build-namelist - ERROR: Invalid namelist variable in '-infile' /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist.
+ ERROR: in _validate_pair (package Build::NamelistDefinition): Variable name gw_mask not found in /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/SourceMods/src.cam/namelist_definition.xml
+ ---------------------------------------------------
+2021-05-24 12:40:10: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_FMS.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, cime, cice, fms, fms, cism, source_cism, rtm, cam, silhs, clubb, pumas, atmos_phys, cosp2, chem_proc, mpas, atmos_cubed_sphere, carma, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_04
+    ./cime
+        clean sandbox, on cime5.8.34
+    ./components/cice
+        clean sandbox, on cice5_20200430
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev107
+    ./components/clm/src/fates
+        clean sandbox, on sci.1.30.0_api.8.0.0
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_20200121
+    ./components/mosart
+        clean sandbox, on mosart1_0_36
+    ./components/rtm
+        clean sandbox, on rtm1_0_71
+    ./libraries/FMS
+        clean sandbox, on fi_20200609
+    ./libraries/FMS/src
+        clean sandbox, on xanadu_esm4_20190304
+    ./src/atmos_phys
+        clean sandbox, on version0_00_007
+    ./src/dynamics/fv3/atmos_cubed_sphere
+        clean sandbox, on fv3_cesm.04
+    ./src/dynamics/mpas/dycore
+        clean sandbox, on d059bdf547163043011e765277216e2fe93b2f4b
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_release_b76a124_20200220_c20200320
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/pumas
+        clean sandbox, on pumas_cam-release_v1.8
+    ./src/physics/silhs
+        clean sandbox, on silhs_clubb_release_b76a124_20200220_c20200320
+2021-05-24 12:40:30: case.build success 
+ ---------------------------------------------------
+2021-05-24 12:44:03: case.submit starting 
+ ---------------------------------------------------
+2021-05-24 12:44:06: case.submit error 
+
+ ---------------------------------------------------
+2021-05-24 13:12:33: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_FMS.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, cime, cice, fms, fms, cism, source_cism, rtm, cam, silhs, clubb, pumas, atmos_phys, cosp2, chem_proc, mpas, atmos_cubed_sphere, carma, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_04
+    ./cime
+        clean sandbox, on cime5.8.34
+    ./components/cice
+        clean sandbox, on cice5_20200430
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev107
+    ./components/clm/src/fates
+        clean sandbox, on sci.1.30.0_api.8.0.0
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_20200121
+    ./components/mosart
+        clean sandbox, on mosart1_0_36
+    ./components/rtm
+        clean sandbox, on rtm1_0_71
+    ./libraries/FMS
+        clean sandbox, on fi_20200609
+    ./libraries/FMS/src
+        clean sandbox, on xanadu_esm4_20190304
+    ./src/atmos_phys
+        clean sandbox, on version0_00_007
+    ./src/dynamics/fv3/atmos_cubed_sphere
+        clean sandbox, on fv3_cesm.04
+    ./src/dynamics/mpas/dycore
+        clean sandbox, on d059bdf547163043011e765277216e2fe93b2f4b
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_release_b76a124_20200220_c20200320
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/pumas
+        clean sandbox, on pumas_cam-release_v1.8
+    ./src/physics/silhs
+        clean sandbox, on silhs_clubb_release_b76a124_20200220_c20200320
+2021-05-24 13:13:40: case.build success 
+ ---------------------------------------------------
+2021-05-24 13:13:52: case.submit starting 
+ ---------------------------------------------------
+2021-05-24 13:14:02: case.submit success case.run:8329160.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8329163.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-05-24 13:20:12: case.run starting 
+ ---------------------------------------------------
+2021-05-24 13:20:18: model execution starting 
+ ---------------------------------------------------
+2021-05-24 14:00:11: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_FMS.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, cime, cice, fms, fms, cism, source_cism, rtm, cam, silhs, clubb, pumas, atmos_phys, cosp2, chem_proc, mpas, atmos_cubed_sphere, carma, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_04
+    ./cime
+        clean sandbox, on cime5.8.34
+    ./components/cice
+        clean sandbox, on cice5_20200430
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev107
+    ./components/clm/src/fates
+        clean sandbox, on sci.1.30.0_api.8.0.0
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_20200121
+    ./components/mosart
+        clean sandbox, on mosart1_0_36
+    ./components/rtm
+        clean sandbox, on rtm1_0_71
+    ./libraries/FMS
+        clean sandbox, on fi_20200609
+    ./libraries/FMS/src
+        clean sandbox, on xanadu_esm4_20190304
+    ./src/atmos_phys
+        clean sandbox, on version0_00_007
+    ./src/dynamics/fv3/atmos_cubed_sphere
+        clean sandbox, on fv3_cesm.04
+    ./src/dynamics/mpas/dycore
+        clean sandbox, on d059bdf547163043011e765277216e2fe93b2f4b
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_release_b76a124_20200220_c20200320
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/pumas
+        clean sandbox, on pumas_cam-release_v1.8
+    ./src/physics/silhs
+        clean sandbox, on silhs_clubb_release_b76a124_20200220_c20200320
+2021-05-24 14:02:44: case.build success 
+ ---------------------------------------------------
+2021-05-24 15:54:45: case.submit starting 
+ ---------------------------------------------------
+2021-05-24 15:54:59: case.submit success case.run:8331761.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8331763.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-05-24 15:58:40: case.run starting 
+ ---------------------------------------------------
+2021-05-24 15:58:45: model execution starting 
+ ---------------------------------------------------
+2021-05-24 21:29:19: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_FMS.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, cime, cice, fms, fms, cism, source_cism, rtm, cam, silhs, clubb, pumas, atmos_phys, cosp2, chem_proc, mpas, atmos_cubed_sphere, carma, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_04
+    ./cime
+        clean sandbox, on cime5.8.34
+    ./components/cice
+        clean sandbox, on cice5_20200430
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev107
+    ./components/clm/src/fates
+        clean sandbox, on sci.1.30.0_api.8.0.0
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_20200121
+    ./components/mosart
+        clean sandbox, on mosart1_0_36
+    ./components/rtm
+        clean sandbox, on rtm1_0_71
+    ./libraries/FMS
+        clean sandbox, on fi_20200609
+    ./libraries/FMS/src
+        clean sandbox, on xanadu_esm4_20190304
+    ./src/atmos_phys
+        clean sandbox, on version0_00_007
+    ./src/dynamics/fv3/atmos_cubed_sphere
+        clean sandbox, on fv3_cesm.04
+    ./src/dynamics/mpas/dycore
+        clean sandbox, on d059bdf547163043011e765277216e2fe93b2f4b
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_release_b76a124_20200220_c20200320
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/pumas
+        clean sandbox, on pumas_cam-release_v1.8
+    ./src/physics/silhs
+        clean sandbox, on silhs_clubb_release_b76a124_20200220_c20200320
+2021-05-24 21:29:43: case.build success 
+ ---------------------------------------------------
+2021-05-24 21:35:18: case.submit starting 
+ ---------------------------------------------------
+2021-05-24 21:35:30: case.submit success case.run:8335859.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8335860.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-05-24 21:35:39: case.run starting 
+ ---------------------------------------------------
+2021-05-24 21:35:44: model execution starting 
+ ---------------------------------------------------
+2021-05-25 01:16:55: model execution success 
+ ---------------------------------------------------
+2021-05-25 01:16:55: case.run success 
+ ---------------------------------------------------
+2021-05-25 01:17:02: st_archive starting 
+ ---------------------------------------------------
+2021-05-25 01:17:46: st_archive success 
+ ---------------------------------------------------
+2021-06-03 10:23:13: case.build starting 
+ ---------------------------------------------------
+2021-06-03 10:26:30: case.build error 
+
+ ---------------------------------------------------
+2021-06-03 10:26:57: case.build starting 
+ ---------------------------------------------------
+2021-06-03 10:33:09: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-03 10:36:22: case.build starting 
+ ---------------------------------------------------
+2021-06-03 10:36:39: case.build success 
+ ---------------------------------------------------
+2021-06-03 10:37:03: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 10:37:09: case.submit success case.run:8536231.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8536232.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 10:37:12: case.run starting 
+ ---------------------------------------------------
+2021-06-03 10:37:18: model execution starting 
+ ---------------------------------------------------
+2021-06-03 10:37:45: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-06-03 10:37:45: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.8536231.chadmin1.ib0.cheyenne.ucar.edu.210603-103712
+ ---------------------------------------------------
+2021-06-03 10:42:02: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 10:42:11: case.submit success case.run:8536308.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8536309.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 10:42:15: case.run starting 
+ ---------------------------------------------------
+2021-06-03 10:42:20: model execution starting 
+ ---------------------------------------------------
+2021-06-03 10:45:28: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-06-03 10:45:28: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.8536308.chadmin1.ib0.cheyenne.ucar.edu.210603-104215
+ ---------------------------------------------------
+2021-06-03 10:48:36: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 10:48:49: case.submit success case.run:8536388.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8536389.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 10:48:51: case.run starting 
+ ---------------------------------------------------
+2021-06-03 10:48:57: model execution starting 
+ ---------------------------------------------------
+2021-06-03 11:03:09: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:04:20: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-03 11:04:56: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:05:12: case.build success 
+ ---------------------------------------------------
+2021-06-03 11:06:10: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 11:06:19: case.submit success case.run:8536795.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8536797.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 11:06:27: case.run starting 
+ ---------------------------------------------------
+2021-06-03 11:06:32: model execution starting 
+ ---------------------------------------------------
+2021-06-03 11:14:15: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:14:32: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210603-111416
+ ---------------------------------------------------
+2021-06-03 11:15:11: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:16:14: case.build success 
+ ---------------------------------------------------
+2021-06-03 11:16:14: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 11:16:17: case.submit error 
+
+ ---------------------------------------------------
+2021-06-03 11:16:22: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 11:16:28: case.submit success case.run:8536901.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8536902.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 11:16:31: case.run starting 
+ ---------------------------------------------------
+2021-06-03 11:16:36: model execution starting 
+ ---------------------------------------------------
+2021-06-03 11:21:29: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:22:25: case.build success 
+ ---------------------------------------------------
+2021-06-03 11:22:33: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 11:22:40: case.submit success case.run:8537011.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8537012.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 11:22:44: case.run starting 
+ ---------------------------------------------------
+2021-06-03 11:22:50: model execution starting 
+ ---------------------------------------------------
+2021-06-03 11:27:08: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:27:59: case.build success 
+ ---------------------------------------------------
+2021-06-03 11:28:36: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 11:28:53: case.submit success case.run:8537245.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8537247.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 11:29:12: case.run starting 
+ ---------------------------------------------------
+2021-06-03 11:29:19: model execution starting 
+ ---------------------------------------------------
+2021-06-03 11:31:30: model execution success 
+ ---------------------------------------------------
+2021-06-03 11:31:31: case.run error 
+ERROR: Model did not complete - see /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cpl.log.8537245.chadmin1.ib0.cheyenne.ucar.edu.210603-112912 
+ 
+ ---------------------------------------------------
+2021-06-03 11:32:55: case.build starting 
+ ---------------------------------------------------
+2021-06-03 11:34:02: case.build success 
+ ---------------------------------------------------
+2021-06-03 11:34:02: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 11:34:09: case.submit success case.run:8537275.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8537276.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 11:35:21: case.run starting 
+ ---------------------------------------------------
+2021-06-03 11:35:26: model execution starting 
+ ---------------------------------------------------
+2021-06-03 14:51:10: case.build starting 
+ ---------------------------------------------------
+2021-06-03 14:52:16: case.build success 
+ ---------------------------------------------------
+2021-06-03 14:55:25: case.build starting 
+ ---------------------------------------------------
+2021-06-03 14:55:41: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-03 14:56:52: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 14:56:57: case.submit error 
+ERROR: Build complete is not True please rebuild the model by calling case.build
+ ---------------------------------------------------
+2021-06-03 14:57:05: case.build starting 
+ ---------------------------------------------------
+2021-06-03 14:57:17: case.build success 
+ ---------------------------------------------------
+2021-06-03 14:58:11: case.submit starting 
+ ---------------------------------------------------
+2021-06-03 14:58:18: case.submit success case.run:8539761.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8539762.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-03 14:58:28: case.run starting 
+ ---------------------------------------------------
+2021-06-03 14:58:34: model execution starting 
+ ---------------------------------------------------
+2021-06-03 20:36:47: model execution success 
+ ---------------------------------------------------
+2021-06-03 20:36:47: case.run success 
+ ---------------------------------------------------
+2021-06-03 20:36:52: st_archive starting 
+ ---------------------------------------------------
+2021-06-03 20:37:43: st_archive success 
+ ---------------------------------------------------
+2021-06-04 11:39:39: case.build starting 
+ ---------------------------------------------------
+2021-06-04 11:39:55: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210604-113939
+ ---------------------------------------------------
+2021-06-04 11:42:57: case.build starting 
+ ---------------------------------------------------
+2021-06-04 11:43:11: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210604-114257
+ ---------------------------------------------------
+2021-06-04 12:09:18: case.build starting 
+ ---------------------------------------------------
+2021-06-04 12:09:19: case.build error 
+ERROR: Command /glade/scratch/nadavis/CESM_updates/CAM/cime/../bld/build-namelist -ntasks 1800 -csmdata /glade/p/cesmdata/cseg/inputdata -infile /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist -start_ymd 20100101 -ignore_ic_year -use_case waccm_ma_hist_cam6 -inputdata /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/cam.input_data_list -namelist " &atmexp /"  failed rc=255
+out=
+err=Smartmatch is experimental at /glade/scratch/nadavis/CESM_updates/CAM/bld/perl5lib/Build/ChemNamelist.pm line 274.
+CAM build-namelist - ERROR: Invalid namelist variable in '-infile' /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist.
+ ERROR: in _validate_pair (package Build::NamelistDefinition): Variable name gw_masking not found in /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/SourceMods/src.cam/namelist_definition.xml
+ ---------------------------------------------------
+2021-06-04 12:12:18: case.build starting 
+ ---------------------------------------------------
+2021-06-04 12:13:24: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-04 12:15:12: case.build starting 
+ ---------------------------------------------------
+2021-06-04 12:15:27: case.build success 
+ ---------------------------------------------------
+2021-06-04 12:21:59: case.submit starting 
+ ---------------------------------------------------
+2021-06-04 12:22:08: case.submit success case.run:8554596.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8554597.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-04 14:37:22: case.run starting 
+ ---------------------------------------------------
+2021-06-04 14:37:28: model execution starting 
+ ---------------------------------------------------
+2021-06-04 15:33:55: model execution success 
+ ---------------------------------------------------
+2021-06-04 15:33:55: case.run success 
+ ---------------------------------------------------
+2021-06-04 15:34:02: st_archive starting 
+ ---------------------------------------------------
+2021-06-04 15:34:45: st_archive success 
+ ---------------------------------------------------
+2021-06-09 14:59:42: case.build starting 
+ ---------------------------------------------------
+2021-06-09 15:00:46: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-09 15:02:53: case.build starting 
+ ---------------------------------------------------
+2021-06-09 15:03:05: case.build success 
+ ---------------------------------------------------
+2021-06-09 15:05:42: case.submit starting 
+ ---------------------------------------------------
+2021-06-09 15:05:51: case.submit success case.run:8659723.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8659724.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-09 15:07:21: case.run starting 
+ ---------------------------------------------------
+2021-06-09 15:07:27: model execution starting 
+ ---------------------------------------------------
+2021-06-09 15:31:31: model execution success 
+ ---------------------------------------------------
+2021-06-09 15:31:31: case.run success 
+ ---------------------------------------------------
+2021-06-09 15:31:51: st_archive starting 
+ ---------------------------------------------------
+2021-06-09 15:32:30: st_archive success 
+ ---------------------------------------------------
+2021-06-09 16:15:16: case.build starting 
+ ---------------------------------------------------
+2021-06-09 16:16:10: case.build success 
+ ---------------------------------------------------
+2021-06-09 16:19:59: case.submit starting 
+ ---------------------------------------------------
+2021-06-09 16:20:10: case.submit success case.run:8661125.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8661127.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-09 18:26:55: case.run starting 
+ ---------------------------------------------------
+2021-06-09 18:27:01: model execution starting 
+ ---------------------------------------------------
+2021-06-09 18:51:43: model execution success 
+ ---------------------------------------------------
+2021-06-09 18:51:43: case.run success 
+ ---------------------------------------------------
+2021-06-09 18:51:51: st_archive starting 
+ ---------------------------------------------------
+2021-06-09 18:52:31: st_archive success 
+ ---------------------------------------------------
+2021-06-09 20:08:09: case.build starting 
+ ---------------------------------------------------
+2021-06-09 20:09:13: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-09 20:13:59: case.build starting 
+ ---------------------------------------------------
+2021-06-09 20:14:11: case.build success 
+ ---------------------------------------------------
+2021-06-09 20:14:25: case.submit starting 
+ ---------------------------------------------------
+2021-06-09 20:14:31: case.submit success case.run:8663534.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8663535.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-09 20:28:02: case.submit starting 
+ ---------------------------------------------------
+2021-06-09 20:28:09: case.submit success case.run:8663650.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8663651.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-09 20:33:45: case.run starting 
+ ---------------------------------------------------
+2021-06-09 20:33:50: model execution starting 
+ ---------------------------------------------------
+2021-06-09 20:58:38: model execution success 
+ ---------------------------------------------------
+2021-06-09 20:58:38: case.run success 
+ ---------------------------------------------------
+2021-06-09 20:58:53: st_archive starting 
+ ---------------------------------------------------
+2021-06-09 20:59:33: st_archive success 
+ ---------------------------------------------------
+2021-06-09 21:19:16: case.build starting 
+ ---------------------------------------------------
+2021-06-09 21:19:31: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210609-211916
+ ---------------------------------------------------
+2021-06-09 21:21:18: case.submit starting 
+ ---------------------------------------------------
+2021-06-09 21:21:25: case.submit error 
+ERROR: Build complete is not True please rebuild the model by calling case.build
+ ---------------------------------------------------
+2021-06-09 21:35:21: case.build starting 
+ ---------------------------------------------------
+2021-06-09 21:35:31: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210609-213521
+ ---------------------------------------------------
+2021-06-09 21:36:48: case.build starting 
+ ---------------------------------------------------
+2021-06-09 21:37:37: case.build success 
+ ---------------------------------------------------
+2021-06-09 21:39:45: case.submit starting 
+ ---------------------------------------------------
+2021-06-09 21:39:51: case.submit success case.run:8664578.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8664579.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-09 21:56:22: case.run starting 
+ ---------------------------------------------------
+2021-06-09 21:56:27: model execution starting 
+ ---------------------------------------------------
+2021-06-09 22:20:44: model execution success 
+ ---------------------------------------------------
+2021-06-09 22:20:45: case.run success 
+ ---------------------------------------------------
+2021-06-09 22:20:59: st_archive starting 
+ ---------------------------------------------------
+2021-06-09 22:21:54: st_archive success 
+ ---------------------------------------------------
+2021-06-10 09:44:03: case.build starting 
+ ---------------------------------------------------
+2021-06-10 09:44:20: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210610-094403
+ ---------------------------------------------------
+2021-06-10 09:46:03: case.build starting 
+ ---------------------------------------------------
+2021-06-10 09:47:03: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-10 09:49:18: case.build starting 
+ ---------------------------------------------------
+2021-06-10 09:49:30: case.build success 
+ ---------------------------------------------------
+2021-06-10 09:50:51: case.submit starting 
+ ---------------------------------------------------
+2021-06-10 09:51:01: case.submit success case.run:8671348.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8671350.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-10 10:00:37: case.run starting 
+ ---------------------------------------------------
+2021-06-10 10:00:43: model execution starting 
+ ---------------------------------------------------
+2021-06-10 10:25:34: model execution success 
+ ---------------------------------------------------
+2021-06-10 10:25:34: case.run success 
+ ---------------------------------------------------
+2021-06-10 10:25:42: st_archive starting 
+ ---------------------------------------------------
+2021-06-10 10:26:37: st_archive success 
+ ---------------------------------------------------
+2021-06-10 10:50:00: case.build starting 
+ ---------------------------------------------------
+2021-06-10 10:50:58: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-10 10:51:53: case.build starting 
+ ---------------------------------------------------
+2021-06-10 10:52:05: case.build success 
+ ---------------------------------------------------
+2021-06-10 10:54:28: case.submit starting 
+ ---------------------------------------------------
+2021-06-10 10:54:37: case.submit success case.run:8672208.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8672209.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-10 11:01:52: case.run starting 
+ ---------------------------------------------------
+2021-06-10 11:01:58: model execution starting 
+ ---------------------------------------------------
+2021-06-10 11:26:35: model execution success 
+ ---------------------------------------------------
+2021-06-10 11:26:35: case.run success 
+ ---------------------------------------------------
+2021-06-10 11:28:07: st_archive starting 
+ ---------------------------------------------------
+2021-06-10 11:28:59: st_archive success 
+ ---------------------------------------------------
+2021-06-10 15:08:59: case.build starting 
+ ---------------------------------------------------
+2021-06-10 15:08:59: case.build error 
+ERROR: module command /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python purge  failed with message:
+/glade/u/apps/ch/opt/lmod/8.1.7/bin/lua: error loading module 'tcl2lua' from file '/glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/../lib/tcl2lua.so':
+	libtcl8.6.so: cannot open shared object file: No such file or directory
+stack traceback:
+	[C]: ?
+	[C]: in function 'require'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:828: in function 'build_runTCLprog'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:833: in main chunk
+	[C]: in function 'require'
+	...pps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/colorize.lua:43: in main chunk
+	[C]: in function 'require'
+	...lade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod:110: in main chunk
+	[C]: ?
+ ---------------------------------------------------
+2021-06-10 15:19:19: case.build starting 
+ ---------------------------------------------------
+2021-06-10 15:19:19: case.build error 
+
+ ---------------------------------------------------
+2021-06-10 15:19:24: case.build starting 
+ ---------------------------------------------------
+2021-06-10 15:20:23: case.build success 
+ ---------------------------------------------------
+2021-06-10 15:27:04: case.submit starting 
+ ---------------------------------------------------
+2021-06-10 15:27:10: case.submit success case.run:8675716.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8675717.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-10 16:50:10: case.run starting 
+ ---------------------------------------------------
+2021-06-10 16:50:16: model execution starting 
+ ---------------------------------------------------
+2021-06-10 17:14:21: model execution success 
+ ---------------------------------------------------
+2021-06-10 17:14:21: case.run success 
+ ---------------------------------------------------
+2021-06-10 17:15:24: st_archive starting 
+ ---------------------------------------------------
+2021-06-10 17:16:17: st_archive success 
+ ---------------------------------------------------
+2021-06-14 15:19:45: case.build starting 
+ ---------------------------------------------------
+2021-06-14 15:20:53: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-14 15:23:14: case.build starting 
+ ---------------------------------------------------
+2021-06-14 15:23:27: case.build success 
+ ---------------------------------------------------
+2021-06-14 15:26:35: case.submit starting 
+ ---------------------------------------------------
+2021-06-14 15:27:19: case.submit success case.run:8788761.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8788778.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-14 15:32:32: case.run starting 
+ ---------------------------------------------------
+2021-06-14 15:32:38: model execution starting 
+ ---------------------------------------------------
+2021-06-14 15:56:41: model execution success 
+ ---------------------------------------------------
+2021-06-14 15:56:41: case.run success 
+ ---------------------------------------------------
+2021-06-14 16:24:33: st_archive starting 
+ ---------------------------------------------------
+2021-06-14 16:27:13: st_archive success 
+ ---------------------------------------------------
+2021-06-21 13:45:58: case.build starting 
+ ---------------------------------------------------
+2021-06-21 13:46:59: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-21 13:47:51: case.build starting 
+ ---------------------------------------------------
+2021-06-21 13:48:03: case.build success 
+ ---------------------------------------------------
+2021-06-21 14:07:24: case.build starting 
+ ---------------------------------------------------
+2021-06-21 14:08:18: case.build success 
+ ---------------------------------------------------
+2021-06-21 14:13:32: case.submit starting 
+ ---------------------------------------------------
+2021-06-21 14:15:47: case.submit success case.run:8986348.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:8986361.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-21 14:16:31: case.run starting 
+ ---------------------------------------------------
+2021-06-21 14:16:36: model execution starting 
+ ---------------------------------------------------
+2021-06-21 14:40:32: model execution success 
+ ---------------------------------------------------
+2021-06-21 14:40:32: case.run success 
+ ---------------------------------------------------
+2021-06-21 14:41:22: st_archive starting 
+ ---------------------------------------------------
+2021-06-21 14:42:12: st_archive success 
+ ---------------------------------------------------
+2021-06-24 09:51:49: case.build starting 
+ ---------------------------------------------------
+2021-06-24 09:52:51: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-24 09:53:19: case.build starting 
+ ---------------------------------------------------
+2021-06-24 09:53:29: case.build success 
+ ---------------------------------------------------
+2021-06-24 10:34:52: case.submit starting 
+ ---------------------------------------------------
+2021-06-24 10:35:00: case.submit success case.run:9065591.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9065592.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-24 10:35:11: case.run starting 
+ ---------------------------------------------------
+2021-06-24 10:35:52: model execution starting 
+ ---------------------------------------------------
+2021-06-24 11:00:02: model execution success 
+ ---------------------------------------------------
+2021-06-24 11:00:02: case.run success 
+ ---------------------------------------------------
+2021-06-24 11:00:34: st_archive starting 
+ ---------------------------------------------------
+2021-06-24 11:01:30: st_archive success 
+ ---------------------------------------------------
+2021-06-30 10:01:45: case.build starting 
+ ---------------------------------------------------
+2021-06-30 10:02:00: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210630-100146
+ ---------------------------------------------------
+2021-06-30 10:03:32: case.build starting 
+ ---------------------------------------------------
+2021-06-30 10:03:44: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210630-100333
+ ---------------------------------------------------
+2021-06-30 10:12:29: case.build starting 
+ ---------------------------------------------------
+2021-06-30 10:12:44: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210630-101229
+ ---------------------------------------------------
+2021-06-30 10:13:57: case.build starting 
+ ---------------------------------------------------
+2021-06-30 10:14:58: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-30 10:17:15: case.build starting 
+ ---------------------------------------------------
+2021-06-30 10:17:31: case.build success 
+ ---------------------------------------------------
+2021-06-30 10:26:21: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 10:26:42: case.submit success case.run:9193195.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9193200.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 10:26:46: case.run starting 
+ ---------------------------------------------------
+2021-06-30 10:26:52: model execution starting 
+ ---------------------------------------------------
+2021-06-30 11:02:22: model execution success 
+ ---------------------------------------------------
+2021-06-30 11:02:22: case.run success 
+ ---------------------------------------------------
+2021-06-30 11:02:58: st_archive starting 
+ ---------------------------------------------------
+2021-06-30 11:04:20: st_archive success 
+ ---------------------------------------------------
+2021-06-30 11:57:52: case.build starting 
+ ---------------------------------------------------
+2021-06-30 11:58:58: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-30 11:59:25: case.build starting 
+ ---------------------------------------------------
+2021-06-30 11:59:37: case.build success 
+ ---------------------------------------------------
+2021-06-30 11:59:46: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 11:59:59: case.submit success case.run:9195011.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9195014.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 12:00:07: case.run starting 
+ ---------------------------------------------------
+2021-06-30 12:00:14: model execution starting 
+ ---------------------------------------------------
+2021-06-30 12:35:38: model execution success 
+ ---------------------------------------------------
+2021-06-30 12:35:38: case.run success 
+ ---------------------------------------------------
+2021-06-30 12:36:13: st_archive starting 
+ ---------------------------------------------------
+2021-06-30 12:37:35: st_archive success 
+ ---------------------------------------------------
+2021-06-30 12:44:39: case.build starting 
+ ---------------------------------------------------
+2021-06-30 12:45:49: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-30 14:24:45: case.build starting 
+ ---------------------------------------------------
+2021-06-30 14:25:49: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-06-30 14:26:26: case.build starting 
+ ---------------------------------------------------
+2021-06-30 14:26:39: case.build success 
+ ---------------------------------------------------
+2021-06-30 14:46:31: case.build starting 
+ ---------------------------------------------------
+2021-06-30 14:47:44: case.build success 
+ ---------------------------------------------------
+2021-06-30 14:49:46: case.build starting 
+ ---------------------------------------------------
+2021-06-30 14:49:59: case.build success 
+ ---------------------------------------------------
+2021-06-30 14:52:19: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 14:52:29: case.submit success case.run:9197514.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9197516.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 15:37:01: case.run starting 
+ ---------------------------------------------------
+2021-06-30 15:37:07: model execution starting 
+ ---------------------------------------------------
+2021-06-30 16:12:03: model execution success 
+ ---------------------------------------------------
+2021-06-30 16:12:04: case.run success 
+ ---------------------------------------------------
+2021-06-30 16:12:48: st_archive starting 
+ ---------------------------------------------------
+2021-06-30 16:13:49: st_archive success 
+ ---------------------------------------------------
+2021-06-30 17:30:00: case.build starting 
+ ---------------------------------------------------
+2021-06-30 17:31:01: case.build success 
+ ---------------------------------------------------
+2021-06-30 17:31:36: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 17:31:47: case.submit success case.run:9199774.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9199775.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 17:38:30: case.run starting 
+ ---------------------------------------------------
+2021-06-30 17:38:36: model execution starting 
+ ---------------------------------------------------
+2021-06-30 17:38:36: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '/bin/sh: line 1: 72871 Killed                  mpiexec_mpt -p "%g:" -np 1800 omplace -tm open64 /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe >> cesm.log.$LID 2>&1' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-06-30 17:38:36: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9199774.chadmin1.ib0.cheyenne.ucar.edu.210630-173830
+ ---------------------------------------------------
+2021-06-30 19:04:21: case.build starting 
+ ---------------------------------------------------
+2021-06-30 19:05:26: case.build success 
+ ---------------------------------------------------
+2021-06-30 19:16:55: case.build starting 
+ ---------------------------------------------------
+2021-06-30 19:17:10: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210630-191655
+ ---------------------------------------------------
+2021-06-30 19:18:31: case.build starting 
+ ---------------------------------------------------
+2021-06-30 19:19:31: case.build success 
+ ---------------------------------------------------
+2021-06-30 19:20:07: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 19:20:21: case.submit success case.run:9200732.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9200734.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 19:21:15: case.run starting 
+ ---------------------------------------------------
+2021-06-30 19:21:20: model execution starting 
+ ---------------------------------------------------
+2021-06-30 19:24:23: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-06-30 19:24:23: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9200732.chadmin1.ib0.cheyenne.ucar.edu.210630-192115
+ ---------------------------------------------------
+2021-06-30 20:45:30: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 20:45:49: case.submit success case.run:9201835.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9201838.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 20:47:20: case.run starting 
+ ---------------------------------------------------
+2021-06-30 20:47:26: model execution starting 
+ ---------------------------------------------------
+2021-06-30 20:50:59: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-06-30 20:50:59: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9201835.chadmin1.ib0.cheyenne.ucar.edu.210630-204720
+ ---------------------------------------------------
+2021-06-30 20:52:40: case.build starting 
+ ---------------------------------------------------
+2021-06-30 20:52:40: case.build error 
+
+ ---------------------------------------------------
+2021-06-30 20:52:42: case.build starting 
+ ---------------------------------------------------
+2021-06-30 20:53:45: case.build success 
+ ---------------------------------------------------
+2021-06-30 21:07:53: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 21:08:08: case.submit success case.run:9202128.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9202129.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 21:09:31: case.submit starting 
+ ---------------------------------------------------
+2021-06-30 21:09:39: case.submit success case.run:9202141.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9202142.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-06-30 21:38:32: case.run starting 
+ ---------------------------------------------------
+2021-06-30 21:38:37: model execution starting 
+ ---------------------------------------------------
+2021-06-30 21:41:37: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-06-30 21:41:38: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9202128.chadmin1.ib0.cheyenne.ucar.edu.210630-213832
+ ---------------------------------------------------
+2021-07-01 09:39:41: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 09:39:59: case.submit success case.run:9208544.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9208545.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 09:40:47: case.run starting 
+ ---------------------------------------------------
+2021-07-01 09:40:54: model execution starting 
+ ---------------------------------------------------
+2021-07-01 09:43:05: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 09:43:05: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9208544.chadmin1.ib0.cheyenne.ucar.edu.210701-094047
+ ---------------------------------------------------
+2021-07-01 10:08:03: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 10:08:19: case.submit success case.run:9208915.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9208916.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 10:08:26: case.run starting 
+ ---------------------------------------------------
+2021-07-01 10:08:31: model execution starting 
+ ---------------------------------------------------
+2021-07-01 10:10:41: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 10:10:41: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9208915.chadmin1.ib0.cheyenne.ucar.edu.210701-100826
+ ---------------------------------------------------
+2021-07-01 10:34:51: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 10:35:12: case.submit success case.run:9209290.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9209293.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 10:36:32: case.run starting 
+ ---------------------------------------------------
+2021-07-01 10:36:38: model execution starting 
+ ---------------------------------------------------
+2021-07-01 10:40:09: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 10:40:09: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9209290.chadmin1.ib0.cheyenne.ucar.edu.210701-103632
+ ---------------------------------------------------
+2021-07-01 11:12:07: case.build starting 
+ ---------------------------------------------------
+2021-07-01 11:13:14: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-07-01 11:15:48: case.build starting 
+ ---------------------------------------------------
+2021-07-01 11:16:00: case.build success 
+ ---------------------------------------------------
+2021-07-01 11:17:07: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 11:17:18: case.submit success case.run:9210075.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9210077.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 11:19:53: case.run starting 
+ ---------------------------------------------------
+2021-07-01 11:19:58: model execution starting 
+ ---------------------------------------------------
+2021-07-01 11:23:31: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 11:23:31: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9210075.chadmin1.ib0.cheyenne.ucar.edu.210701-111953
+ ---------------------------------------------------
+2021-07-01 11:53:54: case.build starting 
+ ---------------------------------------------------
+2021-07-01 11:53:54: case.build error 
+
+ ---------------------------------------------------
+2021-07-01 11:53:58: case.build starting 
+ ---------------------------------------------------
+2021-07-01 11:55:09: case.build success 
+ ---------------------------------------------------
+2021-07-01 12:08:14: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 12:08:24: case.submit success case.run:9211007.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9211008.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 12:09:03: case.run starting 
+ ---------------------------------------------------
+2021-07-01 12:09:11: model execution starting 
+ ---------------------------------------------------
+2021-07-01 12:12:34: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 12:12:34: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9211007.chadmin1.ib0.cheyenne.ucar.edu.210701-120903
+ ---------------------------------------------------
+2021-07-01 12:27:06: case.build starting 
+ ---------------------------------------------------
+2021-07-01 12:28:13: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-07-01 12:29:44: case.build starting 
+ ---------------------------------------------------
+2021-07-01 12:29:57: case.build success 
+ ---------------------------------------------------
+2021-07-01 12:31:19: case.build starting 
+ ---------------------------------------------------
+2021-07-01 12:32:11: case.build success 
+ ---------------------------------------------------
+2021-07-01 12:35:51: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 12:36:10: case.submit success case.run:9211330.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9211332.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 12:41:52: case.run starting 
+ ---------------------------------------------------
+2021-07-01 12:41:58: model execution starting 
+ ---------------------------------------------------
+2021-07-01 12:45:33: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 12:45:33: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9211330.chadmin1.ib0.cheyenne.ucar.edu.210701-124152
+ ---------------------------------------------------
+2021-07-01 14:19:08: case.build starting 
+ ---------------------------------------------------
+2021-07-01 14:20:13: case.build success 
+ ---------------------------------------------------
+2021-07-01 14:44:49: case.submit starting 
+ ---------------------------------------------------
+2021-07-01 14:44:58: case.submit success case.run:9212328.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9212329.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-01 14:52:22: case.run starting 
+ ---------------------------------------------------
+2021-07-01 14:52:27: model execution starting 
+ ---------------------------------------------------
+2021-07-01 14:56:02: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-01 14:56:02: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9212328.chadmin1.ib0.cheyenne.ucar.edu.210701-145222
+ ---------------------------------------------------
+2021-07-14 15:05:00: case.build starting 
+ ---------------------------------------------------
+2021-07-14 15:06:10: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-07-14 15:06:32: case.build starting 
+ ---------------------------------------------------
+2021-07-14 15:06:45: case.build success 
+ ---------------------------------------------------
+2021-07-14 15:07:58: case.submit starting 
+ ---------------------------------------------------
+2021-07-14 15:08:13: case.submit success case.run:9432413.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9432415.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-14 15:13:39: case.run starting 
+ ---------------------------------------------------
+2021-07-14 15:13:45: model execution starting 
+ ---------------------------------------------------
+2021-07-14 15:17:20: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-14 15:17:20: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9432413.chadmin1.ib0.cheyenne.ucar.edu.210714-151339
+ ---------------------------------------------------
+2021-07-14 15:42:27: case.build starting 
+ ---------------------------------------------------
+2021-07-14 15:43:29: case.build success 
+ ---------------------------------------------------
+2021-07-14 15:48:16: case.submit starting 
+ ---------------------------------------------------
+2021-07-14 15:48:56: case.submit success case.run:9432931.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9432938.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-14 15:49:34: case.run starting 
+ ---------------------------------------------------
+2021-07-14 15:49:40: model execution starting 
+ ---------------------------------------------------
+2021-07-14 15:53:17: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-14 15:53:17: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9432931.chadmin1.ib0.cheyenne.ucar.edu.210714-154934
+ ---------------------------------------------------
+2021-07-20 11:20:35: case.build starting 
+ ---------------------------------------------------
+2021-07-20 11:21:37: case.build success 
+ ---------------------------------------------------
+2021-07-20 11:27:01: case.submit starting 
+ ---------------------------------------------------
+2021-07-20 11:33:13: case.submit success case.run:9552248.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9552253.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-20 11:33:46: case.run starting 
+ ---------------------------------------------------
+2021-07-20 11:33:52: model execution starting 
+ ---------------------------------------------------
+2021-07-20 11:37:23: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-20 11:37:23: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9552248.chadmin1.ib0.cheyenne.ucar.edu.210720-113346
+ ---------------------------------------------------
+2021-07-20 13:48:05: case.build starting 
+ ---------------------------------------------------
+2021-07-20 13:49:07: case.build success 
+ ---------------------------------------------------
+2021-07-20 13:50:19: case.submit starting 
+ ---------------------------------------------------
+2021-07-20 13:51:59: case.submit success case.run:9555610.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9555633.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-20 13:57:04: case.run starting 
+ ---------------------------------------------------
+2021-07-20 13:57:10: model execution starting 
+ ---------------------------------------------------
+2021-07-20 14:00:41: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-20 14:00:41: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9555610.chadmin1.ib0.cheyenne.ucar.edu.210720-135704
+ ---------------------------------------------------
+2021-07-20 14:27:34: case.build starting 
+ ---------------------------------------------------
+2021-07-20 14:28:25: case.build success 
+ ---------------------------------------------------
+2021-07-20 15:50:23: case.submit starting 
+ ---------------------------------------------------
+2021-07-20 15:50:25: case.submit error 
+ERROR: Command /glade/scratch/nadavis/CESM_updates/CAM/cime/../bld/build-namelist -ntasks 1800 -csmdata /glade/p/cesmdata/cseg/inputdata -infile /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist -start_ymd 20100101 -ignore_ic_year -use_case waccm_ma_hist_cam6 -inputdata /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/cam.input_data_list -namelist " &atmexp /"  failed rc=255
+out=
+err=Smartmatch is experimental at /glade/scratch/nadavis/CESM_updates/CAM/bld/perl5lib/Build/ChemNamelist.pm line 274.
+CAM build-namelist - ERROR: Invalid namelist variable in '-infile' /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist.
+ ERROR: in _validate_pair (package Build::NamelistDefinition): Variable name gw_mask_value not found in /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/SourceMods/src.cam/namelist_definition.xml
+ ---------------------------------------------------
+2021-07-20 15:59:31: case.build starting 
+ ---------------------------------------------------
+2021-07-20 15:59:48: case.build success 
+ ---------------------------------------------------
+2021-07-20 16:05:01: case.submit starting 
+ ---------------------------------------------------
+2021-07-20 16:05:10: case.submit success case.run:9559899.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9559900.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-20 16:08:39: case.run starting 
+ ---------------------------------------------------
+2021-07-20 16:08:45: model execution starting 
+ ---------------------------------------------------
+2021-07-20 16:08:49: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-20 16:08:49: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9559899.chadmin1.ib0.cheyenne.ucar.edu.210720-160839
+ ---------------------------------------------------
+2021-07-20 16:41:44: case.build starting 
+ ---------------------------------------------------
+2021-07-20 16:42:57: case.build success 
+ ---------------------------------------------------
+2021-07-21 09:20:35: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 09:20:48: case.submit success case.run:9572797.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9572798.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 09:30:38: case.run starting 
+ ---------------------------------------------------
+2021-07-21 09:30:46: model execution starting 
+ ---------------------------------------------------
+2021-07-21 09:34:22: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 09:34:22: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9572797.chadmin1.ib0.cheyenne.ucar.edu.210721-093038
+ ---------------------------------------------------
+2021-07-21 09:45:23: case.build starting 
+ ---------------------------------------------------
+2021-07-21 09:45:38: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210721-094523
+ ---------------------------------------------------
+2021-07-21 09:46:49: case.build starting 
+ ---------------------------------------------------
+2021-07-21 09:47:46: case.build success 
+ ---------------------------------------------------
+2021-07-21 09:50:44: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 09:50:52: case.submit success case.run:9573088.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9573089.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 09:56:32: case.run starting 
+ ---------------------------------------------------
+2021-07-21 09:56:37: model execution starting 
+ ---------------------------------------------------
+2021-07-21 09:59:51: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 09:59:51: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9573088.chadmin1.ib0.cheyenne.ucar.edu.210721-095632
+ ---------------------------------------------------
+2021-07-21 10:38:11: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 10:38:20: case.submit success case.run:9573504.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9573505.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 10:42:40: case.run starting 
+ ---------------------------------------------------
+2021-07-21 10:42:45: model execution starting 
+ ---------------------------------------------------
+2021-07-21 10:46:37: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 10:46:37: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9573504.chadmin1.ib0.cheyenne.ucar.edu.210721-104240
+ ---------------------------------------------------
+2021-07-21 10:50:38: case.build starting 
+ ---------------------------------------------------
+2021-07-21 10:50:39: case.build error 
+ERROR: Command /glade/scratch/nadavis/CESM_updates/CAM/cime/../bld/build-namelist -ntasks 1800 -csmdata /glade/p/cesmdata/cseg/inputdata -infile /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist -start_ymd 20100101 -ignore_ic_year -use_case waccm_ma_hist_cam6 -inputdata /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/cam.input_data_list -namelist " &atmexp /"  failed rc=255
+out=
+err=Smartmatch is experimental at /glade/scratch/nadavis/CESM_updates/CAM/bld/perl5lib/Build/ChemNamelist.pm line 274.
+CAM build-namelist - ERROR: Invalid namelist variable in '-infile' /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist.
+ ERROR: in _validate_pair (package Build::NamelistDefinition): Variable name gw_mask_value not found in /glade/scratch/nadavis/CESM_updates/CAM/bld/namelist_files/namelist_definition.xml
+ ---------------------------------------------------
+2021-07-21 10:58:28: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 10:58:34: case.submit error 
+ERROR: Build complete is not True please rebuild the model by calling case.build
+ ---------------------------------------------------
+2021-07-21 10:58:42: case.build starting 
+ ---------------------------------------------------
+2021-07-21 10:58:58: case.build success 
+ ---------------------------------------------------
+2021-07-21 10:59:14: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 10:59:22: case.submit success case.run:9573762.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9573764.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 11:02:22: case.run starting 
+ ---------------------------------------------------
+2021-07-21 11:02:29: model execution starting 
+ ---------------------------------------------------
+2021-07-21 11:06:31: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 11:06:31: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9573762.chadmin1.ib0.cheyenne.ucar.edu.210721-110222
+ ---------------------------------------------------
+2021-07-21 11:08:37: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 11:08:47: case.submit success case.run:9573875.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9573876.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 11:11:35: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 11:11:46: case.submit success case.run:9573922.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9573923.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 11:43:11: case.run starting 
+ ---------------------------------------------------
+2021-07-21 11:43:17: model execution starting 
+ ---------------------------------------------------
+2021-07-21 11:47:21: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 11:47:21: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9573922.chadmin1.ib0.cheyenne.ucar.edu.210721-114311
+ ---------------------------------------------------
+2021-07-21 12:18:33: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 12:18:42: case.submit success case.run:9574810.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9574811.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 12:25:41: case.run starting 
+ ---------------------------------------------------
+2021-07-21 12:25:48: model execution starting 
+ ---------------------------------------------------
+2021-07-21 12:29:03: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 12:29:03: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9574810.chadmin1.ib0.cheyenne.ucar.edu.210721-122541
+ ---------------------------------------------------
+2021-07-21 12:35:20: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 12:35:30: case.submit success case.run:9574985.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9574987.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 12:37:16: case.run starting 
+ ---------------------------------------------------
+2021-07-21 12:37:24: model execution starting 
+ ---------------------------------------------------
+2021-07-21 12:40:33: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 12:40:33: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9574985.chadmin1.ib0.cheyenne.ucar.edu.210721-123716
+ ---------------------------------------------------
+2021-07-21 12:43:58: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 12:44:10: case.submit success case.run:9575046.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9575047.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 13:21:16: case.run starting 
+ ---------------------------------------------------
+2021-07-21 13:21:22: model execution starting 
+ ---------------------------------------------------
+2021-07-21 13:25:49: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 13:25:49: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9575046.chadmin1.ib0.cheyenne.ucar.edu.210721-132116
+ ---------------------------------------------------
+2021-07-21 13:29:53: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 13:30:02: case.submit success case.run:9575509.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9575510.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 13:32:26: case.run starting 
+ ---------------------------------------------------
+2021-07-21 13:32:32: model execution starting 
+ ---------------------------------------------------
+2021-07-21 13:36:55: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 13:36:55: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9575509.chadmin1.ib0.cheyenne.ucar.edu.210721-133226
+ ---------------------------------------------------
+2021-07-21 13:42:43: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 13:42:52: case.submit success case.run:9575572.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9575573.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 13:50:24: case.run starting 
+ ---------------------------------------------------
+2021-07-21 13:50:30: model execution starting 
+ ---------------------------------------------------
+2021-07-21 13:53:59: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 13:53:59: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9575572.chadmin1.ib0.cheyenne.ucar.edu.210721-135024
+ ---------------------------------------------------
+2021-07-21 14:04:20: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 14:04:29: case.submit success case.run:9575748.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9575749.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 14:21:26: case.run starting 
+ ---------------------------------------------------
+2021-07-21 14:21:32: model execution starting 
+ ---------------------------------------------------
+2021-07-21 14:25:12: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-07-21 14:25:12: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.9575748.chadmin1.ib0.cheyenne.ucar.edu.210721-142126
+ ---------------------------------------------------
+2021-07-21 14:46:11: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 14:46:20: case.submit success case.run:9576203.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9576204.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 14:46:50: build.clean starting 
+ ---------------------------------------------------
+2021-07-21 14:46:58: build.clean success 
+ ---------------------------------------------------
+2021-07-21 14:47:25: case.build starting 
+ ---------------------------------------------------
+2021-07-21 14:54:04: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-07-21 15:48:31: case.build starting 
+ ---------------------------------------------------
+2021-07-21 15:48:50: case.build success 
+ ---------------------------------------------------
+2021-07-21 15:49:22: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 15:49:41: case.submit success case.run:9576698.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9576702.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 16:00:32: case.run starting 
+ ---------------------------------------------------
+2021-07-21 16:00:38: model execution starting 
+ ---------------------------------------------------
+2021-07-21 16:25:07: model execution success 
+ ---------------------------------------------------
+2021-07-21 16:25:07: case.run success 
+ ---------------------------------------------------
+2021-07-21 16:25:07: case.build starting 
+ ---------------------------------------------------
+2021-07-21 16:26:13: case.build error 
+ERROR: Error gathering provenance information from manage_externals.
+
+manage_externals error message:
+    ERROR:root:ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+manage_externals output:
+    Processing externals description file : Externals.cfg
+    
+    ERROR: ERROR: Model description file, "Externals.cfg", does not exist at path:
+        /glade/scratch/nadavis/CESM_updates/CAM/Externals.cfg
+    Did you run from the root of the source tree?
+
+To solve this, either:
+
+(1) Find and fix the problem: From /glade/scratch/nadavis/CESM_updates/CAM/cime/.., try to get this command to work:
+    manage_externals/checkout_externals --status --verbose --no-logging
+
+(2) If you don't need provenance information, rebuild with --skip-provenance-check
+
+ ---------------------------------------------------
+2021-07-21 17:00:46: case.build starting 
+ ---------------------------------------------------
+2021-07-21 17:01:00: case.build success 
+ ---------------------------------------------------
+2021-07-21 17:02:38: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 17:02:44: case.submit error 
+
+ ---------------------------------------------------
+2021-07-21 17:02:54: case.build starting 
+ ---------------------------------------------------
+2021-07-21 17:03:05: case.build success 
+ ---------------------------------------------------
+2021-07-21 17:03:36: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 17:03:47: case.submit success case.run:9577747.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9577748.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 17:05:30: case.run starting 
+ ---------------------------------------------------
+2021-07-21 17:05:36: model execution starting 
+ ---------------------------------------------------
+2021-07-21 17:33:53: case.submit starting 
+ ---------------------------------------------------
+2021-07-21 17:34:07: case.submit success case.run:9577934.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9577935.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-21 17:58:20: case.run starting 
+ ---------------------------------------------------
+2021-07-21 17:58:26: model execution starting 
+ ---------------------------------------------------
+2021-07-21 18:23:05: model execution success 
+ ---------------------------------------------------
+2021-07-21 18:23:05: case.run success 
+ ---------------------------------------------------
+2021-07-21 18:23:12: st_archive starting 
+ ---------------------------------------------------
+2021-07-21 18:24:07: st_archive success 
+ ---------------------------------------------------
+2021-07-22 09:40:46: case.submit starting 
+ ---------------------------------------------------
+2021-07-22 09:41:02: case.submit success case.run:9584276.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9584277.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-22 09:51:45: case.run starting 
+ ---------------------------------------------------
+2021-07-22 09:51:51: model execution starting 
+ ---------------------------------------------------
+2021-07-22 10:15:35: model execution success 
+ ---------------------------------------------------
+2021-07-22 10:15:35: case.run success 
+ ---------------------------------------------------
+2021-07-22 10:16:00: st_archive starting 
+ ---------------------------------------------------
+2021-07-22 10:16:54: st_archive success 
+ ---------------------------------------------------
+2021-07-22 10:21:09: case.submit starting 
+ ---------------------------------------------------
+2021-07-22 10:21:29: case.submit success case.run:9584699.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9584703.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-22 10:58:32: case.run starting 
+ ---------------------------------------------------
+2021-07-22 10:58:37: model execution starting 
+ ---------------------------------------------------
+2021-07-22 11:22:25: model execution success 
+ ---------------------------------------------------
+2021-07-22 11:22:25: case.run success 
+ ---------------------------------------------------
+2021-07-22 11:22:32: st_archive starting 
+ ---------------------------------------------------
+2021-07-22 11:23:30: st_archive success 
+ ---------------------------------------------------
+2021-07-22 11:46:38: case.build starting 
+ ---------------------------------------------------
+2021-07-22 11:47:44: case.build success 
+ ---------------------------------------------------
+2021-07-22 12:03:41: case.submit starting 
+ ---------------------------------------------------
+2021-07-22 12:03:49: case.submit success case.run:9585869.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9585870.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-22 12:10:50: case.run starting 
+ ---------------------------------------------------
+2021-07-22 12:10:56: model execution starting 
+ ---------------------------------------------------
+2021-07-22 12:47:46: model execution success 
+ ---------------------------------------------------
+2021-07-22 12:47:46: case.run success 
+ ---------------------------------------------------
+2021-07-22 12:48:23: st_archive starting 
+ ---------------------------------------------------
+2021-07-22 12:49:44: st_archive success 
+ ---------------------------------------------------
+2021-07-22 12:53:39: case.build starting 
+ ---------------------------------------------------
+2021-07-22 12:54:34: case.build success 
+ ---------------------------------------------------
+2021-07-22 13:11:56: case.submit starting 
+ ---------------------------------------------------
+2021-07-22 13:12:12: case.submit success case.run:9586663.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9586664.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-22 13:28:21: case.run starting 
+ ---------------------------------------------------
+2021-07-22 13:28:28: model execution starting 
+ ---------------------------------------------------
+2021-07-22 14:03:13: model execution success 
+ ---------------------------------------------------
+2021-07-22 14:03:13: case.run success 
+ ---------------------------------------------------
+2021-07-22 14:03:23: st_archive starting 
+ ---------------------------------------------------
+2021-07-22 14:04:32: st_archive success 
+ ---------------------------------------------------
+2021-07-22 14:09:14: case.submit starting 
+ ---------------------------------------------------
+2021-07-22 14:09:17: case.submit error 
+
+ ---------------------------------------------------
+2021-07-22 14:09:31: case.submit starting 
+ ---------------------------------------------------
+2021-07-22 14:09:40: case.submit success case.run:9587212.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9587213.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-07-22 14:18:36: case.run starting 
+ ---------------------------------------------------
+2021-07-22 14:18:42: model execution starting 
+ ---------------------------------------------------
+2021-07-22 19:49:45: model execution success 
+ ---------------------------------------------------
+2021-07-22 19:49:45: case.run success 
+ ---------------------------------------------------
+2021-07-22 19:49:58: st_archive starting 
+ ---------------------------------------------------
+2021-07-22 19:50:35: st_archive success 
+ ---------------------------------------------------
+2021-08-02 09:27:25: case.build starting 
+ ---------------------------------------------------
+2021-08-02 09:28:33: case.build success 
+ ---------------------------------------------------
+2021-08-02 09:40:29: case.submit starting 
+ ---------------------------------------------------
+2021-08-02 09:40:37: case.submit success case.run:9634408.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9634409.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-02 09:40:41: case.run starting 
+ ---------------------------------------------------
+2021-08-02 09:40:48: model execution starting 
+ ---------------------------------------------------
+2021-08-02 10:15:22: model execution success 
+ ---------------------------------------------------
+2021-08-02 10:15:22: case.run success 
+ ---------------------------------------------------
+2021-08-02 10:15:28: st_archive starting 
+ ---------------------------------------------------
+2021-08-02 10:16:10: st_archive success 
+ ---------------------------------------------------
+2021-08-02 10:38:19: case.build starting 
+ ---------------------------------------------------
+2021-08-02 10:39:24: case.build success 
+ ---------------------------------------------------
+2021-08-02 10:40:17: case.submit starting 
+ ---------------------------------------------------
+2021-08-02 10:40:23: case.submit success case.run:9635143.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9635144.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-02 10:40:28: case.run starting 
+ ---------------------------------------------------
+2021-08-02 10:40:35: model execution starting 
+ ---------------------------------------------------
+2021-08-02 11:15:19: model execution success 
+ ---------------------------------------------------
+2021-08-02 11:15:19: case.run success 
+ ---------------------------------------------------
+2021-08-02 11:15:26: st_archive starting 
+ ---------------------------------------------------
+2021-08-02 11:16:10: st_archive success 
+ ---------------------------------------------------
+2021-08-02 12:31:21: case.build starting 
+ ---------------------------------------------------
+2021-08-02 12:32:33: case.build success 
+ ---------------------------------------------------
+2021-08-02 12:34:35: case.build starting 
+ ---------------------------------------------------
+2021-08-02 12:35:33: case.build success 
+ ---------------------------------------------------
+2021-08-02 12:36:33: case.submit starting 
+ ---------------------------------------------------
+2021-08-02 12:36:39: case.submit success case.run:9639374.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9639375.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-02 13:24:54: case.run starting 
+ ---------------------------------------------------
+2021-08-02 13:25:01: model execution starting 
+ ---------------------------------------------------
+2021-08-02 14:00:09: model execution success 
+ ---------------------------------------------------
+2021-08-02 14:00:09: case.run success 
+ ---------------------------------------------------
+2021-08-02 14:00:17: st_archive starting 
+ ---------------------------------------------------
+2021-08-02 14:01:07: st_archive success 
+ ---------------------------------------------------
+2021-08-02 14:27:55: case.build starting 
+ ---------------------------------------------------
+2021-08-02 14:28:13: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210802-142755
+ ---------------------------------------------------
+2021-08-02 14:33:26: case.build starting 
+ ---------------------------------------------------
+2021-08-02 14:33:39: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210802-143326
+ ---------------------------------------------------
+2021-08-02 14:47:51: case.build starting 
+ ---------------------------------------------------
+2021-08-02 14:48:05: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210802-144751
+ ---------------------------------------------------
+2021-08-02 14:56:30: case.build starting 
+ ---------------------------------------------------
+2021-08-02 14:57:34: case.build success 
+ ---------------------------------------------------
+2021-08-02 15:05:56: case.submit starting 
+ ---------------------------------------------------
+2021-08-02 15:06:04: case.submit success case.run:9641397.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9641398.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-02 15:40:22: case.run starting 
+ ---------------------------------------------------
+2021-08-02 15:40:28: model execution starting 
+ ---------------------------------------------------
+2021-08-02 16:15:13: model execution success 
+ ---------------------------------------------------
+2021-08-02 16:15:13: case.run success 
+ ---------------------------------------------------
+2021-08-02 16:15:21: st_archive starting 
+ ---------------------------------------------------
+2021-08-02 16:15:58: st_archive success 
+ ---------------------------------------------------
+2021-08-03 10:28:20: case.build starting 
+ ---------------------------------------------------
+2021-08-03 10:29:33: case.build success 
+ ---------------------------------------------------
+2021-08-03 10:30:35: case.submit starting 
+ ---------------------------------------------------
+2021-08-03 10:30:41: case.submit success case.run:9659091.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9659092.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-03 10:31:27: case.run starting 
+ ---------------------------------------------------
+2021-08-03 10:31:34: model execution starting 
+ ---------------------------------------------------
+2021-08-03 10:48:05: case.build starting 
+ ---------------------------------------------------
+2021-08-03 10:48:24: case.build error 
+ERROR: BUILD FAIL: cam.buildlib failed, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/atm.bldlog.210803-104806
+ ---------------------------------------------------
+2021-08-03 10:53:59: case.build starting 
+ ---------------------------------------------------
+2021-08-03 10:55:05: case.build success 
+ ---------------------------------------------------
+2021-08-03 10:56:22: case.submit starting 
+ ---------------------------------------------------
+2021-08-03 10:56:29: case.submit success case.run:9659819.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9659820.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-03 10:58:38: case.run starting 
+ ---------------------------------------------------
+2021-08-03 10:58:44: model execution starting 
+ ---------------------------------------------------
+2021-08-03 11:33:09: model execution success 
+ ---------------------------------------------------
+2021-08-03 11:33:09: case.run success 
+ ---------------------------------------------------
+2021-08-03 11:33:19: st_archive starting 
+ ---------------------------------------------------
+2021-08-03 11:34:01: st_archive success 
+ ---------------------------------------------------
+2021-08-03 13:21:53: case.build starting 
+ ---------------------------------------------------
+2021-08-03 13:21:55: case.build error 
+ERROR: Command /glade/scratch/nadavis/CESM_updates/CAM/cime/../bld/build-namelist -ntasks 1800 -csmdata /glade/p/cesmdata/cseg/inputdata -infile /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist -start_ymd 20100101 -ignore_ic_year -use_case waccm_ma_hist_cam6 -inputdata /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/cam.input_data_list -namelist " &atmexp /"  failed rc=255
+out=
+err=Smartmatch is experimental at /glade/scratch/nadavis/CESM_updates/CAM/bld/perl5lib/Build/ChemNamelist.pm line 274.
+CAM build-namelist - ERROR: Invalid namelist variable in '-infile' /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/Buildconf/camconf/namelist.
+ ERROR: in _validate_pair (package Build::NamelistDefinition): Variable name south_mask not found in /glade/u/home/nadavis/cases/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/SourceMods/src.cam/namelist_definition.xml
+ ---------------------------------------------------
+2021-08-03 13:40:38: case.build starting 
+ ---------------------------------------------------
+2021-08-03 13:41:00: case.build success 
+ ---------------------------------------------------
+2021-08-03 13:42:00: case.submit starting 
+ ---------------------------------------------------
+2021-08-03 13:42:08: case.submit success case.run:9664833.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9664834.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-03 13:45:53: case.run starting 
+ ---------------------------------------------------
+2021-08-03 13:45:59: model execution starting 
+ ---------------------------------------------------
+2021-08-03 14:20:36: model execution success 
+ ---------------------------------------------------
+2021-08-03 14:20:36: case.run success 
+ ---------------------------------------------------
+2021-08-03 14:20:51: st_archive starting 
+ ---------------------------------------------------
+2021-08-03 14:21:39: st_archive success 
+ ---------------------------------------------------
+2021-08-03 15:50:08: case.submit starting 
+ ---------------------------------------------------
+2021-08-03 15:50:15: case.submit success case.run:9670750.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9670751.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-03 16:11:18: case.run starting 
+ ---------------------------------------------------
+2021-08-03 16:11:24: model execution starting 
+ ---------------------------------------------------
+2021-08-03 16:45:56: model execution success 
+ ---------------------------------------------------
+2021-08-03 16:45:56: case.run success 
+ ---------------------------------------------------
+2021-08-03 16:46:11: st_archive starting 
+ ---------------------------------------------------
+2021-08-03 16:46:56: st_archive success 
+ ---------------------------------------------------
+2021-08-04 09:27:44: case.build starting 
+ ---------------------------------------------------
+2021-08-04 09:28:53: case.build success 
+ ---------------------------------------------------
+2021-08-04 09:31:04: case.submit starting 
+ ---------------------------------------------------
+2021-08-04 09:31:11: case.submit success case.run:9687309.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9687310.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-04 09:39:19: case.run starting 
+ ---------------------------------------------------
+2021-08-04 09:39:26: model execution starting 
+ ---------------------------------------------------
+2021-08-04 12:45:14: case.build starting 
+ ---------------------------------------------------
+2021-08-04 12:46:20: case.build success 
+ ---------------------------------------------------
+2021-08-04 13:33:31: case.submit starting 
+ ---------------------------------------------------
+2021-08-04 13:33:38: case.submit success case.run:9692836.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9692837.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-04 13:36:21: case.run starting 
+ ---------------------------------------------------
+2021-08-04 13:36:28: model execution starting 
+ ---------------------------------------------------
+2021-08-04 14:11:20: model execution success 
+ ---------------------------------------------------
+2021-08-04 14:11:21: case.run success 
+ ---------------------------------------------------
+2021-08-04 14:13:21: st_archive starting 
+ ---------------------------------------------------
+2021-08-04 14:14:11: st_archive success 
+ ---------------------------------------------------
+2021-08-05 07:24:49: case.build starting 
+ ---------------------------------------------------
+2021-08-05 07:25:58: case.build success 
+ ---------------------------------------------------
+2021-08-05 07:28:37: case.build starting 
+ ---------------------------------------------------
+2021-08-05 07:29:28: case.build success 
+ ---------------------------------------------------
+2021-08-05 07:38:29: case.submit starting 
+ ---------------------------------------------------
+2021-08-05 07:38:37: case.submit success case.run:9709477.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9709478.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-05 07:53:00: case.run starting 
+ ---------------------------------------------------
+2021-08-05 07:53:07: model execution starting 
+ ---------------------------------------------------
+2021-08-05 08:27:49: model execution success 
+ ---------------------------------------------------
+2021-08-05 08:27:49: case.run success 
+ ---------------------------------------------------
+2021-08-05 08:27:59: st_archive starting 
+ ---------------------------------------------------
+2021-08-05 08:28:35: st_archive success 
+ ---------------------------------------------------
+2021-08-05 08:59:12: case.submit starting 
+ ---------------------------------------------------
+2021-08-05 08:59:20: case.submit success case.run:9709828.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:9709829.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-05 09:16:48: case.run starting 
+ ---------------------------------------------------
+2021-08-05 09:16:56: model execution starting 
+ ---------------------------------------------------
+2021-08-05 14:49:59: model execution success 
+ ---------------------------------------------------
+2021-08-05 14:49:59: case.run success 
+ ---------------------------------------------------
+2021-08-05 14:50:12: st_archive starting 
+ ---------------------------------------------------
+2021-08-05 14:50:50: st_archive success 
+ ---------------------------------------------------
+2021-08-30 11:44:22: case.submit starting 
+ ---------------------------------------------------
+2021-08-30 11:44:38: case.submit success case.run:248190.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:248191.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-08-30 20:16:08: case.run starting 
+ ---------------------------------------------------
+2021-08-30 20:16:15: model execution starting 
+ ---------------------------------------------------
+2021-08-31 01:54:09: model execution success 
+ ---------------------------------------------------
+2021-08-31 01:54:09: case.run success 
+ ---------------------------------------------------
+2021-08-31 01:55:14: st_archive starting 
+ ---------------------------------------------------
+2021-08-31 01:56:06: st_archive success 
+ ---------------------------------------------------
+2021-10-04 14:43:54: case.submit starting 
+ ---------------------------------------------------
+2021-10-04 14:44:07: case.submit success case.run:860915.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:860916.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-04 14:44:18: case.run starting 
+ ---------------------------------------------------
+2021-10-04 14:44:25: model execution starting 
+ ---------------------------------------------------
+2021-10-05 10:18:29: case.submit starting 
+ ---------------------------------------------------
+2021-10-05 10:19:12: case.submit success case.run:868951.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:868953.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-05 10:19:39: case.run starting 
+ ---------------------------------------------------
+2021-10-05 10:19:48: model execution starting 
+ ---------------------------------------------------
+2021-10-05 10:20:27: model execution error 
+ERROR: Command: 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed with error '' from dir '/glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run'
+ ---------------------------------------------------
+2021-10-05 10:20:27: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.868951.chadmin1.ib0.cheyenne.ucar.edu.211005-101939
+ ---------------------------------------------------
+2021-10-05 10:38:49: case.submit starting 
+ ---------------------------------------------------
+2021-10-05 10:42:59: case.submit success case.run:869431.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:869454.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-05 10:43:39: case.run starting 
+ ---------------------------------------------------
+2021-10-05 10:43:45: model execution starting 
+ ---------------------------------------------------
+2021-10-05 16:36:31: model execution success 
+ ---------------------------------------------------
+2021-10-05 16:36:31: case.run success 
+ ---------------------------------------------------
+2021-10-05 16:37:03: st_archive starting 
+ ---------------------------------------------------
+2021-10-05 16:37:54: st_archive success 
+ ---------------------------------------------------
+2021-10-05 16:37:54: case.submit starting 
+ ---------------------------------------------------
+2021-10-05 16:37:59: case.submit success case.run:874868.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:874869.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-05 16:49:57: case.run starting 
+ ---------------------------------------------------
+2021-10-05 16:50:05: model execution starting 
+ ---------------------------------------------------
+2021-10-05 22:13:25: model execution success 
+ ---------------------------------------------------
+2021-10-05 22:13:25: case.run success 
+ ---------------------------------------------------
+2021-10-05 22:13:36: st_archive starting 
+ ---------------------------------------------------
+2021-10-05 22:16:05: st_archive success 
+ ---------------------------------------------------
+2021-10-05 22:16:06: case.submit starting 
+ ---------------------------------------------------
+2021-10-05 22:16:08: case.submit success case.run:877992.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:877993.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-05 22:16:36: case.run starting 
+ ---------------------------------------------------
+2021-10-05 22:16:47: model execution starting 
+ ---------------------------------------------------
+2021-10-06 03:27:08: model execution success 
+ ---------------------------------------------------
+2021-10-06 03:27:08: case.run success 
+ ---------------------------------------------------
+2021-10-06 03:27:21: st_archive starting 
+ ---------------------------------------------------
+2021-10-06 03:27:54: st_archive success 
+ ---------------------------------------------------
+2021-10-06 03:27:54: case.submit starting 
+ ---------------------------------------------------
+2021-10-06 03:27:56: case.submit success case.run:879652.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:879653.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-06 03:28:01: case.run starting 
+ ---------------------------------------------------
+2021-10-06 03:28:15: model execution starting 
+ ---------------------------------------------------
+2021-10-06 09:07:10: model execution success 
+ ---------------------------------------------------
+2021-10-06 09:07:10: case.run success 
+ ---------------------------------------------------
+2021-10-06 09:07:20: st_archive starting 
+ ---------------------------------------------------
+2021-10-06 09:07:57: st_archive success 
+ ---------------------------------------------------
+2021-10-06 09:07:57: case.submit starting 
+ ---------------------------------------------------
+2021-10-06 09:07:59: case.submit success case.run:881418.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:881419.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-06 09:15:40: case.run starting 
+ ---------------------------------------------------
+2021-10-06 09:15:49: model execution starting 
+ ---------------------------------------------------
+2021-10-06 15:07:00: model execution success 
+ ---------------------------------------------------
+2021-10-06 15:07:00: case.run success 
+ ---------------------------------------------------
+2021-10-07 15:23:37: case.submit starting 
+ ---------------------------------------------------
+2021-10-07 15:23:55: case.submit success case.run:910900.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:910903.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-07 18:13:52: case.run starting 
+ ---------------------------------------------------
+2021-10-07 18:13:59: model execution starting 
+ ---------------------------------------------------
+2021-10-08 00:00:27: model execution success 
+ ---------------------------------------------------
+2021-10-08 00:00:28: case.run success 
+ ---------------------------------------------------
+2021-10-08 00:01:19: st_archive starting 
+ ---------------------------------------------------
+2021-10-08 00:02:04: st_archive success 
+ ---------------------------------------------------
+2021-10-08 00:02:04: case.submit starting 
+ ---------------------------------------------------
+2021-10-08 00:02:21: case.submit success case.run:919102.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:919105.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-08 00:09:04: case.run starting 
+ ---------------------------------------------------
+2021-10-08 00:09:12: model execution starting 
+ ---------------------------------------------------
+2021-10-08 06:00:57: model execution success 
+ ---------------------------------------------------
+2021-10-08 06:00:57: case.run success 
+ ---------------------------------------------------
+2021-10-08 06:01:20: st_archive starting 
+ ---------------------------------------------------
+2021-10-08 06:02:26: st_archive success 
+ ---------------------------------------------------
+2021-10-08 06:02:26: case.submit starting 
+ ---------------------------------------------------
+2021-10-08 06:02:32: case.submit success case.run:923310.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:923312.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-08 06:05:22: case.run starting 
+ ---------------------------------------------------
+2021-10-08 06:05:31: model execution starting 
+ ---------------------------------------------------
+2021-10-08 11:54:14: model execution success 
+ ---------------------------------------------------
+2021-10-08 11:54:14: case.run success 
+ ---------------------------------------------------
+2021-10-08 11:54:40: st_archive starting 
+ ---------------------------------------------------
+2021-10-08 11:56:11: st_archive success 
+ ---------------------------------------------------
+2021-10-08 11:56:11: case.submit starting 
+ ---------------------------------------------------
+2021-10-08 11:56:21: case.submit success case.run:929995.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:929996.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-08 12:01:40: case.run starting 
+ ---------------------------------------------------
+2021-10-08 12:01:51: model execution starting 
+ ---------------------------------------------------
+2021-10-08 17:39:44: model execution success 
+ ---------------------------------------------------
+2021-10-08 17:39:44: case.run success 
+ ---------------------------------------------------
+2021-10-08 17:40:44: st_archive starting 
+ ---------------------------------------------------
+2021-10-08 17:42:31: st_archive success 
+ ---------------------------------------------------
+2021-10-08 17:42:31: case.submit starting 
+ ---------------------------------------------------
+2021-10-08 17:42:44: case.submit success case.run:936788.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:936791.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-08 18:22:22: case.run starting 
+ ---------------------------------------------------
+2021-10-08 18:22:30: model execution starting 
+ ---------------------------------------------------
+2021-10-09 00:20:10: model execution success 
+ ---------------------------------------------------
+2021-10-09 00:20:10: case.run success 
+ ---------------------------------------------------
+2021-10-09 00:20:23: st_archive starting 
+ ---------------------------------------------------
+2021-10-09 00:22:07: st_archive success 
+ ---------------------------------------------------
+2021-10-09 00:22:07: case.submit starting 
+ ---------------------------------------------------
+2021-10-09 00:22:13: case.submit success case.run:942845.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:942847.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-09 00:22:19: case.run starting 
+ ---------------------------------------------------
+2021-10-09 00:22:27: model execution starting 
+ ---------------------------------------------------
+2021-10-09 05:24:56: model execution success 
+ ---------------------------------------------------
+2021-10-09 05:24:56: case.run success 
+ ---------------------------------------------------
+2021-10-09 05:25:03: st_archive starting 
+ ---------------------------------------------------
+2021-10-09 05:26:46: st_archive success 
+ ---------------------------------------------------
+2021-10-09 05:26:46: case.submit starting 
+ ---------------------------------------------------
+2021-10-09 05:26:49: case.submit success case.run:944516.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:944517.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-09 05:26:53: case.run starting 
+ ---------------------------------------------------
+2021-10-09 05:27:02: model execution starting 
+ ---------------------------------------------------
+2021-10-09 11:20:14: model execution success 
+ ---------------------------------------------------
+2021-10-09 11:20:14: case.run success 
+ ---------------------------------------------------
+2021-10-09 11:20:35: st_archive starting 
+ ---------------------------------------------------
+2021-10-09 11:21:10: st_archive success 
+ ---------------------------------------------------
+2021-10-09 11:21:10: case.submit starting 
+ ---------------------------------------------------
+2021-10-09 11:21:20: case.submit success case.run:947610.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:947614.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-10-09 11:21:31: case.run starting 
+ ---------------------------------------------------
+2021-10-09 11:21:38: model execution starting 
+ ---------------------------------------------------
+2021-10-09 16:28:42: model execution success 
+ ---------------------------------------------------
+2021-10-09 16:28:42: case.run success 
+ ---------------------------------------------------
+2021-10-09 16:28:59: st_archive starting 
+ ---------------------------------------------------
+2021-10-09 16:29:59: st_archive success 
+ ---------------------------------------------------
+2021-11-08 15:15:05: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 15:15:06: case.submit error 
+ERROR: module command /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python purge  failed with message:
+/glade/u/apps/ch/opt/lmod/8.1.7/bin/lua: error loading module 'tcl2lua' from file '/glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/../lib/tcl2lua.so':
+	libtcl8.6.so: cannot open shared object file: No such file or directory
+stack traceback:
+	[C]: ?
+	[C]: in function 'require'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:828: in function 'build_runTCLprog'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:833: in main chunk
+	[C]: in function 'require'
+	...pps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/colorize.lua:43: in main chunk
+	[C]: in function 'require'
+	...lade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod:110: in main chunk
+	[C]: ?
+ ---------------------------------------------------
+2021-11-08 15:20:42: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 15:20:42: case.submit error 
+ERROR: module command /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python purge  failed with message:
+/glade/u/apps/ch/opt/lmod/8.1.7/bin/lua: error loading module 'tcl2lua' from file '/glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/../lib/tcl2lua.so':
+	libtcl8.6.so: cannot open shared object file: No such file or directory
+stack traceback:
+	[C]: ?
+	[C]: in function 'require'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:828: in function 'build_runTCLprog'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:833: in main chunk
+	[C]: in function 'require'
+	...pps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/colorize.lua:43: in main chunk
+	[C]: in function 'require'
+	...lade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod:110: in main chunk
+	[C]: ?
+ ---------------------------------------------------
+2021-11-08 15:20:52: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 15:20:52: case.submit error 
+ERROR: module command /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python purge  failed with message:
+/glade/u/apps/ch/opt/lmod/8.1.7/bin/lua: error loading module 'tcl2lua' from file '/glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/../lib/tcl2lua.so':
+	libtcl8.6.so: cannot open shared object file: No such file or directory
+stack traceback:
+	[C]: ?
+	[C]: in function 'require'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:828: in function 'build_runTCLprog'
+	...u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/utils.lua:833: in main chunk
+	[C]: in function 'require'
+	...pps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/colorize.lua:43: in main chunk
+	[C]: in function 'require'
+	...lade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod:110: in main chunk
+	[C]: ?
+ ---------------------------------------------------
+2021-11-08 15:21:17: case.build starting 
+ ---------------------------------------------------
+2021-11-08 15:21:34: case.build error 
+ERROR: /glade/scratch/nadavis/CESM_updates/CAM/cime/src/build_scripts/buildlib.mct FAILED, cat /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/mct.bldlog.211108-152117
+ ---------------------------------------------------
+2021-11-08 15:42:40: build.clean starting 
+ ---------------------------------------------------
+2021-11-08 15:42:45: build.clean success 
+ ---------------------------------------------------
+2021-11-08 15:42:59: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, ww3, cime, cice, cism, source_cism, rtm, cam, silhs, clubb, carma, cosp2, chem_proc, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_03_rel
+    ./cime
+        clean sandbox, on 4cd12246ff191d6ff398f9470ed2d0b7651b4008
+    ./components/cice
+        clean sandbox, on cice5_20190322
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev049.se_grids.n03
+    ./components/clm/src/fates
+        clean sandbox, on fates_s1.8.1_a3.0.0_rev2
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_180611
+    ./components/mosart
+        clean sandbox, on mosart1_0_33
+    ./components/rtm
+        clean sandbox, on rtm1_0_69
+    ./components/ww3
+        clean sandbox, on ww3_190402
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_ncar_backwards_compat_20181205_c20200117
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/silhs
+        clean sandbox, on silhs_ncar_backwards_compat_20181205_c20191001
+2021-11-08 15:52:44: case.build success 
+ ---------------------------------------------------
+2021-11-08 15:53:15: case.build starting 
+ ---------------------------------------------------
+CESM version is cam6_2_011-1034-g4e7c8e2
+Processing externals description file : Externals.cfg
+Processing externals description file : Externals_CLM.cfg
+Processing externals description file : Externals_CISM.cfg
+Processing externals description file : Externals_CAM.cfg
+Checking status of externals: clm, fates, ptclm, mosart, ww3, cime, cice, cism, source_cism, rtm, cam, silhs, clubb, carma, cosp2, chem_proc, 
+    ./chem_proc
+        clean sandbox, on tools/proc_atm/chem_proc/release_tags/chem_proc5_0_03_rel
+    ./cime
+        clean sandbox, on 4cd12246ff191d6ff398f9470ed2d0b7651b4008
+    ./components/cice
+        clean sandbox, on cice5_20190322
+    ./components/cism
+        clean sandbox, on cism2_1_68
+    ./components/cism/source_cism
+        clean sandbox, on 9f57475aadf2d807b97b9c20f53e6ddc6daf0dfb
+    ./components/clm
+        clean sandbox, on ctsm1.0.dev049.se_grids.n03
+    ./components/clm/src/fates
+        clean sandbox, on fates_s1.8.1_a3.0.0_rev2
+    ./components/clm/tools/PTCLM
+        clean sandbox, on PTCLM2_180611
+    ./components/mosart
+        clean sandbox, on mosart1_0_33
+    ./components/rtm
+        clean sandbox, on rtm1_0_69
+    ./components/ww3
+        clean sandbox, on ww3_190402
+    ./src/physics/carma/base
+        clean sandbox, on carma/release_tags/carma3_49_rel
+    ./src/physics/clubb
+        clean sandbox, on clubb_ncar_backwards_compat_20181205_c20200117
+    ./src/physics/cosp2/src
+        clean sandbox, on CFMIP/COSPv2.0/tags/v2.1.4cesm/src
+    ./src/physics/silhs
+        clean sandbox, on silhs_ncar_backwards_compat_20181205_c20191001
+2021-11-08 15:53:38: case.build success 
+ ---------------------------------------------------
+2021-11-08 15:59:49: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 15:59:57: case.submit success case.run:1387038.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1387039.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 16:00:00: case.run starting 
+ ---------------------------------------------------
+2021-11-08 16:00:09: model execution starting 
+ ---------------------------------------------------
+2021-11-08 16:02:19: model execution success 
+ ---------------------------------------------------
+2021-11-08 16:02:19: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1387038.chadmin1.ib0.cheyenne.ucar.edu.211108-160000
+ ---------------------------------------------------
+2021-11-08 16:27:37: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 16:27:50: case.submit success case.run:1387528.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1387533.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 16:28:01: case.run starting 
+ ---------------------------------------------------
+2021-11-08 16:28:07: model execution starting 
+ ---------------------------------------------------
+2021-11-08 16:30:57: model execution success 
+ ---------------------------------------------------
+2021-11-08 16:30:57: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1387528.chadmin1.ib0.cheyenne.ucar.edu.211108-162801
+ ---------------------------------------------------
+2021-11-08 16:40:09: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 16:40:20: case.submit success case.run:1387689.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1387690.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 16:40:25: case.run starting 
+ ---------------------------------------------------
+2021-11-08 16:40:31: model execution starting 
+ ---------------------------------------------------
+2021-11-08 16:43:29: model execution success 
+ ---------------------------------------------------
+2021-11-08 16:43:29: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1387689.chadmin1.ib0.cheyenne.ucar.edu.211108-164025
+ ---------------------------------------------------
+2021-11-08 16:57:05: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 16:57:15: case.submit success case.run:1387844.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1387846.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 16:57:18: case.run starting 
+ ---------------------------------------------------
+2021-11-08 16:57:24: model execution starting 
+ ---------------------------------------------------
+2021-11-08 17:00:15: model execution success 
+ ---------------------------------------------------
+2021-11-08 17:00:15: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1387844.chadmin1.ib0.cheyenne.ucar.edu.211108-165718
+ ---------------------------------------------------
+2021-11-08 17:24:03: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 17:24:34: case.submit success case.run:1388032.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1388044.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 17:24:39: case.run starting 
+ ---------------------------------------------------
+2021-11-08 17:24:46: model execution starting 
+ ---------------------------------------------------
+2021-11-08 17:26:55: model execution success 
+ ---------------------------------------------------
+2021-11-08 17:26:55: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1388032.chadmin1.ib0.cheyenne.ucar.edu.211108-172439
+ ---------------------------------------------------
+2021-11-08 17:34:39: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 17:34:48: case.submit success case.run:1388119.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1388121.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 17:34:57: case.run starting 
+ ---------------------------------------------------
+2021-11-08 17:35:03: model execution starting 
+ ---------------------------------------------------
+2021-11-08 17:37:07: model execution success 
+ ---------------------------------------------------
+2021-11-08 17:37:07: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1388119.chadmin1.ib0.cheyenne.ucar.edu.211108-173457
+ ---------------------------------------------------
+2021-11-08 18:55:54: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 18:56:06: case.submit success case.run:1388616.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1388617.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 18:56:12: case.run starting 
+ ---------------------------------------------------
+2021-11-08 18:56:18: model execution starting 
+ ---------------------------------------------------
+2021-11-08 18:58:46: model execution success 
+ ---------------------------------------------------
+2021-11-08 18:58:46: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1388616.chadmin1.ib0.cheyenne.ucar.edu.211108-185612
+ ---------------------------------------------------
+2021-11-08 19:00:26: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 19:00:28: case.submit error 
+
+ ---------------------------------------------------
+2021-11-08 19:02:21: case.submit starting 
+ ---------------------------------------------------
+2021-11-08 19:02:29: case.submit success case.run:1388643.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1388644.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-08 19:02:34: case.run starting 
+ ---------------------------------------------------
+2021-11-08 19:02:40: model execution starting 
+ ---------------------------------------------------
+2021-11-08 19:04:12: model execution success 
+ ---------------------------------------------------
+2021-11-08 19:04:12: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1388643.chadmin1.ib0.cheyenne.ucar.edu.211108-190234
+ ---------------------------------------------------
+2021-11-09 12:50:18: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 12:50:27: case.submit success case.run:1398605.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1398606.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 12:50:31: case.run starting 
+ ---------------------------------------------------
+2021-11-09 12:50:37: model execution starting 
+ ---------------------------------------------------
+2021-11-09 12:52:37: model execution success 
+ ---------------------------------------------------
+2021-11-09 12:52:37: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1398605.chadmin1.ib0.cheyenne.ucar.edu.211109-125031
+ ---------------------------------------------------
+2021-11-09 12:53:28: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 12:53:38: case.submit success case.run:1398666.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1398668.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 12:53:42: case.run starting 
+ ---------------------------------------------------
+2021-11-09 12:53:47: model execution starting 
+ ---------------------------------------------------
+2021-11-09 12:55:35: model execution success 
+ ---------------------------------------------------
+2021-11-09 12:55:35: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1398666.chadmin1.ib0.cheyenne.ucar.edu.211109-125342
+ ---------------------------------------------------
+2021-11-09 12:57:15: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 12:57:27: case.submit success case.run:1398795.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1398798.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 12:57:33: case.run starting 
+ ---------------------------------------------------
+2021-11-09 12:57:40: model execution starting 
+ ---------------------------------------------------
+2021-11-09 12:59:27: model execution success 
+ ---------------------------------------------------
+2021-11-09 12:59:27: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1398795.chadmin1.ib0.cheyenne.ucar.edu.211109-125733
+ ---------------------------------------------------
+2021-11-09 13:01:51: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 13:01:59: case.submit success case.run:1398832.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1398833.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 13:02:05: case.run starting 
+ ---------------------------------------------------
+2021-11-09 13:02:11: model execution starting 
+ ---------------------------------------------------
+2021-11-09 13:05:43: model execution success 
+ ---------------------------------------------------
+2021-11-09 13:05:43: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1398832.chadmin1.ib0.cheyenne.ucar.edu.211109-130205
+ ---------------------------------------------------
+2021-11-09 13:10:49: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 13:10:57: case.submit success case.run:1398968.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1398969.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 13:11:01: case.run starting 
+ ---------------------------------------------------
+2021-11-09 13:11:10: model execution starting 
+ ---------------------------------------------------
+2021-11-09 13:13:30: model execution success 
+ ---------------------------------------------------
+2021-11-09 13:13:30: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1398968.chadmin1.ib0.cheyenne.ucar.edu.211109-131101
+ ---------------------------------------------------
+2021-11-09 13:15:39: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 13:15:51: case.submit success case.run:1399196.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1399200.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 13:15:59: case.run starting 
+ ---------------------------------------------------
+2021-11-09 13:16:05: model execution starting 
+ ---------------------------------------------------
+2021-11-09 13:18:52: model execution success 
+ ---------------------------------------------------
+2021-11-09 13:18:52: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1399196.chadmin1.ib0.cheyenne.ucar.edu.211109-131559
+ ---------------------------------------------------
+2021-11-09 13:21:28: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 13:21:36: case.submit success case.run:1399289.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1399290.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 13:22:52: case.run starting 
+ ---------------------------------------------------
+2021-11-09 13:22:57: model execution starting 
+ ---------------------------------------------------
+2021-11-09 13:25:13: model execution success 
+ ---------------------------------------------------
+2021-11-09 13:25:13: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1399289.chadmin1.ib0.cheyenne.ucar.edu.211109-132252
+ ---------------------------------------------------
+2021-11-09 13:48:41: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 13:48:51: case.submit success case.run:1399958.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1399960.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 13:49:04: case.run starting 
+ ---------------------------------------------------
+2021-11-09 13:49:10: model execution starting 
+ ---------------------------------------------------
+2021-11-09 13:51:04: model execution success 
+ ---------------------------------------------------
+2021-11-09 13:51:04: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1399958.chadmin1.ib0.cheyenne.ucar.edu.211109-134904
+ ---------------------------------------------------
+2021-11-09 14:01:54: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 14:02:05: case.submit success case.run:1400440.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1400441.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 14:02:55: case.run starting 
+ ---------------------------------------------------
+2021-11-09 14:03:02: model execution starting 
+ ---------------------------------------------------
+2021-11-09 14:08:24: model execution success 
+ ---------------------------------------------------
+2021-11-09 14:08:24: case.run error 
+ERROR: RUN FAIL: Command 'mpiexec_mpt -p "%g:"  -np 1800  omplace -tm open64  /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/bld/cesm.exe   >> cesm.log.$LID 2>&1 ' failed
+See log file for details: /glade/scratch/nadavis/FWmaHIST_ne30pg3_ne30pg3_mg17_no_conus_gravity_waves/run/cesm.log.1400440.chadmin1.ib0.cheyenne.ucar.edu.211109-140255
+ ---------------------------------------------------
+2021-11-09 15:47:05: case.submit starting 
+ ---------------------------------------------------
+2021-11-09 15:47:18: case.submit success case.run:1402637.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1402640.chadmin1.ib0.cheyenne.ucar.edu
+ ---------------------------------------------------
+2021-11-09 16:03:01: case.run starting 
+ ---------------------------------------------------
+2021-11-09 16:03:08: model execution starting 
+ ---------------------------------------------------
+-bash-4.2$ 

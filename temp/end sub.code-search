@@ -1,0 +1,26 @@
+# Query: end sub
+# Including: gw_drag*
+
+18 results - 2 files
+
+gw_drag_mvg_kdyn.F90:
+   367:     end subroutine gw_drag_readnl
+  1101:     end subroutine gw_init
+  1214:     end subroutine gw_init_beres
+  1258:     end subroutine handle_pio_error
+  2204:     end subroutine gw_tend
+  2571:     end subroutine gw_rdg_calc
+  2689:     end subroutine gw_spec_addflds
+  2914:     end subroutine gw_spec_outflds
+  3027:     end subroutine gw_chem_addflds
+  3057:     end subroutine gw_chem_outflds
+
+gw_drag.F90:
+   361:     end subroutine gw_drag_readnl
+  1021:     end subroutine gw_init
+  1134:     end subroutine gw_init_beres
+  1178:     end subroutine handle_pio_error
+  1936:     end subroutine gw_tend
+  2207:     end subroutine gw_rdg_calc
+  2312:     end subroutine gw_spec_addflds
+  2528:     end subroutine gw_spec_outflds

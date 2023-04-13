@@ -1,0 +1,131 @@
+output for diff "branch_case" "hybrid_case" 
+
+------------------------------------------------------
+----------------- TESTING env_archive ----------------
+------------------------------------------------------
+
+
+------------------------------------------------------
+----------------- TESTING env_batch ------------------
+------------------------------------------------------
+
+
+------------------------------------------------------
+----------------- TESTING env_build ------------------
+------------------------------------------------------
+
+376c376
+<     <entry id="CICE_BLCKX" value="6">
+---
+>     <entry id="CICE_BLCKX" value="8">
+384c384
+<     <entry id="CICE_BLCKY" value="6">
+---
+>     <entry id="CICE_BLCKY" value="8">
+392c392
+<     <entry id="CICE_MXBLCKS" value="5">
+---
+>     <entry id="CICE_MXBLCKS" value="6">
+413c413
+<     <entry id="CICE_CPPDEFS" value=" -Dncdf -DNUMIN=11 -DNUMAX=99  -DNICECAT=1 -DNXGLOB=144 -DNYGLOB=96 -DNTRAERO=0 -DNTRISO=0 -DNBGCLYR=0 -DNICELYR=8 -DNSNWLYR=3 -DTRAGE=1 -DTRFY=1 -DTRLVL=1 -DTRPND=1 -DTRBRI=0 -DTRBGCS=0 -DBLCKX=6 -DBLCKY=6 -DMXBLCKS=5">
+---
+>     <entry id="CICE_CPPDEFS" value=" -Dncdf -DNUMIN=11 -DNUMAX=99  -DNICECAT=1 -DNXGLOB=144 -DNYGLOB=96 -DNTRAERO=0 -DNTRISO=0 -DNBGCLYR=0 -DNICELYR=8 -DNSNWLYR=3 -DTRAGE=1 -DTRFY=1 -DTRLVL=1 -DTRPND=1 -DTRBRI=0 -DTRBGCS=0 -DBLCKX=8 -DBLCKY=8 -DMXBLCKS=6">
+
+------------------------------------------------------
+----------------- TESTING env_case -------------------
+------------------------------------------------------
+
+298c298
+<     <entry id="CASEROOT" value="/nobackup/phymku/cesm_sims/2.2.0/f.e22.FWmaHIST.f19_f19_mg17.CTRL.heatcool.clone.branch_test.001">
+---
+>     <entry id="CASEROOT" value="/nobackup/phymku/cesm_sims/2.2.0/f.e22.FWmaHIST.f19_f19_mg17.CTRL.heatcool.001">
+311c311
+<     <entry id="SRCROOT" value="/home/home01/earfw/CESM2/release-cesm2.2.0/cime/..">
+---
+>     <entry id="SRCROOT" value="/home/home01/earfw/CESM2/release-cesm2.2.0">
+315c315
+<     <entry id="CASE" value="f.e22.FWmaHIST.f19_f19_mg17.CTRL.heatcool.clone.branch_test.001">
+---
+>     <entry id="CASE" value="f.e22.FWmaHIST.f19_f19_mg17.CTRL.heatcool.001">
+
+------------------------------------------------------
+----------------- TESTING env_mach_pes ---------------
+------------------------------------------------------
+
+28c28
+<     <entry id="COST_PES" value="80">
+---
+>     <entry id="COST_PES" value="40">
+32c32
+<     <entry id="TOTALPES" value="80">
+---
+>     <entry id="TOTALPES" value="40">
+62,71c62,71
+<         <value compclass="ATM">80</value>
+<         <value compclass="CPL">80</value>
+<         <value compclass="OCN">80</value>
+<         <value compclass="WAV">80</value>
+<         <value compclass="GLC">80</value>
+<         <value compclass="ICE">80</value>
+<         <value compclass="ROF">80</value>
+<         <value compclass="LND">80</value>
+<         <value compclass="ESP">80</value>
+<         <value compclass="IAC">80</value>
+---
+>         <value compclass="ATM">-1</value>
+>         <value compclass="CPL">-1</value>
+>         <value compclass="OCN">-1</value>
+>         <value compclass="WAV">-1</value>
+>         <value compclass="GLC">-1</value>
+>         <value compclass="ICE">-1</value>
+>         <value compclass="ROF">-1</value>
+>         <value compclass="LND">-1</value>
+>         <value compclass="ESP">1</value>
+>         <value compclass="IAC">1</value>
+78,86c78,86
+<         <value compclass="ATM">80</value>
+<         <value compclass="OCN">80</value>
+<         <value compclass="WAV">80</value>
+<         <value compclass="GLC">80</value>
+<         <value compclass="ICE">80</value>
+<         <value compclass="ROF">80</value>
+<         <value compclass="LND">80</value>
+<         <value compclass="ESP">80</value>
+<         <value compclass="IAC">80</value>
+---
+>         <value compclass="ATM">40</value>
+>         <value compclass="OCN">40</value>
+>         <value compclass="WAV">40</value>
+>         <value compclass="GLC">40</value>
+>         <value compclass="ICE">40</value>
+>         <value compclass="ROF">40</value>
+>         <value compclass="LND">40</value>
+>         <value compclass="ESP">1</value>
+>         <value compclass="IAC">1</value>
+
+------------------------------------------------------
+----------------- TESTING env_mach_specific ----------
+------------------------------------------------------
+
+
+------------------------------------------------------
+----------------- TESTING env_run --------------------
+------------------------------------------------------
+
+25c25
+<     <entry id="RUN_TYPE" value="branch">
+---
+>     <entry id="RUN_TYPE" value="hybrid">
+125c125
+<     <entry id="STOP_OPTION" value="ndays">
+---
+>     <entry id="STOP_OPTION" value="nmonths">
+132c132
+<     <entry id="STOP_N" value="5">
+---
+>     <entry id="STOP_N" value="1">
+
+------------------------------------------------------
+----------------- TESTING env_workflow ---------------
+------------------------------------------------------
+
