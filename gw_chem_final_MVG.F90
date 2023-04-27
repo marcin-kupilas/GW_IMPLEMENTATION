@@ -509,16 +509,11 @@ enddo
       lmbd_z_star(i)=(2._r8*pi)*sqrt( (1._r8/alpha)*normalized_varT(i) + 1/(2._r8*m_b_sq) )
       k_e(i)=normalized_varT(i)*( (4.*f_n(i)*gamma_ad*(1.-2.*alpha_dwn))/ti(i) )*(lmbd_z_star(i)/inertial_prd(i)) 
       xi(i)=alpha/4. + alpha/2. *log( (m_b_sq/alpha)*normalized_varT(i) + 0.5)
-      !k_tilde(i) = ... MMK
-      !psi_bar(i) = ... MMK
-      !k_h_m(i) = ... MMK
       xi(i)=min(0.99, xi(i)) !should not happen, but bound xi so that xi .ge. 1 cannot exist 
-      ! MMK TODOQ any conditions to bound k_tilde, psi_bar, k_h_m?
      else
       k_e(i)=0._r8
       xi(i)=0._r8
       var_t(i)=0._r8 !set also variance to zero if not within resonable bounds
-      ! MMK TODOQ any conditions for when normalized_varT(i) outside of limits?
      endif     
   enddo
 

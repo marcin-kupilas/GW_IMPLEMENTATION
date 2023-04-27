@@ -729,7 +729,11 @@ subroutine gw_init()
                 'Kzz orography')
         call addfld('k_dyn_orog'//cn//'RDGBETA' ,(/ 'lev' /), 'A','m2/s', &
             'Total diffusivity orography for each ridge')
-        !TODOQ - anything new to add here? MMK
+        ! MMK TODO Non-essential
+        ! k_wave_new_orog
+        ! k_h_new_orog
+        ! k_c_tot_orog
+        ! k_h_tot_orog
       end do
       !add totals across orographic spectrum
       call addfld ('k_wave_orog_tot_BETA',(/ 'lev' /), 'A','m2/s', &
@@ -740,8 +744,11 @@ subroutine gw_init()
           'Kzz orography - sum over all ridges')
       call addfld ('k_dyn_orog_tot_BETA', (/ 'lev' /), 'A','m2/s', &
           'Total diffusivity orography - sum over all ridges')
-      !TODOQ - anything new to add here? MMK
-        
+        ! MMK TODO Non-essential
+        ! k_wave_new_orog_BETA
+        ! k_h_new_orog_BETA
+        ! k_c_tot_orog_BETA
+        ! k_h_tot_orog_BETA
 
      end if
 
@@ -1098,6 +1105,16 @@ subroutine gw_init()
           'Total dynamical diffusivity (over entire spectrum)')
      call addfld ('var_gwt_tot', (/ 'lev' /), 'A','K2', &
           'Variance of gw temperature perturbation')
+     ! MMK 
+      call addfld ('k_wave_new_tot',(/ 'lev' /), 'A','m2/s', &
+          'Effective wave diffusivity (over entire spectrum)')
+      call addfld ('k_h_new_tot',(/ 'lev' /), 'A','m2/s', &
+          'Effective thermal diffusivity (over entire spectrum)')
+      call addfld ('k_c_ttot',(/ 'lev' /), 'A','m2/s', &
+          'Total dynamical diffusivity (over entire spectrum)')
+      call addfld ('k_h_ttot',(/ 'lev' /), 'A','m2/s', &
+          'Total thermal diffusivity (over entire spectrum)')
+          ! TODOQ - put kappa_tilde, k_m_m, and k_h_m
  end if
 
 end subroutine gw_init
@@ -1429,14 +1446,34 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 
   !variables for gw_chem  !MVG 
   real(r8) :: k_wave_tot(state%ncol,pver) !total over entire wave spectrum and for all GW sources 
+  real(r8) :: k_wave_new_tot(state%ncol,pver) 
+  real(r8) :: k_h_new_tot(state%ncol,pver)
   real(r8) :: k_e_tot(state%ncol,pver)
   real(r8) :: var_gwt_tot(state%ncol,pver)
-  real(r8) :: k_dyn_tot(state%ncol,pver+1) 
+  real(r8) :: k_dyn_tot(state%ncol,pver+1)
+  ! MMK new 
+  real(r8) :: k_c_ttot(state%ncol,pver+1)
+  real(r8) :: k_h_ttot(state%ncol,pver+1)
 
   real(r8) :: k_wave(state%ncol,pver) !total over entire wave spectrum for each GW source (i.e. Beres and C&M)
+  real(r8) :: k_wave_new(state%ncol,pver) 
+  real(r8) :: k_h_new(state%ncol,pver)
   real(r8) :: k_e(state%ncol,pver)
   real(r8) :: var_gwt(state%ncol,pver) 
   real(r8) :: k_dyn(state%ncol,pver+1)
+  ! MMK new
+  real(r8) :: k_c_tot(state%ncol,pver+1)
+  real(r8) :: k_h_tot(state%ncol,pver+1)
+
+  !MMK START
+  ! Should be the same for every source
+  real(r8) :: kappa_tilde(state%ncol,pver) 
+!   real(r8) :: psi_bar(state%ncol,pver) ! For when no longer tunable
+  ! Molecular kinematic viscosity
+  real(r8) :: k_m_m(state%ncol,pver) ! Only here if need to calculate myself
+  ! Molecular diffusivity of heat
+  real(r8) :: k_h_m(state%ncol,pver) ! Only here if need to calculate myself
+  !MMK END
 
   !------------------------------------------------------------------------
 
@@ -1502,6 +1539,12 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   egwdffi_tot = 0._r8
   flx_heat = 0._r8
   k_wave_tot=0._r8 !MVG
+  ! MMK START
+  k_wave_new_tot=0._r8 
+  k_h_new_tot=0._r8 
+  k_c_ttot=0._r8
+  k_h_ttot=0._r8
+  ! MMK END
   k_e_tot=0._r8
   var_gwt_tot=0._r8
   k_dyn_tot=0._r8
@@ -1545,21 +1588,29 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 								
         call effective_gw_diffusivity(ncol, band_mid, wavelength_mid, p, dt,     &
              t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
-             vramp, k_wave, k_e, zm, zi, var_gwt, k_dyn,		         &
+             vramp, k_wave, & ! MMK START
+             k_wave_new, k_h_new, k_c_tot, k_h_tot, &
+             kappa_tilde, k_m_m, k_h_m, & ! MMK END
+             k_e, zm, zi, var_gwt, k_dyn,		         &
 	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
 
  	do k = 1, pver !add up contributions from all GWs sources
-           k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
+      k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
  	   k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
-           var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+      var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+      k_wave_new_tot(:,k) = k_wave_new_tot(:,k) + k_wave_new(:,k) ! MMK
+      k_h_new_tot(:,k) = k_h_new_tot(:,k) + k_h_new(:,k) ! MMK
         enddo
 
 	do k = 1, pver+1 
-	 k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)	 
+	 k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)
+	 k_c_ttot(:,k) = k_c_ttot(:,k) + k_c_tot(:,k) ! MMK
+	 k_h_ttot(:,k) = k_h_ttot(:,k) + k_h_tot(:,k) ! MMK
 	enddo
 
         !write in history file
 	call gw_chem_outflds(beres_dp_pf, lchnk, ncol, k_wave, &
+   ! TODO add k_wave_new, k_h_new, k_c_tot, k_h_tot
              	  	     k_e, k_dyn, egwdffi)
 
      ELSE
@@ -1665,21 +1716,29 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 								
         call effective_gw_diffusivity(ncol, band_mid, wavelength_mid, p, dt,     &
              t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
-             vramp, k_wave, k_e, zm, zi, var_gwt, k_dyn,		         &
+             vramp, k_wave, & ! MMK START
+             k_wave_new, k_h_new, k_c_tot, k_h_tot, &
+             kappa_tilde, k_m_m, k_h_m, & ! MMK END
+             k_e, zm, zi, var_gwt, k_dyn,		         &
 	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
 
  	do k = 1, pver !add up contributions from all GWs sources
-           k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
+      k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
  	   k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
-	   var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+      var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+      k_wave_new_tot(:,k) = k_wave_new_tot(:,k) + k_wave_new(:,k) ! MMK
+      k_h_new_tot(:,k) = k_h_new_tot(:,k) + k_h_new(:,k) ! MMK
         enddo
 
 	do k = 1, pver+1 
 	 k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)
+	 k_c_ttot(:,k) = k_c_ttot(:,k) + k_c_tot(:,k) ! MMK
+	 k_h_ttot(:,k) = k_h_ttot(:,k) + k_h_tot(:,k) ! MMK
 	enddo
 
         !write in history file
 	call gw_chem_outflds(beres_sh_pf, lchnk, ncol, k_wave, &
+   ! TODO add k_wave_new, k_h_new, k_c_tot, k_h_tot
              	  	     k_e, k_dyn, egwdffi)
 
      ELSE
@@ -1786,21 +1845,29 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 								
         call effective_gw_diffusivity(ncol, band_mid, wavelength_mid, p, dt,     &
              t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
-             vramp, k_wave, k_e, zm, zi, var_gwt, k_dyn,		         &
+             vramp, k_wave, & ! MMK START
+             k_wave_new, k_h_new, k_c_tot, k_h_tot, &
+             kappa_tilde, k_m_m, k_h_m, & ! MMK END
+             k_e, zm, zi, var_gwt, k_dyn,		         &
 	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
 
  	do k = 1, pver !add up contributions from all GWs sources
-           k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
+      k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
  	   k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
-	   var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+      var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+      k_wave_new_tot(:,k) = k_wave_new_tot(:,k) + k_wave_new(:,k) ! MMK
+      k_h_new_tot(:,k) = k_h_new_tot(:,k) + k_h_new(:,k) ! MMK
         enddo
 
 	do k = 1, pver+1 
-           k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)
+	 k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)
+	 k_c_ttot(:,k) = k_c_ttot(:,k) + k_c_tot(:,k) ! MMK
+	 k_h_ttot(:,k) = k_h_ttot(:,k) + k_h_tot(:,k) ! MMK
 	enddo
 
         !write in history file
 	call gw_chem_outflds('C', lchnk, ncol, k_wave, &
+   ! TODO add k_wave_new, k_h_new, k_c_tot, k_h_tot
              	  	     k_e, k_dyn, egwdffi)
 
      ELSE
@@ -2080,19 +2147,26 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
         effgw_rdg_beta, effgw_rdg_beta_max,       &
         hwdth, clngt, gbxar, mxdis, angll, anixy, &
         rdg_beta_cd_llb, trpd_leewv_rdg_beta,     &
-        ptend, flx_heat, k_wave, k_e, k_dyn, egwdffi, &
+        ptend, flx_heat, k_wave, & ! MMK START
+             k_wave_new, k_h_new, k_c_tot, k_h_tot, &
+             kappa_tilde, k_m_m, k_h_m, & ! MMK END
+             k_e, k_dyn, egwdffi, &
         var_gwt, state1%lat(:ncol), state1%lon(:ncol), use_gw_chem=use_gw_chem)
 
         do k = 1, pver !add up contributions from all GWs sources
-           k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
- 	   k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
-           var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+         k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
+         k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
+         var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+         k_wave_new_tot(:,k) = k_wave_new_tot(:,k) + k_wave_new(:,k) ! MMK
+         k_h_new_tot(:,k) = k_h_new_tot(:,k) + k_h_new(:,k) ! MMK
         enddo
 
         !add the diffusion coefficients 
         do k = 1, pver+1
          k_dyn_tot(:,k)=k_dyn_tot(:,k)+k_dyn(:,k)
          egwdffi_tot(:,k) = egwdffi_tot(:,k) + egwdffi(:,k)
+         k_c_ttot(:,k) = k_c_ttot(:,k) + k_c_tot(:,k) ! MMK
+         k_h_ttot(:,k) = k_h_ttot(:,k) + k_h_tot(:,k) ! MMK
         end do
 
      ELSE
@@ -2169,6 +2243,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
      call outfld ('k_e_tot', k_e_tot, ncol, lchnk)
      call outfld ('k_dyn_tot', k_dyn_tot, ncol, lchnk)   
      call outfld ('var_gwt_tot', var_gwt_tot, ncol, lchnk)
+     ! TODO MMK tots
 
   end if
 
@@ -2404,7 +2479,10 @@ subroutine gw_rdg_calc( &
 								
         call effective_gw_diffusivity(ncol, band_oro, wavelength_mid, p, dt,     &
              t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
-             vramp, k_wave_orog, k_e_orog, zm, zi, var_gwt_orog, k_dyn_orog,     &
+             vramp, k_wave_orog, & ! MMK START TODO make orographic.
+             !k_wave_new, k_h_new, k_c_tot, k_h_tot, &
+             !kappa_tilde, k_m_m, k_h_m, & ! MMK END
+             k_e_orog, zm, zi, var_gwt_orog, k_dyn_orog,     &
 	     dttdf, ttgw, qtgw, lat, lon, kwvrdg=kwvrdg)
 
 
@@ -2517,6 +2595,7 @@ subroutine gw_rdg_calc( &
      call outfld ('k_e_orog_tot_'//trim(type), k_e_orog_tot, ncol, lchnk)
      call outfld ('k_dyn_orog_tot_'//trim(type), k_dyn_orog_tot, ncol, lchnk)
      call outfld ('EKGW_orog_tot_'//trim(type),  egwdffi_orog_tot,    ncol, lchnk)
+   ! TODO MMK tots
    endif
 
    deallocate(tau, gwut, c)

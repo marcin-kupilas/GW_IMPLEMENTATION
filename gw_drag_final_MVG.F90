@@ -1660,7 +1660,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
 
  	do k = 1, pver !add up contributions from all GWs sources
-           k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
+      k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
  	   k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
 	   var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
         enddo
