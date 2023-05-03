@@ -1110,9 +1110,9 @@ subroutine gw_init()
           'Effective wave diffusivity (over entire spectrum)')
       call addfld ('k_h_new_tot',(/ 'lev' /), 'A','m2/s', &
           'Effective thermal diffusivity (over entire spectrum)')
-      call addfld ('k_c_ttot',(/ 'lev' /), 'A','m2/s', &
+      call addfld ('k_c_ttot',(/ 'ilev' /), 'A','m2/s', &
           'Total dynamical diffusivity (over entire spectrum)')
-      call addfld ('k_h_ttot',(/ 'lev' /), 'A','m2/s', &
+      call addfld ('k_h_ttot',(/ 'ilev' /), 'A','m2/s', &
           'Total thermal diffusivity (over entire spectrum)')
           ! TODOQ - put kappa_tilde, k_m_m, and k_h_m
  end if
@@ -1595,22 +1595,22 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
 
  	do k = 1, pver !add up contributions from all GWs sources
-      k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
+           k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
  	   k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
-      var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
+           var_gwt_tot(:,k) = var_gwt_tot(:,k) + var_gwt(:,k)
       k_wave_new_tot(:,k) = k_wave_new_tot(:,k) + k_wave_new(:,k) ! MMK
       k_h_new_tot(:,k) = k_h_new_tot(:,k) + k_h_new(:,k) ! MMK
         enddo
 
 	do k = 1, pver+1 
-	 k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)
+	 k_dyn_tot(:,k) = k_dyn_tot(:,k) + k_dyn(:,k)	 
 	 k_c_ttot(:,k) = k_c_ttot(:,k) + k_c_tot(:,k) ! MMK
 	 k_h_ttot(:,k) = k_h_ttot(:,k) + k_h_tot(:,k) ! MMK
 	enddo
 
         !write in history file
 	call gw_chem_outflds(beres_dp_pf, lchnk, ncol, k_wave, &
-   ! TODO add k_wave_new, k_h_new, k_c_tot, k_h_tot
+                       k_wave_new, k_h_new, k_c_tot, k_h_tot, & ! MMK
              	  	     k_e, k_dyn, egwdffi)
 
      ELSE
@@ -2260,7 +2260,9 @@ subroutine gw_rdg_calc( &
    mxdis, angll, anixy, &
    rdg_cd_llb, trpd_leewv, &
    ptend, flx_heat, &
-   k_wave_orog_tot, &
+   k_wave_orog_tot, & ! MMK START
+   k_wave_new_orog_tot, k_h_new_orog_tot, k_c_tot_orog_tot, k_h_tot_orog_tot, &
+   kappa_tilde, k_m_m, k_h_m, & ! MMK END
    k_e_orog_tot, k_dyn_orog_tot, egwdffi_orog_tot, &
    var_gwt_orog_tot, lat, lon, use_gw_chem) !MVG optional arguments for gw_chem
 
@@ -2317,12 +2319,24 @@ subroutine gw_rdg_calc( &
   real(r8), intent(out), optional :: k_dyn_orog_tot(ncol,pver+1)
   real(r8), intent(out), optional :: egwdffi_orog_tot(ncol,pver+1)
   real(r8), intent(out), optional :: var_gwt_orog_tot(ncol,pver)
- 
+  ! MMK arguments to be returned to calling function - totals over full orography
+  real(r8), intent(out), optional :: k_wave_new_orog_tot(ncol,pver)
+  real(r8), intent(out), optional :: k_h_new_orog_tot(ncol,pver) 
+  real(r8), intent(out), optional :: k_c_tot_orog_tot(ncol,pver+1)
+  real(r8), intent(out), optional :: k_h_tot_orog_tot(ncol,pver+1)
+  real(r8), intent(out), optional :: kappa_tilde(ncol,pver) ! Same for every ridge
+  real(r8), intent(out), optional :: k_m_m(ncol,pver) 
+  real(r8), intent(out), optional :: k_h_m(ncol,pver)
 
   real(r8) :: var_gwt_orog(ncol,pver)
   real(r8) :: k_wave_orog(ncol,pver) !values for individual ridges
   real(r8) :: k_e_orog(ncol,pver)
   real(r8) :: k_dyn_orog(ncol,pver+1)
+  ! MMK local for individual ridges
+  ! "k_wave_new_orog_local" - use existing k_wave_orog.
+  real(r8) :: k_h_new_orog_local(ncol,pver)
+  real(r8) :: k_c_tot_orog_local(ncol,pver+1) ! MMK new k_dyn_orog
+  real(r8) :: k_h_tot_orog_local(ncol,pver+1) ! MMK new total thermal diffusivity
 
    !---------------------------Local storage-------------------------------
 
@@ -2438,6 +2452,17 @@ subroutine gw_rdg_calc( &
    k_dyn_orog_tot=0._r8
    egwdffi_orog_tot=0._r8
    var_gwt_orog_tot=0._r8
+   ! MMK array init
+   k_wave_new_orog_tot=0._r8
+   k_h_new_orog_tot=0._r8
+   k_c_tot_orog_tot=0._r8
+   k_h_tot_orog_tot=0._r8
+   kappa_tilde=0._r8 
+   k_m_m=0._r8
+   k_h_m=0._r8
+   k_h_new_orog_local=0._r8
+   k_c_tot_orog_local=0._r8
+   k_h_tot_orog_local=0._r8
 
    do nn = 1, n_rdg
   
@@ -2479,9 +2504,10 @@ subroutine gw_rdg_calc( &
 								
         call effective_gw_diffusivity(ncol, band_oro, wavelength_mid, p, dt,     &
              t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
-             vramp, k_wave_orog, & ! MMK START TODO make orographic.
-             !k_wave_new, k_h_new, k_c_tot, k_h_tot, &
-             !kappa_tilde, k_m_m, k_h_m, & ! MMK END
+             vramp, k_wave_orog, & ! MMK START
+             k_wave_new_orog_local, k_h_new_orog_local, &
+             k_c_tot_orog_local, k_h_tot_orog_local, &
+             kappa_tilde, k_m_m, k_h_m, & ! MMK END
              k_e_orog, zm, zi, var_gwt_orog, k_dyn_orog,     &
 	     dttdf, ttgw, qtgw, lat, lon, kwvrdg=kwvrdg)
 
@@ -2490,12 +2516,19 @@ subroutine gw_rdg_calc( &
            k_wave_orog_tot(:,k) = k_wave_orog_tot(:,k) + k_wave_orog(:,k)
  	   k_e_orog_tot(:,k) = k_e_orog_tot(:,k) + k_e_orog(:,k)
 	   var_gwt_orog_tot(:,k) = var_gwt_orog_tot(:,k) +  var_gwt_orog(:,k)
+      ! MMK
+      k_wave_new_orog_tot(:,k) = k_wave_new_orog_tot(:,k) + k_wave_new_orog_local(:,k)
+      k_h_new_orog_tot(:,k) = k_h_new_orog_tot(:,k) + k_h_new_orog_local(:,k)
+
          enddo
        
    	 !  add up diffusion coefficients  from all ridges
          do k = 1, pver+1
           k_dyn_orog_tot(:,k) = k_dyn_orog_tot(:,k) + k_dyn_orog(:,k)
           egwdffi_orog_tot(:,k) = egwdffi_orog_tot(:,k) + egwdffi(:,k)
+          ! MMK
+          k_c_tot_orog_tot(:,k) = k_c_tot_orog_tot(:,k) k_c_tot_orog_local(:,k)
+          k_h_tot_orog_tot(:,k) = k_h_tot_orog_tot(:,k) k_h_tot_orog_local(:,k)
          end do
 
       if (nn <= 6) then
@@ -2504,6 +2537,7 @@ subroutine gw_rdg_calc( &
          call outfld('k_e_orog'//cn//'RDG'//trim(type),  k_e_orog,    ncol, lchnk) 
 	 call outfld('k_dyn_orog'//cn//'RDG'//trim(type),  k_dyn_orog,    ncol, lchnk) 
 	 call outfld('EKGW_orog'//cn//'RDG'//trim(type),  egwdffi,    ncol, lchnk)   
+    ! TODO MMK new locals
       end if
 
      ELSE
@@ -2595,7 +2629,7 @@ subroutine gw_rdg_calc( &
      call outfld ('k_e_orog_tot_'//trim(type), k_e_orog_tot, ncol, lchnk)
      call outfld ('k_dyn_orog_tot_'//trim(type), k_dyn_orog_tot, ncol, lchnk)
      call outfld ('EKGW_orog_tot_'//trim(type),  egwdffi_orog_tot,    ncol, lchnk)
-   ! TODO MMK tots
+   ! TODO MMK new orog tots
    endif
 
    deallocate(tau, gwut, c)
