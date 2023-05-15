@@ -1097,24 +1097,23 @@ subroutine gw_init()
 
  if (use_gw_chem) then 			!MVG
      !total fields across the full GW spectrum 
-     call addfld ('k_wave_tot',(/ 'lev' /), 'A','m2/s', &
+     call addfld ('k_wave_tot',(/ 'ilev' /), 'A','m2/s', &
           'Effective wave diffusivity (over entire spectrum)')
-     call addfld ('k_e_tot', (/ 'lev' /), 'A','m2/s', &
+     call addfld ('k_e_tot', (/ 'ilev' /), 'A','m2/s', &
           'Wave energy flux (over entire spectrum)')
      call addfld ('k_dyn_tot',(/ 'ilev' /), 'A','m2/s', &
           'Total dynamical diffusivity (over entire spectrum)')
      call addfld ('var_gwt_tot', (/ 'lev' /), 'A','K2', &
           'Variance of gw temperature perturbation')
      ! MMK 
-      call addfld ('k_wave_new_tot',(/ 'lev' /), 'A','m2/s', &
+      call addfld ('k_wave_new_tot',(/ 'ilev' /), 'A','m2/s', &
           'Effective wave diffusivity (over entire spectrum)')
-      call addfld ('k_h_new_tot',(/ 'lev' /), 'A','m2/s', &
+      call addfld ('k_h_new_tot',(/ 'ilev' /), 'A','m2/s', &
           'Effective thermal diffusivity (over entire spectrum)')
       call addfld ('k_c_ttot',(/ 'ilev' /), 'A','m2/s', &
           'Total dynamical diffusivity (over entire spectrum)')
       call addfld ('k_h_ttot',(/ 'ilev' /), 'A','m2/s', &
           'Total thermal diffusivity (over entire spectrum)')
-          ! TODOQ - put kappa_tilde, k_m_m, and k_h_m
  end if
 
 end subroutine gw_init
@@ -1359,7 +1358,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   real(r8), allocatable :: ro_adjust(:,:,:)
 
   ! pbuf fields
-  ! Molecular diffusivity
+  ! Molecular thermal diffusivity
   real(r8), pointer :: kvt_in(:,:)
   real(r8) :: kvtt(state%ncol,pver+1)
 
@@ -1445,34 +1444,38 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   real(r8) :: zi(state%ncol,pver+1)
 
   !variables for gw_chem  !MVG 
-  real(r8) :: k_wave_tot(state%ncol,pver) !total over entire wave spectrum and for all GW sources 
-  real(r8) :: k_wave_new_tot(state%ncol,pver) 
-  real(r8) :: k_h_new_tot(state%ncol,pver)
-  real(r8) :: k_e_tot(state%ncol,pver)
-  real(r8) :: var_gwt_tot(state%ncol,pver)
-  real(r8) :: k_dyn_tot(state%ncol,pver+1)
-  ! MMK new 
-  real(r8) :: k_c_ttot(state%ncol,pver+1)
-  real(r8) :: k_h_ttot(state%ncol,pver+1)
 
-  real(r8) :: k_wave(state%ncol,pver) !total over entire wave spectrum for each GW source (i.e. Beres and C&M)
-  real(r8) :: k_wave_new(state%ncol,pver) 
-  real(r8) :: k_h_new(state%ncol,pver)
-  real(r8) :: k_e(state%ncol,pver)
+  !total over entire wave spectrum and for all GW sources 
+  real(r8) :: k_wave_tot(state%ncol,pver+1) ! was originally pver (lev) and so were all the new MMK ones (for debug)
+  real(r8) :: k_e_tot(state%ncol,pver+1) ! was originally pver (lev)
+  real(r8) :: var_gwt_tot(state%ncol,pver) ! was originally pver (lev)
+  real(r8) :: k_dyn_tot(state%ncol,pver+1)
+  ! MMK new
+  real(r8) :: k_wave_new_tot(state%ncol,pver+1) 
+  real(r8) :: k_h_new_tot(state%ncol,pver+1)
+  real(r8) :: k_c_ttot(state%ncol,pver+1) ! Total constituent diffusivity for all GW sources (new k_dyn_tot)
+  real(r8) :: k_h_ttot(state%ncol,pver+1) ! Total heat diffusivity for all GW sources
+
+  !total over entire wave spectrum for each GW source (i.e. Beres and C&M)
+  real(r8) :: k_wave(state%ncol,pver+1) 
+  real(r8) :: k_e(state%ncol,pver+1)
   real(r8) :: var_gwt(state%ncol,pver) 
   real(r8) :: k_dyn(state%ncol,pver+1)
-  ! MMK new
-  real(r8) :: k_c_tot(state%ncol,pver+1)
-  real(r8) :: k_h_tot(state%ncol,pver+1)
+  ! MMK new 
+  real(r8) :: k_wave_new(state%ncol,pver+1) 
+  real(r8) :: k_h_new(state%ncol,pver+1)
+  real(r8) :: k_c_tot(state%ncol,pver+1) ! Total constituent diffusivity for a single GW source (new k_dyn)
+  real(r8) :: k_h_tot(state%ncol,pver+1) ! Total heat diffusivity for a single GW source
 
   !MMK START
-  ! Should be the same for every source
-  real(r8) :: kappa_tilde(state%ncol,pver) 
+  ! Should be slightly different for every source, as state is updated after every source
+  ! is considered. There should not however be a total for all sources.
+  real(r8) :: kappa_tilde(state%ncol,pver+1) 
 !   real(r8) :: psi_bar(state%ncol,pver) ! For when no longer tunable
   ! Molecular kinematic viscosity
-  real(r8) :: k_m_m(state%ncol,pver) ! Only here if need to calculate myself
+  real(r8) :: k_m_m(state%ncol,pver+1) ! Only here if need to calculate myself
   ! Molecular diffusivity of heat
-  real(r8) :: k_h_m(state%ncol,pver) ! Only here if need to calculate myself
+  real(r8) :: k_h_m(state%ncol,pver+1) ! Only here if need to calculate myself
   !MMK END
 
   !------------------------------------------------------------------------
@@ -1498,7 +1501,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   zi = state1%zi(:ncol,:)
 
   lq = .true.
-  call physics_ptend_init(ptend, state1%psetcols, "Gravity wave drag", &
+  call physics_ptend_init(ptend, statef1%psetcols, "Gravity wave drag", &
        ls=.true., lu=.true., lv=.true., lq=lq)
 
   ! Profiles of background state variables
@@ -3076,9 +3079,9 @@ subroutine gw_chem_addflds(prefix, scheme, band, history_defaults)
   ! 10 chars is enough for "BTAUXSn32"
   !-----------------------------------------------------------------------
 
-  call addfld (trim(prefix)//'_k_wave',(/ 'lev' /), 'A','m2/s', &
+  call addfld (trim(prefix)//'_k_wave',(/ 'ilev' /), 'A','m2/s', & ! was originally lev MMK
        trim(scheme)//' Effective wave diffusivity')
-  call addfld (trim(prefix)//'_k_e',(/ 'lev' /), 'A','m2/s', &
+  call addfld (trim(prefix)//'_k_e',(/ 'ilev' /), 'A','m2/s', & ! was originally lev MMK
        trim(scheme)//' Wave energy flux')
   call addfld (trim(prefix)//'_k_dyn',(/ 'ilev' /), 'A','m2/s', &
        trim(scheme)//' Total dynamical diffusivity')
@@ -3086,6 +3089,38 @@ subroutine gw_chem_addflds(prefix, scheme, band, history_defaults)
   call addfld (trim(prefix)//'_EKGW',(/ 'ilev' /), 'A','m2/s', &
        trim(scheme)//' Effective Kzz due to diffusion by gravity waves')
 
+! MMK TAG
+  call addfld (trim(prefix)//'_k_wave_new',(/ 'ilev' /), 'A','m2/s', &
+       trim(scheme)//' MMK effective wave diffusivity')
+  call addfld (trim(prefix)//'_k_h_new',(/ 'ilev' /), 'A','m2/s', &
+       trim(scheme)//' MMK effective thermal diffusivity for heat')
+  call addfld (trim(prefix)//'_k_c_tot',(/ 'ilev' /), 'A','m2/s', &
+       trim(scheme)//' MMK total dynamical diffusivity for constituents')
+  call addfld (trim(prefix)//'_k_h_tot',(/ 'ilev' /), 'A','m2/s', &
+       trim(scheme)//' MMK total heat diffusivity for potential temperature')
+  call addfld (trim(prefix)//'_kappa_tilde',(/ 'ilev' /), 'A','1', &
+       trim(scheme)//' MMK kappa_tilde used in compressibility parameter')
+  call addfld (trim(prefix)//'_k_m_m',(/ 'ilev' /), 'A','m2/s', &
+       trim(scheme)//' MMK Molecular kinematic viscosity')
+  call addfld (trim(prefix)//'_k_h_m',(/ 'ilev' /), 'A','m2/s', &
+       trim(scheme)//' MMK Molecular diffusivity ')
+
+
+  ! MMK new 
+  real(r8) :: k_wave_new(state%ncol,pver+1) 
+  real(r8) :: k_h_new(state%ncol,pver+1)
+  real(r8) :: k_c_tot(state%ncol,pver+1) ! Total constituent diffusivity for a single GW source (new k_dyn)
+  real(r8) :: k_h_tot(state%ncol,pver+1) ! Total heat diffusivity for a single GW source
+
+  !MMK START
+  ! Should be slightly different for every source, as state is updated after every source
+  ! is considered. There should not however be a total for all sources.
+  real(r8) :: kappa_tilde(state%ncol,pver+1) 
+!   real(r8) :: psi_bar(state%ncol,pver) ! For when no longer tunable
+  ! Molecular kinematic viscosity
+  real(r8) :: k_m_m(state%ncol,pver+1) ! Only here if need to calculate myself
+  ! Molecular diffusivity of heat
+  real(r8) :: k_h_m(state%ncol,pver+1) ! Only here if need to calculate myself
 end subroutine gw_chem_addflds
 
 !==========================================================================

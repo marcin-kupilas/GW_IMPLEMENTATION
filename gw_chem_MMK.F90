@@ -617,7 +617,7 @@ enddo
      kappa_tilde(i) = (gamma_ad + dtdz(i))/(g_R + dtdz(i)) ! MMK TODO declare var and field
 
      !MMK Compute molecular diffusivity for heat
-     ! k_h_m(i) = Some value provided by WACCM
+     ! k_h_m(i) = kvtt(i) 
 
      ! or 
 
@@ -629,7 +629,7 @@ enddo
      ! pr = prndl ?
      ! Currently pr = 1 - set in local storage definition
      ! Calculate molecular kinematic viscosity
-     k_m_m(i) = 3.55*(10**-7)*ti(i)**(2/3)/rhoi(i) ! TODO declare k_m_m, TODO declare field
+     k_m_m(i) = 3.55*(10**-7)*ti(i)**(2/3)/rhoi(i) 
      ! Calculate molecular diffusivity of heat
      k_h_m(i) = pr*k_m_m(i) ! Molecular diffusivity for heat
 
