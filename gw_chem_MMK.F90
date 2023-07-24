@@ -34,7 +34,8 @@ contains
 subroutine effective_gw_diffusivity (ncol, band, lambda_h, p, dt, t, rhoi, nm, ni,        &
            c_speed, tau, egwdffi, ubi, q, dse, dttke, tend_level, vramp, k_wave,          &  
            k_wave_new, k_h_new, k_dyn_c, k_dyn_h, & !MMK
-           kappa_tilde, k_m_m, k_h_m, & ! MMK
+           kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, & 
+           kvtt, gw_prndl, lchnk, & ! MMK END
            k_e, zm, zi, var_t, k_dyn, dttdf, ttgw, qtgw, lat, lon, kwvrdg)
 !-----------------------------------------------------------------------
 ! Call function to compute k_wave (wave effective diffusivity), k_e (wave energy flux) and 
@@ -63,6 +64,8 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
 !------------------------------Arguments--------------------------------
   ! Column dimension.
   integer, intent(in) :: ncol
+  ! Integer chunk identifier for debugging
+  integer, intent(in), optional :: lchnk ! MMK optional for debugging
   ! band of phase speeds c within which waves are emitted
   type(GWBand), intent(in) :: band
   ! horizontal wavelength
@@ -119,23 +122,29 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
   ! Variance of gw temperature perturbations
   real(r8), intent(out) :: var_t(ncol,pver)
   ! Instability parameter
-  real(r8) :: xi(ncol,pver)      
+  real(r8) :: xi(ncol,pver+1)      
 
   ! MMK Arguments
+  ! Gw Prandtl Number
+  real(r8), intent(in) :: gw_prndl
+  ! WACCM "Molecular Thermal Diffusivity"
+  real(r8), intent(in) :: kvtt(ncol,pver+1)
   ! New effective wave diffusivity k_wave_new
-  real(r8), intent(out) :: k_wave_new(ncol, pver+1)
+  real(r8), intent(out) :: k_wave_new(ncol, pver)
   ! New thermal diffusivity k_h_new
-  real(r8), intent(out) :: k_h_new(ncol, pver+1)
+  real(r8), intent(out) :: k_h_new(ncol, pver)
   ! New total constituent diffusivity 
-  real(r8), intent(out) :: k_dyn_c(ncol, pver+1) ! TODOQ - still unsure why this and k_dyn_h is pver+1
+  real(r8), intent(out) :: k_dyn_c(ncol, pver+1)
   ! New total thermal diffusivity 
   real(r8), intent(out) :: k_dyn_h(ncol, pver+1)
   ! Kappa tilde - no official name
-  real(r8), intent(out) :: kappa_tilde(ncol, pver+1)
+  real(r8), intent(out) :: kappa_tilde(ncol, pver)
   ! Molecular kinematic viscosity
   real(r8), intent(out) :: k_m_m(ncol, pver+1)
   ! Molecular diffusivity for heat
   real(r8), intent(out) :: k_h_m(ncol, pver+1)
+  ! Molecular diffusivity of heat WACCM for testing
+  real(r8), intent(out) :: k_h_m_waccm(ncol, pver+1) ! = gw_prndl*kvtt in compute_kwave
 
   !---------------------------Local storage-------------------------------
 
@@ -218,6 +227,7 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
   kappa_tilde = 0._r8
   k_m_m = 0._r8
   k_h_m = 0._r8
+  k_h_m_waccm = 0._r8
   ! MMK END
   var_t=0._r8
 
@@ -280,17 +290,17 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
         if (present(kwvrdg)) then          
   		call compute_kwave (ncol, band, lambda_h, ti(:,k), rhoi(:,k), brnt_v(:,k-1), egwdffi(:,k),     &
            	     cp_r, gamma_ad, coriolis_f, inertial_prd, c_speed, ubi(:,k), mom_flux(:,:,k), kwave_level,  &
-           	     dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), &
                  k_wave_new(:,k), k_h_new(:,k), & ! MMK
-                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), & ! MMK
-                 k_wave(:,k), lambda_wave(:,:,k), kwvrdg=kwvrdg)      
+                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), k_h_m_waccm(:,k), & 
+                 kvtt(:,k), gw_prndl, & ! MMK END TODO sizes
+                 dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), k_wave(:,k), lambda_wave(:,:,k), kwvrdg=kwvrdg)      
  	else
   		call compute_kwave (ncol, band, lambda_h, ti(:,k), rhoi(:,k), brnt_v(:,k-1), egwdffi(:,k),     &
            	     cp_r, gamma_ad, coriolis_f, inertial_prd, c_speed, ubi(:,k), mom_flux(:,:,k), kwave_level,  &
-           	     dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), &
                  k_wave_new(:,k), k_h_new(:,k), & ! MMK
-                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), & ! MMK
-                 k_wave(:,k), lambda_wave(:,:,k)) 
+                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), k_h_m_waccm(:,k), & 
+                 kvtt(:,k), gw_prndl, & ! MMK END 
+                 dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), k_wave(:,k), lambda_wave(:,:,k)) 
  	endif
 
  ELSE
@@ -308,17 +318,17 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
         if (present(kwvrdg)) then          
   		call compute_kwave (ncol, band, lambda_h, ti(:,k), rhoi(:,k), brnt_v(:,k-1), egwdffi(:,k),     &
            	     cp_r, gamma_ad, coriolis_f, inertial_prd, c_speed, ubi(:,k), mom_flux(:,:,k), kwave_level,  &
-           	     dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), &
                  k_wave_new(:,k), k_h_new(:,k), & ! MMK
-                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), & ! MMK
-                 k_wave(:,k), lambda_wave(:,:,k), kwvrdg=kwvrdg)          
+                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), k_h_m_waccm(:,k), & 
+                 kvtt(:,k), gw_prndl, & ! MMK END
+                 dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), k_wave(:,k), lambda_wave(:,:,k), kwvrdg=kwvrdg)          
  	else
   		call compute_kwave (ncol, band, lambda_h, ti(:,k), rhoi(:,k), brnt_v(:,k-1), egwdffi(:,k),     &
            	     cp_r, gamma_ad, coriolis_f, inertial_prd, c_speed, ubi(:,k), mom_flux(:,:,k), kwave_level,  &
-           	     dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), &
                  k_wave_new(:,k), k_h_new(:,k), & ! MMK
-                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), & ! MMK
-                 k_wave(:,k), lambda_wave(:,:,k)) 
+                 kappa_tilde(:,k), k_m_m(:,k), k_h_m(:,k), k_h_m_waccm(:,k), & 
+                 kvtt(:,k), gw_prndl, & ! MMK END
+                 dtdz(:,k-1), var_t(:,k), k_e(:,k), xi(:,k), k_wave(:,k), lambda_wave(:,:,k)) 
  	endif 
 
    ENDIF
@@ -335,6 +345,8 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
   kappa_tilde(:,1)=0._r8
   k_m_m(:,1)=0._r8
   k_h_m(:,1)=0._r8
+  k_h_m_waccm(:,1)=0._r8
+
   !psi_bar(:,1)=0._r8 ! MMK Uncomment if using
   ! MMK END
   var_t(:,1)=0._r8
@@ -347,6 +359,7 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
   kappa_tilde(:,kwave_level:)=0._r8
   k_m_m(:,kwave_level:)=0._r8
   k_h_m(:,kwave_level:)=0._r8
+  k_h_m_waccm(:,kwave_level:)=0._r8
   !psi_bar(:,kwave_level:)=0._r8 ! MMK Uncomment if using
   ! MMK END
   var_t(:,kwave_level:)=0._r8
@@ -367,8 +380,8 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
   !define K_dyn
    !where (k_wave .ne. 0._r8)
     where (k_wave_new .ne. 0._r8)
-         k_dyn=k_wave + (1._r8+xi)*egwdffi
-         k_dyn_c = (k_wave_new + egwdffi)(1._r8+xi) ! MMK
+         k_dyn=k_wave + (1._r8+xi)*egwdffi ! OLD
+         k_dyn_c = (k_wave_new + egwdffi)*(1._r8+xi) ! MMK
    elsewhere
          k_dyn=egwdffi
          k_dyn_c=egwdffi
@@ -380,10 +393,8 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
     !set max value for k_dyn based on egwdffi_max (where Kzz is non zero)
     if (egwdffi_max(i) .ne. 0.) then
      do k=1,pver+1
-	k_dyn(i,k)=min(k_dyn(i,k), egwdffi_max(i)) ! MMK: kdyn can be bigger than kzz, but not bigger than maximum kzz in column
-	k_dyn_c(i,k)=min(k_dyn_c(i,k), egwdffi_max(i)) ! MMK
-  ! k_h_t = 
-
+      k_dyn(i,k)=min(k_dyn(i,k), egwdffi_max(i)) ! MMK: kdyn can be bigger than kzz, but not bigger than maximum kzz in column
+      k_dyn_c(i,k)=min(k_dyn_c(i,k), egwdffi_max(i)) ! MMK
      enddo 
     endif  
   enddo
@@ -391,7 +402,7 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
    ! Decompose the diffusion matrix using k_dyn ! MMK - will in future use k_dyn_c 
    ! calculated from k_wave_new
    decomp = fin_vol_lu_decomp(dt, p%section([1,ncol],[ktop,kbot_tend]), &
-        ! coef_q_diff=k_dyn(:,ktop:kbot_tend+1)*dpidz_sq(:,ktop:kbot_tend+1))
+        ! coef_q_diff=k_dyn(:,ktop:kbot_tend+1)*dpidz_sq(:,ktop:kbot_tend+1)) ! OLD
         coef_q_diff=k_dyn_c(:,ktop:kbot_tend+1)*dpidz_sq(:,ktop:kbot_tend+1)) ! MMK
 
 
@@ -406,15 +417,23 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
 
    ! MMK TEMPERATURE START
 
-   ! define k_dyn_h and k_h_t
-    k_dyn_h = (k_h_new + egwdffi)(1._r8+xi)
-    ! k_h_t = (k_h_new + egwdffi)(1._r8+xi) + k_h_m*xi
+   ! define k_dyn_h
+    k_dyn_h = (k_h_new + egwdffi)*(1._r8+xi)
 
-   ! Impose any final conditions on k_dyn_h
+    ! MMK Impose any final conditions on k_dyn_h
+
+    !ensure k_dyn_h is less than or equal to k_dyn_c
+    do i=1,ncol
+      do k=1,pver+1
+        if (k_dyn_h(i,k) >= k_dyn_c(i,k)) then
+          k_dyn_h(i,k) = k_dyn_c(i,k)
+        endif
+      enddo  
+    enddo 
 
    ! Decompose the diffusion matrix using k_dyn_h
-   ! TODOQ - should this step be done differently?
     decomp = fin_vol_lu_decomp(dt, p%section([1,ncol],[ktop,kbot_tend]), & 
+            ! coef_q_diff=k_dyn(:,ktop:kbot_tend+1)*dpidz_sq(:,ktop:kbot_tend+1)) ! OLD
     coef_q_diff=k_dyn_h(:,ktop:kbot_tend+1)*dpidz_sq(:,ktop:kbot_tend+1))  
 
      ! Calculate tendency from diffusing dry static energy (dttdf).
@@ -431,13 +450,24 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
 
     ! MMK TEMPERATURE END
 
-    ! MMK write out diagnostics to atm.log
-    ! k_wave
-    ! k_wave_new
-    ! k_h_new
-    ! k_dyn_c
-    ! k_dyn_h
-    ! kappa_tilde
+    ! MMK write out diagnostics to atm.log    
+    ! IF (masterproc) then
+    !   if (lchnk==51) then
+    !     write(iulog,*) 'MMK DEBUG lchnk', lchnk
+    !     write(iulog,*)  'ncol, lev, k_e, k_wave, kzz, k_dyn, k_wave_new, k_h_new, k_dyn_c, k_dyn_h, kappa_tilde, k_h_m'
+    !     do i=1,ncol
+    !       do k = 1, pver+1
+    !       ! if ((k .gt. 10 .and. k .lt. 71) .and. (k_wave(i,k) .gt. 0)) then
+    !         ! if (i == 5) then
+    !           if (i == 16) then
+    !           write (iulog,*) i, k, k_e(i,k), k_wave(i,k), &
+    !                           egwdffi(i,k), k_dyn(i,k), &
+    !                           k_wave_new(i,k), k_h_new(i,k), k_dyn_c(i,k), k_dyn_h(i,k), kappa_tilde(i,k), k_h_m(i,k) ! MMK
+    !         endif  
+    !       enddo
+    !     enddo
+    !   endif
+    ! ENDIF
 
 
     ! Deallocate decomp.
@@ -451,7 +481,8 @@ end subroutine effective_gw_diffusivity
 subroutine compute_kwave (ncol, band, lambda_h, ti, rhoi, brnt_v, egwdffi,     &
            	     cp_r, gamma_ad, coriolis_f, inertial_prd, c_speed, ubi, mom_flux, kwave_level,  &
                  k_wave_new, k_h_new, & ! MMK
-                 kappa_tilde, k_m_m, k_h_m, & ! MMK
+                 kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, &
+                 kvtt, gw_prndl, & ! MMK
            	     dtdz, var_t, k_e, xi, k_wave, lambda_wave, kwvrdg)  
 
 !--------------------------------------------------------------------------------------------------
@@ -500,7 +531,12 @@ use physconst, only: gravit
   real(r8), intent(out) :: k_wave(ncol)
   ! Damping factor for tau profile
   real(r8), intent(out) :: lambda_wave(ncol,-band%ngwv:band%ngwv)
+
   ! MMK declare arguments
+  ! Gw Prandtl Number
+  real(r8), intent(in) :: gw_prndl
+  ! WACCM "Molecular Thermal Diffusivity"
+  real(r8), intent(in) :: kvtt(ncol)
   ! New effective wave diffusivity k_wave_new
   real(r8), intent(out) :: k_wave_new(ncol)
   ! New thermal diffusivity k_h_new
@@ -511,6 +547,8 @@ use physconst, only: gravit
   real(r8), intent(out) :: k_m_m(ncol)
   ! Molecular diffusivity for heat
   real(r8), intent(out) :: k_h_m(ncol)
+ ! Molecular diffusivity of heat WACCM for testing
+  real(r8), intent(out) :: k_h_m_waccm(ncol) ! = gw_prndl*kvtt in compute_kwave
 
   
   !---------------------------Local storage-------------------------------
@@ -548,16 +586,16 @@ use physconst, only: gravit
   ! MMK local storage
   ! Compressibility parameter, initially tunable
   real(r8), parameter :: psi_bar = 0.2 
-  ! Tunable Prandtl number
-  real(r8), parameter :: pr = 1
+  ! Tunable Prandtl number 
+  real(r8), parameter :: pr = 1 !(use prndl? MMK)
 
   ! MMK for computing kappa_tilde
   ! Gas consant for dry air (m2 K-1 s-2)
   real(r8), parameter :: R_air = 287._r8
   ! g/R ratio
-  real(r8), parameter :: g_R
-  !MMK compute g/R ratio
+  real(r8) :: g_R 
   g_R = gravit/R_air
+
 
 
 !compute gw intrinsic speed, frequency and vertical wavenumber
@@ -625,24 +663,26 @@ enddo
      normalized_varT(i)=var_t(i)/lapse_rate_sq(i)
      f_n(i)=1.-(4./3.)*sqrt(coriolis_f(i)/brnt_v(i))
 
-     kappa_tilde(i) = (gamma_ad + dtdz(i))/(g_R + dtdz(i)) ! MMK TODO declare var and field
+     kappa_tilde(i) = (gamma_ad + dtdz(i))/(g_R + dtdz(i)) ! MMK
 
      !MMK Compute molecular diffusivity for heat
-     ! k_h_m(i) = kvtt(i) 
+     ! 1. k_h_m(i) = kvtt(i) 
 
      ! or 
 
-     ! Following CAM Scientific Guide 
+     ! 2. Following CAM Scientific Guide 
      !https://ncar.github.io/CAM/doc/build/html/cam6_scientific_guide/extensions.html#:~:text=be%20omitted%20here.-,7.6.2.1.%20molecular%20viscosity%20and%20diffusivity,-The%20empirical%20formula
 
-     ! Calculate Prandtl Number
-     ! pr(i) = ?   
-     ! pr = prndl ?
-     ! Currently pr = 1 - set in local storage definition
+      ! Calculate Prandtl Number (use prndl? Currently using local pr = 1 ) ! MMK
+      ! 2.1 pr(i) = ?   
+      ! 2.2 pr = prndl ?
+      ! 2.3 Currently pr = 1 - set in local storage definition of MOD:gw_chem--SR:compute_kwave
+
      ! Calculate molecular kinematic viscosity
      k_m_m(i) = 3.55*(10**-7)*ti(i)**(2/3)/rhoi(i) 
      ! Calculate molecular diffusivity of heat
-     k_h_m(i) = pr*k_m_m(i) ! Molecular diffusivity for heat
+     k_h_m(i) = gw_prndl*k_m_m(i) ! Molecular diffusivity for heat
+     k_h_m_waccm(i) = gw_prndl*kvtt(i)
 
 
      !impose constraint on normalized temperature varaiance so that 0 < xi < 1
@@ -660,28 +700,26 @@ enddo
      endif     
   enddo
 
-
 !Finally compute k_wave
   one_min_xi(:) =1.-xi(:)    
   k_wave(:)=(1./one_min_xi(:))*( xi(:)*egwdffi(:)+ & 
-                  (cp_r-1.)*k_e(:) ) ! MMK: OLD MVG
+                  (cp_r-1.)*k_e(:) ) ! MVG
 
-!Finally compute k_wave_new MMK
-  k_wave_new(:)=(cp_r-1.)*k_e(:) + &
-                 (xi(:)/(psi_bar/kappa_tilde(:)+1.-2.*xi(:)))*((cp_r-1.)*k_e(:)+egwdffi(:)+k_h_m(:)) 
 
 !Finally compute k_h_new MMK
   k_h_new(:)=(xi(:)/(psi_bar/kappa_tilde(:)+1.-2.*xi(:)))*((cp_r-1.)*k_e(:)+egwdffi(:) + k_h_m(:))
+  
+!Finally compute k_wave_new MMK
+  k_wave_new(:)=(cp_r-1.)*k_e(:) + k_h_new(:)
+
 
  !Compute the damping factor (lambda_wave) to define the profile of tau_dmp in the main program
   do l = -band%ngwv, band%ngwv
    ubic(:,l)=ubi(:)-c_speed(:,l)
    !lambda_wave(:,l)= (brnt_v(:)**3./(band%kwv*ubic(:,l)**4.))*(k_wave(:)+egwdffi(:))
   lambda_wave(:,l)= (brnt_v(:)**3./(band%kwv*ubic(:,l)**4.))*(k_wave_new(:)+egwdffi(:)) ! MMK
-  ! MMK TODOQDONE - do I need to damp thermal diffusivity k_dyn_h? MVG: for now just leave as this and keep an eye on
+  ! (PARTIALLY ANSWERED)MMK TODOQ - do I need to damp thermal diffusivity k_dyn_h? MVG: for now just leave as this and keep an eye on it
   enddo
-
-
 
 end subroutine compute_kwave
 
