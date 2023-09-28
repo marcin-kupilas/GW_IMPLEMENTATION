@@ -313,7 +313,7 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
     !set max value for k_dyn based on egwdffi_max (where Kzz is non zero)
     if (egwdffi_max(i) .ne. 0.) then
      do k=1,pver+1
-	k_dyn(i,k)=min(k_dyn(i,k), egwdffi_max(i)) ! MMK: kdyn can be bigger than kzz, but not bigger than maximum kzz in column
+      k_dyn(i,k)=min(k_dyn(i,k), egwdffi_max(i)) 
      enddo 
     endif  
   enddo
@@ -495,7 +495,6 @@ do i=1,ncol
 enddo 
 
  !Compute K_e (energy flux due to waves) and xi (instability parameter)
- !Compute k_tilde (), psi_bar and k_h_m MMK
  do i=1,ncol
 
      lapse_rate_sq(i)= (gamma_ad+dtdz(i))**2. 
@@ -527,8 +526,6 @@ enddo
    ubic(:,l)=ubi(:)-c_speed(:,l)
    lambda_wave(:,l)= (brnt_v(:)**3./(band%kwv*ubic(:,l)**4.))*(k_wave(:)+egwdffi(:))
   enddo
-
-
 
 end subroutine compute_kwave
 
