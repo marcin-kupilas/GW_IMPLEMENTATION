@@ -572,6 +572,7 @@ use physconst, only: gravit
   real(r8), parameter :: psi_bar = 0.2 
   ! Tunable Prandtl number 
   real(r8), parameter :: pr = 1 !(use gw_prndl? MMK)
+  real(r8), parameter :: eta = 8.4 ! MMK eta for proxy
 
   ! MMK for computing kappa_tilde
   ! Gas consant for dry air (m2 K-1 s-2)
@@ -693,7 +694,8 @@ enddo
 
 
 !Finally compute k_h_new MMK
-  k_h_new(:)=(xi(:)/(psi_bar/kappa_tilde(:)+1.-2.*xi(:)))*((cp_r-1.)*k_e(:)+egwdffi(:) + k_h_m(:))
+  ! k_h_new(:)=(xi(:)/(psi_bar/kappa_tilde(:)+1.-2.*xi(:)))*((cp_r-1.)*k_e(:)+egwdffi(:) + k_h_m(:)) ! MMK No proxy
+  k_h_new(:)= eta*kappa_tilde(:)*xi(:)*((cp_r-1.)*k_e(:)+egwdffi(:) + k_h_m(:))! MMK Proxy
   
 !Finally compute k_wave_new MMK
   k_wave_new(:)=(cp_r-1.)*k_e(:) + k_h_new(:)
