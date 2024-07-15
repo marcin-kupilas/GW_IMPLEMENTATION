@@ -572,7 +572,9 @@ use physconst, only: gravit
   real(r8), parameter :: psi_bar = 0.2 
   ! Tunable Prandtl number 
   real(r8), parameter :: pr = 1 !(use gw_prndl? MMK)
-  real(r8), parameter :: eta = 8.4 ! MMK eta for proxy
+  real(r8), parameter :: eta = 8.4 ! MMK - tunable parameter
+  real(r8), parameter :: psi_bar_norm = 0.175 ! MMK - tunable parameter
+  ! only use with k_h_new using psi_bar_norm - comment out other k_h_new around lines 700
 
   ! MMK for computing kappa_tilde
   ! Gas consant for dry air (m2 K-1 s-2)
@@ -668,7 +670,7 @@ enddo
      k_m_m(i) = 3.55*(10**-7)*ti(i)**(2/3)/rhoi(i) 
      ! Calculate molecular diffusivity of heat
      k_h_m(i) = gw_prndl*k_m_m(i) ! Molecular diffusivity for heat
-     k_h_m_waccm(i) = gw_prndl*kvtt(i)
+    !  k_h_m_waccm(i) = gw_prndl*kvtt(i)
 
 
      !impose constraint on normalized temperature varaiance so that 0 < xi < 1
@@ -694,8 +696,9 @@ enddo
 
 
 !Finally compute k_h_new MMK
-  ! k_h_new(:)=(xi(:)/(psi_bar/kappa_tilde(:)+1.-2.*xi(:)))*((cp_r-1.)*k_e(:)+egwdffi(:) + k_h_m(:)) ! MMK No proxy
-  k_h_new(:)= eta*kappa_tilde(:)*xi(:)*((cp_r-1.)*k_e(:)+egwdffi(:) + k_h_m(:))! MMK Proxy
+  ! k_h_new(:)=(xi(:)/(psi_bar/kappa_tilde(:)+1.-2.*xi(:)))*((cp_r-1.)*k_e(:) + egwdffi(:) + k_h_m(:)) ! MMK No proxy
+  ! k_h_new(:)= eta*kappa_tilde(:)*xi(:)*((cp_r-1.)*k_e(:) + egwdffi(:) + k_h_m(:))! MMK Proxy
+  k_h_new(:) = ((eta*kappa_tilde(:)*xi(:))/(psi_bar_norm*(1. - kappa_tilde(:)) + (1. - 2.*xi(:))*kappa_tilde(:)))*((cp_r-1.)*k_e(:) + egwdffi(:) + k_h_m(:))! MMK using psi_bar_norm
   
 !Finally compute k_wave_new MMK
   k_wave_new(:)=(cp_r-1.)*k_e(:) + k_h_new(:)
