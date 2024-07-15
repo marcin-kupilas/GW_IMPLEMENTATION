@@ -1462,8 +1462,8 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   ! MMK new total for all GW sources
   real(r8) :: k_wave_new_tot(state%ncol,pver) !  Wave-induced Constituent Diffusivity
   real(r8) :: k_h_new_tot(state%ncol,pver) ! Wave-Induced Thermal Diffusivity
-  real(r8) :: k_dyn_c_tot(state%ncol,pver+1) ! "dynamical" diffusivity for constituents
-  real(r8) :: k_dyn_h_tot(state%ncol,pver+1) ! "dynamical" heat diffusivity for potential temperature 
+  real(r8) :: k_dyn_c_tot(state%ncol,pver+1) ! Total "dynamical" diffusivity for constituents
+  real(r8) :: k_dyn_h_tot(state%ncol,pver+1) ! Total "dynamical" heat diffusivity for potential temperature 
 
   real(r8) :: k_wave(state%ncol,pver) !total over entire wave spectrum for each GW source (i.e. Beres and C&M)
   real(r8) :: k_e(state%ncol,pver)
@@ -1472,8 +1472,8 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   ! MMK new 
   real(r8) :: k_wave_new(state%ncol,pver)!  Wave-Induced Constituent Diffusivity for a single GW source
   real(r8) :: k_h_new(state%ncol,pver)   ! Wave-Induced Thermal Diffusivity for a single GW source
-  real(r8) :: k_dyn_c(state%ncol,pver+1) ! Total constituent diffusivity for a single GW source 
-  real(r8) :: k_dyn_h(state%ncol,pver+1) ! Total heat diffusivity for a single GW source
+  real(r8) :: k_dyn_c(state%ncol,pver+1) ! Constituent diffusivity for a single GW source 
+  real(r8) :: k_dyn_h(state%ncol,pver+1) ! Heat diffusivity for a single GW source
 
   ! Should be slightly different for every source, as state is updated after every source
   ! is considered. There should not however be a total for all sources.
@@ -2340,11 +2340,6 @@ subroutine gw_rdg_calc( &
   real(r8), intent(out), optional :: k_h_new_orog_tot(ncol,pver) 
   real(r8), intent(out), optional :: k_dyn_c_orog_tot(ncol,pver+1)
   real(r8), intent(out), optional :: k_dyn_h_orog_tot(ncol,pver+1)
-  real(r8), intent(out), optional :: kappa_tilde(ncol,pver) 
-  real(r8), intent(out), optional :: k_m_m(ncol,pver+1) 
-  real(r8), intent(out), optional :: k_h_m(ncol,pver+1)
-  real(r8), intent(out), optional :: k_h_m_waccm(ncol,pver+1)
-  real(r8), intent(in), optional :: gw_prndl
 
   ! MVG local
   real(r8) :: var_gwt_orog(ncol,pver)
@@ -2356,6 +2351,11 @@ subroutine gw_rdg_calc( &
   real(r8) :: k_h_new_orog_local(ncol,pver)
   real(r8) :: k_dyn_c_orog_local(ncol,pver+1) ! MMK new k_dyn_orog
   real(r8) :: k_dyn_h_orog_local(ncol,pver+1) ! MMK new total thermal diffusivity
+  real(r8), intent(out), optional :: kappa_tilde(ncol,pver) 
+  real(r8), intent(out), optional :: k_m_m(ncol,pver+1) 
+  real(r8), intent(out), optional :: k_h_m(ncol,pver+1)
+  real(r8), intent(out), optional :: k_h_m_waccm(ncol,pver+1)
+  real(r8), intent(in), optional :: gw_prndl
 
    !---------------------------Local storage-------------------------------
 
