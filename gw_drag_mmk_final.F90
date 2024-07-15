@@ -207,6 +207,16 @@ module gw_drag
   logical :: gw_top_taper=.false.
   real(r8), pointer :: vramp(:)=>null()
 
+   ! MMK const tend
+   ! Indices corresponding to constituents used to acces tendencies in ptend%q(:,:,#_ndx)
+   integer :: o3_ndx  = -1   
+   integer :: no_ndx  = -1   
+   integer :: o_ndx   = -1   
+   integer :: co_ndx  = -1
+   integer :: co2_ndx = -1 
+   ! integer :: h2o_ndx = -1   
+   integer :: h_ndx   = -1
+
 !==========================================================================
 contains
 !==========================================================================
@@ -1066,7 +1076,23 @@ subroutine gw_init()
   call addfld ('TTGW', (/ 'lev' /), 'A', 'K/s',  &
        'T tendency - gravity wave drag')
 
-  ! Water budget terms.
+   ! MMK const tend total constituent tendency output.
+   call addfld ('OTGW', (/ 'lev' /), 'A', 'kg/kg/s',  & 
+         'O tendency - gravity wave drag')
+   call addfld ('NOTGW', (/ 'lev' /), 'A', 'kg/kg/s',  &
+         'NO tendency - gravity wave drag')
+   call addfld ('CO2TGW', (/ 'lev' /), 'A', 'kg/kg/s',  &
+         'CO2 tendency - gravity wave drag')
+   call addfld ('COTGW', (/ 'lev' /), 'A', 'kg/kg/s',  &
+         'CO tendency - gravity wave drag')
+   call addfld ('O3TGW', (/ 'lev' /), 'A', 'kg/kg/s',  &
+         'O3 tendency - gravity wave drag')
+   call addfld ('H2OTGW', (/ 'lev' /), 'A', 'kg/kg/s',  &
+         'H2O tendency - gravity wave drag')
+   call addfld ('HTGW', (/ 'lev' /), 'A', 'kg/kg/s',  &
+         'H tendency - gravity wave drag')
+ 
+ ! Water budget terms.
   call addfld('QTGW',(/ 'lev' /), 'A','kg/kg/s', &
        'Q tendency - gravity wave drag')
   call addfld('CLDLIQTGW',(/ 'lev' /), 'A','kg/kg/s', &
@@ -1084,6 +1110,15 @@ subroutine gw_init()
   ! Get indices to actually output the above.
   call cnst_get_ind("CLDLIQ", ixcldliq)
   call cnst_get_ind("CLDICE", ixcldice)
+  
+   ! MMK const tend
+   call cnst_get_ind('O', o_ndx)
+   call cnst_get_ind('NO', no_ndx)
+   call cnst_get_ind('CO2', co2_ndx)
+   call cnst_get_ind('CO', co_ndx)
+   call cnst_get_ind('O3', o3_ndx)
+   ! call cnst_get_ind('H2O', h2o_ndx)
+   call cnst_get_ind('H', h_ndx)
 
   if (gw_top_taper) then
      allocate(vramp(pver))
@@ -2242,6 +2277,16 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   call outfld('QTGW', ptend%q(:,:,1), pcols, lchnk)
   call outfld('CLDLIQTGW', ptend%q(:,:,ixcldliq), pcols, lchnk)
   call outfld('CLDICETGW', ptend%q(:,:,ixcldice), pcols, lchnk)
+  
+   ! MMK const tend
+   call outfld('OTGW', ptend%q(:,:,o_ndx), pcols, lchnk)
+   call outfld('NOTGW', ptend%q(:,:,no_ndx), pcols, lchnk)
+   call outfld('CO2TGW', ptend%q(:,:,co2_ndx), pcols, lchnk)
+   call outfld('COTGW', ptend%q(:,:,co_ndx), pcols, lchnk)
+   call outfld('O3TGW', ptend%q(:,:,o3_ndx), pcols, lchnk)
+   ! call outfld('H2OTGW', ptend%q(:,:,h2o_ndx), pcols, lchnk)
+   call outfld('HTGW', ptend%q(:,:,h_ndx), pcols, lchnk)
+
 
   ! Destroy objects.
   call p%finalize()
