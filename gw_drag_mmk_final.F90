@@ -1527,11 +1527,6 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 
   !------------------------------------------------------------------------
 
-
-   if (masterproc) then
-      write (iulog,*) "MMK gw_tend_start should only be called once (fail = call more than once)"
-   endif
-
   ! Make local copy of input state.
   call physics_state_copy(state, state1)
 
@@ -1769,10 +1764,14 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
           lapply_effgw_in=gw_apply_tndmax, use_gw_chem=use_gw_chem)
 
 								
-        call effective_gw_diffusivity(ncol, band_mid, wavelength_mid, p, dt,     &
-             t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
-             vramp, k_wave, k_e, zm, zi, var_gwt, k_dyn,		         &
-	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
+      call effective_gw_diffusivity(ncol, band_mid, wavelength_mid, p, dt,     &
+            t, rhoi, nm, ni, c, tau, egwdffi, ubi, q, dse, dttke, tend_level,   &
+            vramp, k_wave, & ! MMK START
+            k_wave_new, k_h_new, k_dyn_c, k_dyn_h, &
+            kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, & 
+            kvtt, gw_prndl, lchnk, & ! MMK END
+            k_e, zm, zi, var_gwt, k_dyn,		         &
+            dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
 
  	do k = 1, pver !add up contributions from all GWs sources
       k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
@@ -1786,6 +1785,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
 
         !write in history file
 	call gw_chem_outflds(beres_sh_pf, lchnk, ncol, k_wave, &
+                       k_wave_new, k_h_new, k_dyn_c, k_dyn_h, & ! MMK
              	  	     k_e, k_dyn, egwdffi)
 
      ELSE
