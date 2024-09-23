@@ -1,3 +1,4 @@
+# MVG NOTES:
 ###Run CESM2 with Kdyn code ###
 
 1) copy the following modules to cesm2/cases/../SourceMods/src.cam
@@ -56,17 +57,11 @@ N.B.: these are the cesm2.2 default options for  gw_drag_nl and phys_ctl_nl, the
 
 # MMK notes
 
-Any code mods to be used should be renamed appropriately to work with WACCM. E.g. gw_drag_mmk_final.F90 should be renamed
-to gw_drag.F90 before compiling.
-
-Any mmk mods need to be compiled with the *final_MVG.F90 mods.
+To use my mods, add all modules in this branch, and remove mmk_final from module names, 
+E.g. gw_drag_mmk_final.F90 should be renamed to gw_drag.F90 before compiling.
 
 
-- gw_drag_mmk_final - gw_drag module that works with new implementation of theory including effects of compressibility 
-
-- gw_chem_mmk_final - gw_chem module ""
 
 
-- gw_drag_mmk_const_tend - code that works with new implementation, but also includes constituent tendency output fields
 
-- gw_drag_mmk_ctrl_const_tend - code that includes constituent tendency output fields that works with standard ctrl WACCM
+
