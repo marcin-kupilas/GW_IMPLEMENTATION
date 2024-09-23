@@ -57,8 +57,10 @@ N.B.: these are the cesm2.2 default options for  gw_drag_nl and phys_ctl_nl, the
 
 # MMK notes
 
-To use my mods, add all modules in this branch, and remove mmk_final from module names, 
-E.g. gw_drag_mmk_final.F90 should be renamed to gw_drag.F90 before compiling.
+To use my mods, add all modules in this branch, and remove final_mmk from module names, 
+E.g. gw_drag_final_mmk.F90 should be renamed to gw_drag.F90 before compiling.
+
+Unless stated, Vittoria's mods \*final_MVG\* should be used also, and renamed to remove the _final_MVG
 
 
 
