@@ -4,12 +4,6 @@ module gw_diffusion
 ! This module contains code computing the effective diffusion of
 ! constituents and dry static energy due to gravity wave breaking.
 !
-!--------------------------------------------------------------------------
-!
-! This module was edited to work along the new module 'gw_chem.F90'
-! Modified by: Maria Vittoria Guarino
-!
-!--------------------------------------------------------------------------
 
 use gw_utils, only: r8
 use linear_1d_operators, only: TriDiagDecomp
@@ -27,7 +21,7 @@ contains
 
 subroutine gw_ediff(ncol, pver, ngwv, kbot, ktop, tend_level, &
      gwut, ubm, nm, rho, dt, prndl, gravit, p, c, vramp, &
-     egwdffi, decomp, ro_adjust, use_gw_chem)
+     egwdffi, decomp, ro_adjust)
 !
 ! Calculate effective diffusivity associated with GW forcing.
 !
@@ -72,14 +66,11 @@ subroutine gw_ediff(ncol, pver, ngwv, kbot, ktop, tend_level, &
   real(r8), intent(in), optional :: &
        ro_adjust(ncol,-ngwv:ngwv,pver+1)
 
- !variables for gw_chem  !MVG 
-  logical,  intent(in),  optional :: use_gw_chem 
-
 !-----------------------------Output Arguments-----------------------------
   ! Effective gw diffusivity at interfaces.
   real(r8), intent(out) :: egwdffi(ncol,pver+1)
   ! LU decomposition.
-  type(TriDiagDecomp), intent(out), optional :: decomp !MVG (made it optional)
+  type(TriDiagDecomp), intent(out) :: decomp
 
 !-----------------------------Local Workspace------------------------------
 
@@ -123,40 +114,23 @@ subroutine gw_ediff(ncol, pver, ngwv, kbot, ktop, tend_level, &
      end do
   endif
 
-  IF (present(use_gw_chem)) then !MVG
-   !compute Kzz but not the decomposition matrix (this is computed in gw_chem)
- 
-   ! Interpolate effective diffusivity to interfaces.
-   ! Assume zero at top and bottom interfaces.
-   egwdffi(:,ktop+1:kbot) = midpoint_interp(egwdffm(:,ktop:kbot))
+  ! Interpolate effective diffusivity to interfaces.
+  ! Assume zero at top and bottom interfaces.
+  egwdffi(:,ktop+1:kbot) = midpoint_interp(egwdffm(:,ktop:kbot))
 
-   ! Do not calculate diffusivities below level where tendencies are
-   ! actually allowed.
-   do k = ktop+1, kbot
-      where (k > tend_level) egwdffi(:,k) = 0.0_r8
-   enddo
+  ! Do not calculate diffusivities below level where tendencies are
+  ! actually allowed.
+  do k = ktop+1, kbot
+     where (k > tend_level) egwdffi(:,k) = 0.0_r8
+  enddo
 
-  ELSE
+  ! Calculate (dp/dz)^2.
+  dpidz_sq = rho*gravit
+  dpidz_sq = dpidz_sq*dpidz_sq
 
-   ! Interpolate effective diffusivity to interfaces.
-   ! Assume zero at top and bottom interfaces.
-   egwdffi(:,ktop+1:kbot) = midpoint_interp(egwdffm(:,ktop:kbot))
-
-   ! Do not calculate diffusivities below level where tendencies are
-   ! actually allowed.
-   do k = ktop+1, kbot
-      where (k > tend_level) egwdffi(:,k) = 0.0_r8
-   enddo
-
-   ! Calculate (dp/dz)^2.
-   dpidz_sq = rho*gravit
-   dpidz_sq = dpidz_sq*dpidz_sq
-
-   ! Decompose the diffusion matrix.
-   decomp = fin_vol_lu_decomp(dt, p%section([1,ncol],[ktop,kbot]), &
-        coef_q_diff=egwdffi(:,ktop:kbot+1)*dpidz_sq(:,ktop:kbot+1))
-
- ENDIF
+  ! Decompose the diffusion matrix.
+  decomp = fin_vol_lu_decomp(dt, p%section([1,ncol],[ktop,kbot]), &
+       coef_q_diff=egwdffi(:,ktop:kbot+1)*dpidz_sq(:,ktop:kbot+1))
 
 end subroutine gw_ediff
 
