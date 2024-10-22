@@ -12,7 +12,9 @@ module physpkg
   !-----------------------------------------------------------------------
 
   use shr_kind_mod,     only: r8 => shr_kind_r8
-  use spmd_utils,       only: masterproc
+  use spmd_utils,       only: masterproc, mpicom, mstrid=>masterprocid, mpi_real8, &
+                              mpi_character, mpi_logical, mpi_integer
+                              
   use physconst,        only: latvap, latice, rh2o
   use physics_types,    only: physics_state, physics_tend, physics_state_set_grid, &
        physics_ptend, physics_tend_init, physics_update,    &
@@ -1259,7 +1261,7 @@ contains
     use shr_kind_mod,       only: r8 => shr_kind_r8
     use chemistry,          only: chem_is_active, chem_timestep_tend, chem_emissions
     use cam_diagnostics,    only: diag_phys_tend_writeout
-    use gw_drag,            only: gw_tend
+    use gw_drag,            only: gw_tend, gw_drag_readnl
     use vertical_diffusion, only: vertical_diffusion_tend
     use rayleigh_friction,  only: rayleigh_friction_tend
     use constituents,       only: cnst_get_ind
@@ -1347,7 +1349,29 @@ contains
     real(r8), pointer, dimension(:,:) :: dtcore
     real(r8), pointer, dimension(:,:) :: ast     ! relative humidity cloud fraction
 
+   ! MMK read in from gw_drag_nl
+    integer, parameter :: n_rdg_beta = 10 ! MMK TEMP hard coded for now - pull from namelist in future
+
+     ! Start MMK variables for reading and broadcasting n_rdg_beta
+   !  call gw_drag_readnl(nlfilename)
+     
+   !   namelist /gw_drag_nl/ n_rdg_beta
+
+   !   call mpi_bcast(n_rdg_beta, 1, mpi_integer, mstrid, mpicom, ierr)
+   !   if (ierr /= 0) call endrun(sub//": FATAL: mpi_bcast: n_rdg_beta")
+   ! End MMK namelist
     !-----------------------------------------------------------------------
+
+    !-----------------------------------------------------------------------
+    ! MMK - local xi to pass to VD scheme (see scheme namelist bools for reference)
+    real(r8) :: xi_convect_dp(ncol,pver)
+    real(r8) :: xi_convect_sh (ncol,pver)
+    real(r8) :: xi_front(ncol,pver)
+    real(r8) :: xi_rdg_beta(ncol,pver,n_rdg_beta)
+    real(r8) :: xi_front_igw(ncol,pver) 
+    real(r8) :: xi_oro(ncol,pver) 
+    real(r8) :: xi_rdg_gamma(ncol,pver)
+    
     lchnk = state%lchnk
     ncol  = state%ncol
 
@@ -1495,6 +1519,23 @@ contains
     end if
     call t_stopf('adv_tracer_src_snk')
 
+    !===================================================
+    ! MMK - run GW drag scheme to calculate and save xi 
+    ! for every source - do not update state!
+    !===================================================
+    call t_startf('gw_tend')
+    if (masterproc) write(iulog,*) 'n_rdg_beta from physpkg mmk',n_rdg_beta
+
+    call gw_tend(state, pbuf, ztodt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rd_beta, &
+                 xi_convect_sh, xi_front_igw, xi_oro, xi_rdg_gamma)
+    call t_stopf('gw_tend')
+
+    if (masterproc) then
+      write(iulog,*) 'ncol = 1, pver=all, nrdg = 1 (if applicable)'
+      write(iulog,*) 'xi_dp', xi_convect_dp(1,:)
+      write(iulog,*) 'xi_front', xi_front(1,:)
+      write(iulog,*) 'xi_rdg_beta', xi_rdg_beta(1,:,1)
+    end if 
     !===================================================
     ! Vertical diffusion/pbl calculation
     ! Call vertical diffusion code (pbl, free atmosphere and molecular)

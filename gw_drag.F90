@@ -1321,7 +1321,8 @@ end subroutine handle_pio_error
 
 !==========================================================================
 
-subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
+subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rd_beta, &
+                 xi_convect_sh, xi_front_igw, xi_oro, xi_rdg_gamma)
 
   !-----------------------------------------------------------------------
   ! Interface for multiple gravity wave drag parameterization.
@@ -1351,6 +1352,14 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   type(physics_ptend), intent(out):: ptend
   type(cam_in_t), intent(in) :: cam_in
   real(r8), intent(out) :: flx_heat(pcols)
+  ! MMK optionals to be passed back to physpkg and then vertical diffusion scheme
+  real(r8), intent(out), optional :: xi_convect_dp(pcols,pver)
+  real(r8), intent(out), optional :: xi_front(pcols,pver)
+  real(r8), intent(out), optional :: xi_rd_beta(pcols,pver,n_rdg_beta)
+  real(r8), intent(out), optional :: xi_convect_sh (pcols,pver)
+  real(r8), intent(out), optional :: xi_front_igw(pcols,pver) 
+  real(r8), intent(out), optional :: xi_oro(pcols,pver) 
+  real(r8), intent(out), optional :: xi_rdg_gamma(pcols,pver)
 
   !---------------------------Local storage-------------------------------
 
@@ -1521,7 +1530,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
   real(r8) :: k_h_m(state%ncol,pver+1) ! Only here if need to calculate myself
   ! Molecular diffusivity of heat WACCM for testing
   real(r8) :: k_h_m_waccm(state%ncol,pver+1) ! = gw_prndl*kvtt in compute_kwave
-
+  real(r8) :: xi(ncol,pver) ! MMK - to be passed to effective_gw_diffusivity and stored in xi_<source>
 
   !MMK END
 
@@ -1642,7 +1651,12 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
              kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, & 
              kvtt, gw_prndl, lchnk, & ! MMK END
              k_e, zm, zi, var_gwt, k_dyn,		         &
-	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
+	     dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol), xi=xi)
+
+        ! Add xi to source specific xi if applicable
+        if( present(xi_convect_dp)) then
+          xi_convect_dp = xi
+        end if
 
  	do k = 1, pver !add up contributions from all GWs sources
       k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
@@ -1771,7 +1785,12 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
             kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, & 
             kvtt, gw_prndl, lchnk, & ! MMK END
             k_e, zm, zi, var_gwt, k_dyn,		         &
-            dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
+            dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol), xi=xi)
+        
+        ! Add xi to source specific xi if applicable
+        if( present(xi_convect_sh)) then
+          xi_convect_sh = xi
+        endif
 
  	do k = 1, pver !add up contributions from all GWs sources
       k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
@@ -1896,7 +1915,11 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
             kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, &  
             kvtt, gw_prndl, lchnk, & ! MMK END
             k_e, zm, zi, var_gwt, k_dyn,		         &
-      dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
+      dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol), xi=xi)
+
+        if( present(xi_front)) then
+          xi_front= xi
+        endif
 
       do k = 1, pver !add up contributions from all GWs sources
          k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
@@ -2015,7 +2038,8 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
           effgw,   c,       kvtt, q,  dse,  tau,  utgw,  vtgw, &
           egwdffi,  gwut, dttke, dttdf, ttgw, qtgw, ro_adjust=ro_adjust, &
           lapply_effgw_in=gw_apply_tndmax)
-
+     ! MMK TODO call effective_gw_diffusivity
+     ! MMK TODO save xi_front_igw
      ! Project stress into directional components.
      taucd = calc_taucd(ncol, band_long%ngwv, tend_level, tau, c, xv, yv, ubi)
 
@@ -2110,7 +2134,8 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
           effgw,c,          kvtt, q,  dse,  tau,  utgw,  vtgw, &
           egwdffi,  gwut, dttke, dttdf, ttgw, qtgw,            &
           lapply_effgw_in=gw_apply_tndmax)
-
+      ! MMK TODO call effective_gw_diff
+      ! MMK save xi_oro
      ! For orographic waves, don't bother with taucd, since there are no
      ! momentum conservation routines or directional diagnostics.
 
@@ -2198,7 +2223,8 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
         k_wave_new, k_h_new, k_dyn_c, k_dyn_h, & ! MMK
         kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, gw_prndl, & ! MMK
         k_e, k_dyn, egwdffi, &
-        var_gwt, state1%lat(:ncol), state1%lon(:ncol), use_gw_chem=use_gw_chem)
+        var_gwt, state1%lat(:ncol), state1%lon(:ncol),xi_rd_beta, &
+         use_gw_chem=use_gw_chem)
         do k = 1, pver !add up contributions from all GWs sources
            k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
            k_e_tot(:,k) = k_e_tot(:,k) + k_e(:,k)
@@ -2253,6 +2279,9 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat)
         hwdthg, clngtg, gbxar, mxdisg, angllg, anixyg, &
         rdg_gamma_cd_llb, trpd_leewv_rdg_gamma,        &
         ptend, flx_heat)
+
+   ! TODO implement kwave code
+   ! TODO save xi
 
   endif
 
@@ -2325,7 +2354,7 @@ subroutine gw_rdg_calc( &
    k_wave_new_orog_tot, k_h_new_orog_tot, k_dyn_c_orog_tot, k_dyn_h_orog_tot, &! MMK START
    kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, gw_prndl, &  ! MMK END
    k_e_orog_tot, k_dyn_orog_tot, egwdffi_orog_tot, &
-   var_gwt_orog_tot, lat, lon, use_gw_chem) !MVG optional arguments for gw_chem
+   var_gwt_orog_tot, lat, lon, xi_rdg, use_gw_chem) !MVG optional arguments for gw_chem
 
    use coords_1d,  only: Coords1D
    use gw_rdg,     only: gw_rdg_src, gw_rdg_belowpeak, gw_rdg_break_trap, gw_rdg_do_vdiff
@@ -2400,6 +2429,7 @@ subroutine gw_rdg_calc( &
   real(r8), intent(out), optional :: k_m_m(ncol,pver+1) 
   real(r8), intent(out), optional :: k_h_m(ncol,pver+1)
   real(r8), intent(out), optional :: k_h_m_waccm(ncol,pver+1)
+  real(r8), intent(out), optional :: xi_rdg(ncol,pver,n_rdg) ! stores xi for all ridges
   real(r8), intent(in), optional :: gw_prndl
 
    !---------------------------Local storage-------------------------------
@@ -2497,6 +2527,9 @@ subroutine gw_rdg_calc( &
 
    character(len=1) :: cn
    character(len=9) :: fname(4)
+
+   real(r8) :: xi(ncol,pver) ! MMK calculated individually for each ridge
+
    !----------------------------------------------------------------------------
 
    ! Allocate wavenumber fields.
@@ -2528,6 +2561,10 @@ subroutine gw_rdg_calc( &
    k_h_new_orog_local=0._r8
    k_dyn_c_orog_local=0._r8
    k_dyn_h_orog_local=0._r8
+   xi=0._r8
+   if(present(xi_rdg)) then
+     xi_rdg=0._r8
+   end if 
 
    do nn = 1, n_rdg
   
@@ -2574,7 +2611,12 @@ subroutine gw_rdg_calc( &
              kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, &  
              kvtt, gw_prndl, lchnk, & ! MMK END
              k_e_orog, zm, zi, var_gwt_orog, k_dyn_orog,     &
-	     dttdf, ttgw, qtgw, lat, lon, kwvrdg=kwvrdg)
+	     dttdf, ttgw, qtgw, lat, lon, kwvrdg=kwvrdg, xi=xi)
+
+        ! Add xi to xi_rdg
+        if(present(xi_rdg)) then
+          xi_rdg(:,:,nn) = xi(:,:)
+        end if
 
 
  	 do k = 1, pver !add up contributions from all ridges

@@ -36,7 +36,7 @@ subroutine effective_gw_diffusivity (ncol, band, lambda_h, p, dt, t, rhoi, nm, n
            k_wave_new, k_h_new, k_dyn_c, k_dyn_h, & !MMK
            kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, & 
            kvtt, gw_prndl, lchnk, & ! MMK END
-           k_e, zm, zi, var_t, k_dyn, dttdf, ttgw, qtgw, lat, lon, kwvrdg)
+           k_e, zm, zi, var_t, k_dyn, dttdf, ttgw, qtgw, lat, lon, kwvrdg,  xi)
 !-----------------------------------------------------------------------
 ! Call function to compute k_wave (wave effective diffusivity), k_e (wave energy flux) and 
 ! instability parameter (xi). Define a new total dynamical diffusivity (k_dyn) as a
@@ -122,7 +122,7 @@ use gw_diffusion, only: gw_ediff, gw_diff_tend
   ! Variance of gw temperature perturbations
   real(r8), intent(out) :: var_t(ncol,pver)
   ! Instability parameter
-  real(r8) :: xi(ncol,pver)      
+  real(r8), intent(inout) ::  xi(ncol,pver)      
 
   ! MMK Arguments
   ! Gw Prandtl Number
