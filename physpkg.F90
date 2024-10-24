@@ -1364,13 +1364,13 @@ contains
 
     !-----------------------------------------------------------------------
     ! MMK - local xi to pass to VD scheme (see scheme namelist bools for reference)
-    real(r8) :: xi_convect_dp(ncol,pver)
-    real(r8) :: xi_convect_sh (ncol,pver)
-    real(r8) :: xi_front(ncol,pver)
-    real(r8) :: xi_rdg_beta(ncol,pver,n_rdg_beta)
-    real(r8) :: xi_front_igw(ncol,pver) 
-    real(r8) :: xi_oro(ncol,pver) 
-    real(r8) :: xi_rdg_gamma(ncol,pver)
+    real(r8) :: xi_convect_dp(pcols, pver) ! Used 2024-10-23
+    real(r8) :: xi_convect_sh (pcols, pver) ! Not used 2024-10-23
+    real(r8) :: xi_front(pcols, pver) ! Used 2024-10-23
+    real(r8) :: xi_rdg_beta(pcols, pver, n_rdg_beta) ! Used 2024-10-24
+    real(r8) :: xi_front_igw(pcols, pver)  ! Not used 2024-10-24
+    real(r8) :: xi_oro(pcols, pver)  ! Not used 2024-10-24
+    real(r8) :: xi_rdg_gamma(pcols, pver) ! Not used 2024-10-24
     
     lchnk = state%lchnk
     ncol  = state%ncol
@@ -1524,18 +1524,21 @@ contains
     ! for every source - do not update state!
     !===================================================
     call t_startf('gw_tend')
-    if (masterproc) write(iulog,*) 'n_rdg_beta from physpkg mmk',n_rdg_beta
-
-    call gw_tend(state, pbuf, ztodt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rd_beta, &
-                 xi_convect_sh, xi_front_igw, xi_oro, xi_rdg_gamma)
+   !  if (masterproc)  then
+   !    write(iulog,*) 'MMK DEBUG'
+   !    write(iulog,*) 'n_rdg_beta from physpkg mmk',n_rdg_beta ! MMK DEBUG
+   !  endif 
+    call gw_tend(state, pbuf, ztodt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rdg_beta, &
+                 xi_convect_sh, xi_front_igw, xi_oro, xi_rdg_gamma) ! dp on, front on, rdg_beta on, others off.
     call t_stopf('gw_tend')
 
-    if (masterproc) then
-      write(iulog,*) 'ncol = 1, pver=all, nrdg = 1 (if applicable)'
-      write(iulog,*) 'xi_dp', xi_convect_dp(1,:)
-      write(iulog,*) 'xi_front', xi_front(1,:)
-      write(iulog,*) 'xi_rdg_beta', xi_rdg_beta(1,:,1)
-    end if 
+   !  if (masterproc) then ! MMK DEBUG
+   !    write(iulog,*) 'MMK DEBUG'
+   !    write(iulog,*) 'ncol = 14, pver=all, nrdg = 1 (if applicable)'
+   !    write(iulog,*) 'xi_dp', xi_convect_dp(14,:)
+   !    write(iulog,*) 'xi_front', xi_front(14,:)
+   !    write(iulog,*) 'xi_rdg_beta', xi_rdg_beta(14,:,1)
+   !  end if 
     !===================================================
     ! Vertical diffusion/pbl calculation
     ! Call vertical diffusion code (pbl, free atmosphere and molecular)
@@ -1549,7 +1552,7 @@ contains
     end if
 
     call vertical_diffusion_tend (ztodt ,state , cam_in, &
-         surfric  ,obklen   ,ptend    ,ast    ,pbuf )
+         surfric  ,obklen   ,ptend    ,ast    ,pbuf)!,xi_convect_dp,xi_front,xi_rdg_beta ) ! MMK added xi_convect_dp, front and rdg_beta
 
    !------------------------------------------
    ! Call major diffusion for extended model

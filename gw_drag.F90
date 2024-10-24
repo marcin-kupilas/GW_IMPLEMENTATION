@@ -750,6 +750,8 @@ subroutine gw_init()
           'k_dyn_c_orog_local orography')
          call addfld('k_dyn_h_orog'//cn//'RDGBETA' ,(/ 'ilev' /), 'A','m2/s', &
           'k_dyn_h_orog_local orography')
+         call addfld('xi_rdg_'//cn//'RDGBETA',(/ 'lev' /), 'A','m2/s', &
+          'Instability parameter for ridge '//cn//'RDGBETA')
       end do
       !add totals across orographic spectrum
       call addfld ('k_wave_orog_tot_BETA',(/ 'ilev' /), 'A','m2/s', &
@@ -924,7 +926,9 @@ subroutine gw_init()
      if (use_gw_chem) then
      call gw_chem_addflds(prefix='C', scheme="C&M", &
              		  band=band_mid, history_defaults=history_waccm)
-
+     ! MMK 
+     call addfld ('xi_front', (/ 'lev' /), 'A','', &
+          'Instability Parameter Frontogenesis')
      end if
 
   if (use_gw_front_igw) then
@@ -995,6 +999,9 @@ subroutine gw_init()
      if (use_gw_chem) then
      call gw_chem_addflds(prefix=beres_dp_pf, scheme="Beres (deep)", &
              		  band=band_mid, history_defaults=history_waccm)
+     ! MMK 
+     call addfld ('xi_convect_dp',(/ 'lev' /), 'A','', &
+          'Instability Parameter Deep Convection')
      endif
 
      if (history_waccm) then
@@ -1321,7 +1328,7 @@ end subroutine handle_pio_error
 
 !==========================================================================
 
-subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rd_beta, &
+subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rdg_beta, &
                  xi_convect_sh, xi_front_igw, xi_oro, xi_rdg_gamma)
 
   !-----------------------------------------------------------------------
@@ -1355,7 +1362,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
   ! MMK optionals to be passed back to physpkg and then vertical diffusion scheme
   real(r8), intent(out), optional :: xi_convect_dp(pcols,pver)
   real(r8), intent(out), optional :: xi_front(pcols,pver)
-  real(r8), intent(out), optional :: xi_rd_beta(pcols,pver,n_rdg_beta)
+  real(r8), intent(out), optional :: xi_rdg_beta(pcols,pver,n_rdg_beta)
   real(r8), intent(out), optional :: xi_convect_sh (pcols,pver)
   real(r8), intent(out), optional :: xi_front_igw(pcols,pver) 
   real(r8), intent(out), optional :: xi_oro(pcols,pver) 
@@ -1530,7 +1537,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
   real(r8) :: k_h_m(state%ncol,pver+1) ! Only here if need to calculate myself
   ! Molecular diffusivity of heat WACCM for testing
   real(r8) :: k_h_m_waccm(state%ncol,pver+1) ! = gw_prndl*kvtt in compute_kwave
-  real(r8) :: xi(ncol,pver) ! MMK - to be passed to effective_gw_diffusivity and stored in xi_<source>
+  real(r8) :: xi(state%ncol,pver) ! MMK - to be passed to effective_gw_diffusivity and stored in xi_<source>
 
   !MMK END
 
@@ -2223,7 +2230,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
         k_wave_new, k_h_new, k_dyn_c, k_dyn_h, & ! MMK
         kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, gw_prndl, & ! MMK
         k_e, k_dyn, egwdffi, &
-        var_gwt, state1%lat(:ncol), state1%lon(:ncol),xi_rd_beta, &
+        var_gwt, state1%lat(:ncol), state1%lon(:ncol),xi_rdg_beta, &
          use_gw_chem=use_gw_chem)
         do k = 1, pver !add up contributions from all GWs sources
            k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
@@ -2331,9 +2338,9 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
      call outfld ('k_h_new_tot', k_h_new_tot, ncol, lchnk)
      call outfld ('k_dyn_c_tot', k_dyn_c_tot, ncol, lchnk)
      call outfld ('k_dyn_h_tot', k_dyn_h_tot, ncol, lchnk)
-     
-
-
+     ! MMK individual xi dp and front
+     call outfld ('xi_convect_dp', xi_convect_dp, ncol, lchnk)
+     call outfld ('xi_front', xi_front, ncol, lchnk)
 
    endif ! if(use_gw_chem)
 
@@ -2566,7 +2573,7 @@ subroutine gw_rdg_calc( &
      xi_rdg=0._r8
    end if 
 
-   do nn = 1, n_rdg
+   do nn = 1, n_rdg ! start loop over multiple ridges
   
       kwvrdg  = 0.001_r8 / ( hwdth(:,nn) + 0.001_r8 ) ! this cant be done every time step !!!
       isoflag = 0   
@@ -2595,7 +2602,7 @@ subroutine gw_rdg_calc( &
      IF (present(use_gw_chem)) then !MVG
        if (use_gw_chem) then 
 
-	! Solve for the drag profile 
+	 ! Solve for the drag profile 
         call gw_drag_prof(ncol, band_oro, p, src_level, tend_level,  dt, &
           t, vramp,   &
           piln, rhoi,       nm,   ni, ubm,  ubi,  xv,    yv,        &
@@ -2642,15 +2649,14 @@ subroutine gw_rdg_calc( &
          write(cn, '(i1)') nn
          call outfld('k_wave_orog'//cn//'RDG'//trim(type),   k_wave_orog,  ncol, lchnk)
          call outfld('k_e_orog'//cn//'RDG'//trim(type),  k_e_orog,    ncol, lchnk) 
-	 call outfld('k_dyn_orog'//cn//'RDG'//trim(type),  k_dyn_orog,    ncol, lchnk) 
-	 call outfld('EKGW_orog'//cn//'RDG'//trim(type),  egwdffi,    ncol, lchnk)   
-    ! MMK new locals
-	 call outfld('k_wave_new_orog'//cn//'RDG'//trim(type),  k_wave_new_orog_local,    ncol, lchnk)   
-	 call outfld('k_h_new_orog'//cn//'RDG'//trim(type),  k_h_new_orog_local,    ncol, lchnk)   
-    call outfld('k_dyn_c_orog'//cn//'RDG'//trim(type),  k_dyn_c_orog_local,    ncol, lchnk)   
-    call outfld('k_dyn_h_orog'//cn//'RDG'//trim(type),  k_dyn_h_orog_local,    ncol, lchnk)   
-
-
+         call outfld('k_dyn_orog'//cn//'RDG'//trim(type),  k_dyn_orog,    ncol, lchnk) 
+         call outfld('EKGW_orog'//cn//'RDG'//trim(type),  egwdffi,    ncol, lchnk)   
+         ! MMK new locals
+         call outfld('k_wave_new_orog'//cn//'RDG'//trim(type),  k_wave_new_orog_local,    ncol, lchnk)   
+         call outfld('k_h_new_orog'//cn//'RDG'//trim(type),  k_h_new_orog_local,    ncol, lchnk)   
+         call outfld('k_dyn_c_orog'//cn//'RDG'//trim(type),  k_dyn_c_orog_local,    ncol, lchnk)   
+         call outfld('k_dyn_h_orog'//cn//'RDG'//trim(type),  k_dyn_h_orog_local,    ncol, lchnk)   
+         call outfld('xi_rdg_'//cn//'RDG'//trim(type),  xi,    ncol, lchnk)   
       end if
 
      ELSE
@@ -2692,7 +2698,7 @@ subroutine gw_rdg_calc( &
          taury(:,k)  =  taury(:,k) + taury0(:,k)
       end do
 
-      if (nn == 1) then
+      if (nn == 1) then 
          call outfld('TAU1RDG'//trim(type)//'M', tau(:,0,:),  ncol, lchnk)
          call outfld('UBM1'//trim(type),         ubm,         ncol, lchnk)
          call outfld('UBT1RDG'//trim(type),      gwut,        ncol, lchnk)

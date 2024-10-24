@@ -584,7 +584,7 @@ use physconst, only: gravit
   g_R = gravit/R_air
 
 
-
+k_h_m_waccm = 0._r8 ! MMK temp as not used
 !compute gw intrinsic speed, frequency and vertical wavenumber
 do i=1,ncol
   do l = -band%ngwv, band%ngwv       
