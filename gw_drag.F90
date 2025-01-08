@@ -926,7 +926,9 @@ subroutine gw_init()
      if (use_gw_chem) then
      call gw_chem_addflds(prefix='C', scheme="C&M", &
              		  band=band_mid, history_defaults=history_waccm)
-
+     ! MMK 
+     call addfld ('xi_front', (/ 'lev' /), 'A','', &
+          'Instability Parameter Frontogenesis')
      end if
 
   if (use_gw_front_igw) then
@@ -997,6 +999,9 @@ subroutine gw_init()
      if (use_gw_chem) then
      call gw_chem_addflds(prefix=beres_dp_pf, scheme="Beres (deep)", &
              		  band=band_mid, history_defaults=history_waccm)
+     ! MMK 
+     call addfld ('xi_convect_dp',(/ 'lev' /), 'A','', &
+          'Instability Parameter Deep Convection')
      endif
 
      if (history_waccm) then
@@ -1160,10 +1165,6 @@ subroutine gw_init()
           'Total dynamical diffusivity (over entire spectrum)')
       call addfld ('k_dyn_h_tot',(/ 'ilev' /), 'A','m2/s', &
           'Total thermal diffusivity (over entire spectrum)')
-     call addfld ('xi_convect_dp',(/ 'lev' /), 'A','', &
-          'Instability Parameter Deep Convection')
-     call addfld ('xi_front', (/ 'lev' /), 'A','', &
-          'Instability Parameter Frontogenesis')
  end if
 
 end subroutine gw_init
@@ -1327,7 +1328,8 @@ end subroutine handle_pio_error
 
 !==========================================================================
 
-subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rdg_beta)
+subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_front, xi_rdg_beta, &
+                 xi_convect_sh, xi_front_igw, xi_oro, xi_rdg_gamma)
 
   !-----------------------------------------------------------------------
   ! Interface for multiple gravity wave drag parameterization.
@@ -1361,6 +1363,10 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
   real(r8), intent(out), optional :: xi_convect_dp(pcols,pver)
   real(r8), intent(out), optional :: xi_front(pcols,pver)
   real(r8), intent(out), optional :: xi_rdg_beta(pcols,pver,n_rdg_beta)
+  real(r8), intent(out), optional :: xi_convect_sh (pcols,pver)
+  real(r8), intent(out), optional :: xi_front_igw(pcols,pver) 
+  real(r8), intent(out), optional :: xi_oro(pcols,pver) 
+  real(r8), intent(out), optional :: xi_rdg_gamma(pcols,pver)
 
   !---------------------------Local storage-------------------------------
 
@@ -1608,7 +1614,6 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
   k_dyn_c_tot=0._r8
   k_dyn_h_tot=0._r8
   k_wave_new=0._r8
-  xi = 0._r8
   ! MMK END
   
   if (use_gw_convect_dp) then
@@ -1743,7 +1748,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
 
   end if
 
-  if (use_gw_convect_sh) then ! MMK WIP
+  if (use_gw_convect_sh) then
      !------------------------------------------------------------------
      ! Convective gravity waves (Beres scheme, shallow).
      !------------------------------------------------------------------
@@ -1787,7 +1792,12 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
             kappa_tilde, k_m_m, k_h_m, k_h_m_waccm, & 
             kvtt, gw_prndl, lchnk, & ! MMK END
             k_e, zm, zi, var_gwt, k_dyn,		         &
-            dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol))
+            dttdf, ttgw, qtgw, state1%lat(:ncol), state1%lon(:ncol), xi=xi)
+        
+        ! Add xi to source specific xi if applicable
+        if( present(xi_convect_sh)) then
+          xi_convect_sh = xi
+        endif
 
  	do k = 1, pver !add up contributions from all GWs sources
       k_wave_tot(:,k) = k_wave_tot(:,k) + k_wave(:,k)
@@ -1874,7 +1884,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
      call outfld ('FRONTGFA', frontga, pcols, lchnk)
   end if
 
-  if (use_gw_front) then 
+  if (use_gw_front) then
      !------------------------------------------------------------------
      ! Frontally generated gravity waves
      !------------------------------------------------------------------
@@ -2083,7 +2093,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
 
   end if
 
-  if (use_gw_oro) then ! MMK WIP
+  if (use_gw_oro) then
      !---------------------------------------------------------------------
      ! Orographic stationary gravity waves
      !---------------------------------------------------------------------
@@ -2249,7 +2259,7 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
 
   end if
 
-  if (use_gw_rdg_gamma) then ! MMK WIP
+  if (use_gw_rdg_gamma) then
      !---------------------------------------------------------------------
      ! Orographic stationary gravity waves
      !---------------------------------------------------------------------
@@ -2329,10 +2339,9 @@ subroutine gw_tend(state, pbuf, dt, ptend, cam_in, flx_heat,xi_convect_dp, xi_fr
      call outfld ('k_dyn_c_tot', k_dyn_c_tot, ncol, lchnk)
      call outfld ('k_dyn_h_tot', k_dyn_h_tot, ncol, lchnk)
      ! MMK individual xi dp and front
-     if ( present(xi_convect_dp)) then
-       call outfld ('xi_convect_dp', xi_convect_dp, ncol, lchnk)
-       call outfld ('xi_front', xi_front, ncol, lchnk)
-     end if 
+     call outfld ('xi_convect_dp', xi_convect_dp, ncol, lchnk)
+     call outfld ('xi_front', xi_front, ncol, lchnk)
+
    endif ! if(use_gw_chem)
 
 end subroutine gw_tend
@@ -2647,9 +2656,7 @@ subroutine gw_rdg_calc( &
          call outfld('k_h_new_orog'//cn//'RDG'//trim(type),  k_h_new_orog_local,    ncol, lchnk)   
          call outfld('k_dyn_c_orog'//cn//'RDG'//trim(type),  k_dyn_c_orog_local,    ncol, lchnk)   
          call outfld('k_dyn_h_orog'//cn//'RDG'//trim(type),  k_dyn_h_orog_local,    ncol, lchnk)   
-         if(present(xi_rdg)) then
-           call outfld('xi_rdg_'//cn//'RDG'//trim(type),  xi,    ncol, lchnk)   
-         end if 
+         call outfld('xi_rdg_'//cn//'RDG'//trim(type),  xi,    ncol, lchnk)   
       end if
 
      ELSE
@@ -3188,9 +3195,9 @@ subroutine gw_chem_addflds(prefix, scheme, band, history_defaults)
   ! 10 chars is enough for "BTAUXSn32"
   !-----------------------------------------------------------------------
 
-  call addfld (trim(prefix)//'_k_wave',(/ 'lev' /), 'A','m2/s', & ! was originally lev MMK
+  call addfld (trim(prefix)//'_k_wave',(/ 'lev' /), 'A','m2/s', & 
       trim(scheme)//' Effective wave diffusivity')
-  call addfld (trim(prefix)//'_k_e',(/ 'lev' /), 'A','m2/s', & ! was originally lev MMK
+  call addfld (trim(prefix)//'_k_e',(/ 'lev' /), 'A','m2/s', & 
       trim(scheme)//' Wave energy flux')
   call addfld (trim(prefix)//'_k_dyn',(/ 'ilev' /), 'A','m2/s', &
       trim(scheme)//' Total dynamical diffusivity')

@@ -644,7 +644,7 @@ end subroutine vertical_diffusion_ts_init
 subroutine vertical_diffusion_tend( &
      ztodt    , state    , cam_in,          &
      ustar    , obklen   , ptend    , &
-     cldn     , pbuf) ! MMK pass in the different xi
+     cldn     , pbuf)
   !---------------------------------------------------- !
   ! This is an interface routine for vertical diffusion !
   !---------------------------------------------------- !
@@ -681,7 +681,6 @@ subroutine vertical_diffusion_tend( &
 
   real(r8),            intent(in)    :: ztodt                     ! 2 delta-t [ s ]
   real(r8),            intent(in)    :: cldn(pcols,pver)          ! New stratus fraction [ fraction ]
-  ! MMK declare xi
 
   ! ---------------------- !
   ! Input-Output Arguments !
@@ -1111,7 +1110,7 @@ subroutine vertical_diffusion_tend( &
      if (do_molec_diff) then
         call compute_molec_diff(state%lchnk, pcols, pver, pcnst, ncol, &
              kvm, kvt, tint, rhoi, kq_scal, cnst_mw, &
-             mw_fac, nbot_molec) ! MMK pass in xi?
+             mw_fac, nbot_molec)
      end if
 
      call compute_vdiff( state%lchnk   ,                                                                     &
@@ -1128,7 +1127,7 @@ subroutine vertical_diffusion_tend( &
           vd_lu_qdecomp, &
           ubc_mmr, ubc_flux, kvt, state%pmid, &
           cnst_mw, cnst_fixed_ubc, cnst_fixed_ubflx, nbot_molec, &
-          kq_scal, mw_fac) ! MMK pass in xi
+          kq_scal, mw_fac)
 
      call handle_errmsg(errstring, subname="compute_vdiff", &
           extra_msg="Error in fieldlist_wet call from vertical_diffusion.")
@@ -1144,7 +1143,7 @@ subroutine vertical_diffusion_tend( &
         kvm_temp = kvm
         call compute_molec_diff(state%lchnk, pcols, pver, pcnst, ncol, &
              kvm_temp, kvt, tint, rhoi_dry, kq_scal, cnst_mw, &
-             mw_fac, nbot_molec) ! MMK pass in xi?
+             mw_fac, nbot_molec)
      end if
 
      call compute_vdiff( state%lchnk   ,                                                                     &
@@ -1161,7 +1160,7 @@ subroutine vertical_diffusion_tend( &
           vd_lu_qdecomp, &
           ubc_mmr, ubc_flux, kvt, state%pmiddry, &
           cnst_mw, cnst_fixed_ubc, cnst_fixed_ubflx, nbot_molec, &
-          kq_scal, mw_fac) ! MMK pass in xi? 
+          kq_scal, mw_fac)
 
      call handle_errmsg(errstring, subname="compute_vdiff", &
           extra_msg="Error in fieldlist_dry call from vertical_diffusion.")

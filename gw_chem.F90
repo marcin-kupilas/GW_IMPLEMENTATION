@@ -680,7 +680,7 @@ enddo
       lmbd_z_star(i)=(2._r8*pi)*sqrt( (1._r8/alpha)*normalized_varT(i) + 1/(2._r8*m_b_sq) )
       k_e(i)=normalized_varT(i)*( (4.*f_n(i)*gamma_ad*(1.-2.*alpha_dwn))/ti(i) )*(lmbd_z_star(i)/inertial_prd(i)) 
       xi(i)=alpha/4. + alpha/2. *log( (m_b_sq/alpha)*normalized_varT(i) + 0.5)
-      xi(i)=min(0.5, xi(i)) !should not happen, but bound xi so that xi .ge. 1 cannot exist 
+      xi(i)=min(0.99, xi(i)) !should not happen, but bound xi so that xi .ge. 1 cannot exist 
      else
       k_e(i)=0._r8
       xi(i)=0._r8
